@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
+@import './reset.css';
+html {
+  --base-green: hsla(173, 61%, 77%, 1);
+  --bg-shade: hsla(203, 50%, 97%, 1);
+  --text-color: hsla(184, 7%, 39%, 1);
+  --error: hsla(13, 32%, 57%, 1);
+  --dark-green: hsla(183, 100%, 15%, 1);
+}
+body {
+  margin: 0;
+  font-family: 'Space Mono', monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Space Mono', monospace;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

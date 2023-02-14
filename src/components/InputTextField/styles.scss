@@ -1,0 +1,33 @@
+.input-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top: 40px;
+  &__label {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: white;
+    padding-bottom: 10px;
+  }
+  &__form {
+    display: flex;
+    width: 100%;
+  }
+  &__input {
+    display: flex;
+    width: 100%;
+    background: #181728;
+    border-radius: 8px;
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    color: rgba(255, 255, 255, 0.4);
+    padding: 10px 16px;
+    border: none;
+  }
+}
