@@ -25,22 +25,32 @@ const Login = ({
       <h1>Movie OTT </h1>
       <main className="login-container__main">
         <aside className="login-container__signIn">
-          <h2 className="login-container__header">Sign In</h2>
+          <h2 className="login-container__signIn__header">
+            Sign <span>In</span>
+          </h2>
           <InputTextField
-            label="email"
+            label="Email"
             value={email}
             onChangeValue={onChangeEmail}
+            placeholder="Email"
           />
           <InputTextField
             label="Password"
             value={password}
             onChangeValue={onChangePassword}
+            placeholder="Password"
           />
           <Button onClickButton={onClickSignIn} label="Sign In" />
         </aside>
         <aside className="login-container__signUp">
-          <h2>Welcome to Movie OTT</h2>
-          <img src="../assets/login-image.svg" />
+          <div>
+            <h2>
+              <span>Welcome to</span> Movie OTT
+            </h2>
+            <p>
+              <span>New here?</span> Create an account here.
+            </p>
+          </div>
           <Button onClickButton={onClickSignUp} label="Sign Up" />
         </aside>
       </main>

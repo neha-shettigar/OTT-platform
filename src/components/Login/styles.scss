@@ -1,15 +1,28 @@
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: auto 0;
+  height: 100%;
+}
 .login-container {
   display: flex;
-  padding: 235px 285px;
+  padding: 8% 25%;
   flex-direction: column;
   align-items: center;
-  background-image: linear-gradient(
-      124.99deg,
-      #130908 -2.55%,
-      rgba(19, 9, 8, 0) -2.55%,
-      #370c0f 100%
-    ),
-    url('../assets/register-background.png');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(127, 0, 0, 0.45)),
+    url('../assets/Netflix-Background.jpg');
+  h1 {
+    line-height: 54px;
+    height: 10%;
+    color: red;
+  }
   &__main {
     display: flex;
     width: 100%;
@@ -18,17 +31,23 @@
     display: flex;
     background: #000000;
     border-radius: 12px;
-    // padding: 10% 6% 10% 6%;
-    padding: 61px 50px 68px;
+    padding: 5%;
+    
+    // padding: 61px 50px 68px;
     flex-direction: column;
     width: 100%;
+    justify-content: space-between;
     &__header {
-      font-family: 'Poppins';
-      font-style: normal;
-      font-weight: 600;
+     font-family: 'Open Sans', sans-serif;
       font-size: 24px;
       line-height: 36px;
       color: #ffffff;
+      text-align: center;
+      height: 10%;
+      margin: 0;
+    }
+    span{
+      color:red;
     }
   }
 
@@ -37,8 +56,89 @@
     background: #1d253a;
     border-radius: 12px;
     // padding: 9% 9% 9% 9%;
-    padding: 50px 80px 60px;
+    padding: 5%;
+   
     flex-direction: column;
     width: 100%;
+    background-image: url('../assets/play.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    justify-content: space-between;
+    p {
+      height: 10%;
+      color: #ffffff;
+    }
+    span{
+      color: aqua;
+    }
+    h2{
+      color: red;
+      height: 85%;
+    }
   }
+}
+
+
+@media (max-width: 420px){
+  .login-container {
+  display: flex;
+  padding: 15% 10%;
+  // background-size: 100%;
+  &__main{
+        display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 5%;
+  }
+  &__signIn {
+    display: flex;
+    
+  }
+
+  &__signUp {
+    display: flex;
+   background-size: 30%;
+
+   height: 80%;
+   h2{
+    font-size: 20px;
+    height: 80%;
+   }
+   p{
+    font-size: 16px;
+   }
+  }
+}
+}
+
+@media (min-width: 420px) and (max-width: 768px){
+.login-container {
+  display: flex;
+  padding: 5% 15%;
+  // background-size: 100%;
+  &__main{
+        display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  &__signIn {
+    display: flex;
+    
+  }
+
+  &__signUp {
+    display: flex;
+   background-size: 25%;
+
+   height: 80%;
+   h2{
+    font-size: 20px;
+    height: 85%;
+   }
+   p{
+    font-size: 16px;
+   }
+  }
+}
+
 }

@@ -26,7 +26,6 @@ export const InputTextField = ({
       >
         {label}
       </label>
-      <span className="input-container__span">{error}</span>
       <form className="input-container__form">
         <input
           type="text"

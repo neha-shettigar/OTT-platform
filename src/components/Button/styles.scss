@@ -1,14 +1,25 @@
 .button-container {
   display: flex;
   justify-content: center;
-  padding-top: 50px;
+  // padding-top: 90px;
+  height: 10%;
+  margin: 0;
 
   &__button {
     display: flex;
     color: white;
     background: #bb261a;
     border-radius: 8px;
-    padding: 10px 55px;
+    padding: 0px 10%;
     border: none;
+    align-items: center;
+    font-family: 'Open Sans', sans-serif;
+  }
+}
+
+@media (max-width: 420px){
+  .button-container{
+    display: flex;
+    height: 10%;
   }
 }
