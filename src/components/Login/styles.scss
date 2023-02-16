@@ -9,11 +9,11 @@ body {
 * {
   box-sizing: border-box;
   margin: auto 0;
-  height: 100%;
+  font-family: "Poppins",sans-serif;
 }
 .login-container {
   display: flex;
-  padding: 8% 25%;
+  padding: 8% 25% 6%;
   flex-direction: column;
   align-items: center;
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(127, 0, 0, 0.45)),
@@ -31,14 +31,14 @@ body {
     display: flex;
     background: #000000;
     border-radius: 12px;
-    padding: 5%;
-    
+    padding: 6% 5% 7%;
+    margin: 0;
     // padding: 61px 50px 68px;
     flex-direction: column;
     width: 100%;
     justify-content: space-between;
     &__header {
-     font-family: 'Open Sans', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-size: 24px;
       line-height: 36px;
       color: #ffffff;
@@ -46,8 +46,34 @@ body {
       height: 10%;
       margin: 0;
     }
-    span{
-      color:red;
+    span {
+      color: red;
+    }
+    &__input {
+      padding: 2% 10%;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: rgba(255, 255, 255, 0.4);
+      background: #333333;
+      border-radius: 8px;
+      width: 100%;
+      border: none;
+    }
+    &__button {
+      background: #bb261a;
+      border-radius: 8px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      color: #ffffff;
+      padding: 3% 15%;
+      border: none;
     }
   }
 
@@ -56,89 +82,118 @@ body {
     background: #1d253a;
     border-radius: 12px;
     // padding: 9% 9% 9% 9%;
-    padding: 5%;
-   
+    padding: 4% 5% 7%;
+
     flex-direction: column;
     width: 100%;
     background-image: url('../assets/play.png');
+    background-size: 10%;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: 50% 40%;
     justify-content: space-between;
-    p {
-      height: 10%;
-      color: #ffffff;
+    margin: 0;
+    background-size: 40%;
+    &__text {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      // padding-bottom: 10%;
     }
-    span{
+    p {
+      // height: 10%;
+      padding-top: 90%;
+      color: #ffffff;
+      // padding-bottom: 5%;
+      text-align: center;
+    }
+    span {
       color: aqua;
     }
-    h2{
+    h2 {
       color: red;
       height: 85%;
+      text-align: center;
+    }
+     &__button {
+      background: #AFB2B9;
+border-radius: 8px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      color: #1D253A;
+      padding: 3% 15% ;
+      border: none;
     }
   }
 }
 
-
-@media (max-width: 420px){
+@media (max-width: 420px) {
   .login-container {
-  display: flex;
-  padding: 15% 10%;
-  // background-size: 100%;
-  &__main{
-        display: flex;
-    width: 100%;
-    flex-direction: column;
-    gap: 5%;
-  }
-  &__signIn {
     display: flex;
-    
-  }
+    padding: 15% 10%;
+    // background-size: 100%;
+    &__main {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      gap: 5%;
+    }
+    p {
+      padding-top: 60%;
+    }
+    &__signIn {
+      display: flex;
+    }
 
-  &__signUp {
-    display: flex;
-   background-size: 30%;
-
-   height: 80%;
-   h2{
-    font-size: 20px;
-    height: 80%;
-   }
-   p{
-    font-size: 16px;
-   }
-  }
-}
-}
-
-@media (min-width: 420px) and (max-width: 768px){
-.login-container {
-  display: flex;
-  padding: 5% 15%;
-  // background-size: 100%;
-  &__main{
-        display: flex;
-    width: 100%;
-    flex-direction: column;
-  }
-  &__signIn {
-    display: flex;
-    
-  }
-
-  &__signUp {
-    display: flex;
-   background-size: 25%;
-
-   height: 80%;
-   h2{
-    font-size: 20px;
-    height: 85%;
-   }
-   p{
-    font-size: 16px;
-   }
+    &__signUp {
+      display: flex;
+      background-size: 25%;
+      padding: 10%;
+      height: 80%;
+      h2 {
+        font-size: 20px;
+        height: 80%;
+      }
+      p {
+        font-size: 16px;
+      }
+    }
   }
 }
 
+@media (min-width: 420px) and (max-width: 768px) {
+  .login-container {
+    display: flex;
+    padding: 5% 15%;
+    // background-size: 100%;
+    &__main {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    &__signIn {
+      display: flex;
+      padding: 8%;
+    }
+
+    &__signUp {
+      display: flex;
+      background-size: 25%;
+      padding: 6%;
+      height: 80%;
+      h2 {
+        font-size: 20px;
+        height: 85%;
+      }
+      p {
+        font-size: 16px;
+        padding-top: 50%;
+      }
+    }
+  }
 }

@@ -1,8 +1,8 @@
 .button-container {
   display: flex;
   justify-content: center;
-  // padding-top: 90px;
-  height: 10%;
+  padding-top: 10%;
+  // height: 10%;
   margin: 0;
 
   &__button {
@@ -10,7 +10,7 @@
     color: white;
     background: #bb261a;
     border-radius: 8px;
-    padding: 0px 10%;
+    padding: 2% 10%;
     border: none;
     align-items: center;
     font-family: 'Open Sans', sans-serif;

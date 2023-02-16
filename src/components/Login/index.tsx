@@ -31,19 +31,25 @@ const Login = ({
           <InputTextField
             label="Email"
             value={email}
+            className="login-container__signIn__input"
             onChangeValue={onChangeEmail}
             placeholder="Email"
           />
           <InputTextField
             label="Password"
             value={password}
+            className="login-container__signIn__input"
             onChangeValue={onChangePassword}
             placeholder="Password"
           />
-          <Button onClickButton={onClickSignIn} label="Sign In" />
+          <Button
+            label="Sign In"
+            className="login-container__signIn__button"
+            onClickButton={onClickSignIn}
+          />
         </aside>
         <aside className="login-container__signUp">
-          <div>
+          <div className="login-container__signUp__text">
             <h2>
               <span>Welcome to</span> Movie OTT
             </h2>
@@ -51,7 +57,11 @@ const Login = ({
               <span>New here?</span> Create an account here.
             </p>
           </div>
-          <Button onClickButton={onClickSignUp} label="Sign Up" />
+          <Button
+            label="Sign Up"
+            className="login-container__signUp__button"
+            onClickButton={onClickSignUp}
+          />
         </aside>
       </main>
     </div>

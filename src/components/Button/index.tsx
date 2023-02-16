@@ -4,17 +4,19 @@ import './styles.scss';
 export interface ButtonInterface {
   label?: string;
   disabled?: boolean;
-  onClickButton: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  className?: string;
+  onClickButton?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
-export const Button = ({ label, disabled, onClickButton }: ButtonInterface) => {
+export const Button = ({
+  label,
+  disabled,
+  className,
+  onClickButton,
+}: ButtonInterface) => {
   return (
     <div className="button-container">
-      <button
-        className="button-container__button"
-        type="submit"
-        onClick={onClickButton}
-      >
+      <button className={className} type="submit" onClick={onClickButton}>
         {label}
       </button>
     </div>

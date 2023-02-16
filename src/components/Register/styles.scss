@@ -1,6 +1,6 @@
 .register-container {
   display: flex;
-  padding: 5% 30% 3%;
+  padding: 4% 32% 3%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(127, 0, 0, 0.45)),
     url('../assets/Netflix-Background.jpg');
 
@@ -29,7 +29,7 @@
     padding: 5% 10% 7%;
 
     &__header {
-     font-family: 'Open Sans', sans-serif;
+      font-family: 'Open Sans', sans-serif;
       font-style: normal;
       font-weight: 600;
       font-size: 24px;
@@ -37,6 +37,32 @@
       color: #ffffff;
       text-align: center;
       height: 10%;
+    }
+    &__input {
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 21px;
+      color: rgba(255, 255, 255, 0.4);
+      background: #181728;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      padding: 2% 3%;
+    }
+    &__button {
+      padding: 2% 10%;
+      background: #bb261a;
+      border-radius: 8px;
+      font-family: 'Poppins';
+      font-style: normal;
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+      color: #ffffff;
+      border:none;
     }
   }
 }

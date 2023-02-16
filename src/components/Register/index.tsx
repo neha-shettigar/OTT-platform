@@ -39,27 +39,35 @@ const Register = ({
           label="Full Name"
           placeholder="Full Name"
           value={fullName}
+          className="register-container__register__input"
           onChangeValue={onChangeFullName}
         />
         <InputTextField
           label="Email"
           placeholder="Email"
           value={email}
+          className="register-container__register__input"
           onChangeValue={onChangeEmail}
         />
         <InputTextField
           label="Password"
           placeholder="Password"
           value={password}
+          className="register-container__register__input"
           onChangeValue={onChangePassword}
         />
         <InputTextField
           label="Confirm Password"
           placeholder="Confirm Password"
           value={confirmPassword}
+          className="register-container__register__input"
           onChangeValue={onChangeConfirmPassword}
         />
-        <Button label="Register" onClickButton={onClickButton} />
+        <Button
+          label="Register"
+          className="register-container__register__button"
+          onClickButton={onClickButton}
+        />
       </div>
     </div>
   );
