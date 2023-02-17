@@ -1,0 +1,51 @@
+.moviesGenre-container {
+  display: flex;
+  margin: 0;
+  width: 100%;
+  //   gap: 1%;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 2% 5%;
+
+  &__link1,
+  &__link2 {
+    display: flex;
+    width: 23%;
+    background: #0e7490;
+    // flex-direction: column;
+    padding: 9%;
+    margin-top: 2%;
+    color: #ffffff;
+    border-radius: 16px;
+  }
+  &__link2 {
+    background: #171e31;
+  }
+}
+
+@media (max-width: 420px) {
+  .moviesGenre-container {
+    display: flex;
+    &__link1,
+    &__link2 {
+      width: 50%;
+      border-radius: 16px;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .moviesGenre-container {
+    display: flex;
+    &__link1,
+    &__link2 {
+      width: 50%;
+      border-radius: 16px;
+      justify-content: center;
+      padding: 12% 8%;
+      font-size: 22px;
+    }
+  }
+}

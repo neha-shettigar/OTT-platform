@@ -1,6 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar';
 import SearchBar from '../SearchBar';
+import MoviesGenre from '../MoviesGenre';
 import icon from '../assets/navbar-logo-1.svg';
 import dashboard from '../assets/dashboard.svg';
 import movies from '../assets/movies.svg';
@@ -76,6 +77,20 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             review="Movie"
           />
         </article> */}
+        <MoviesGenre
+          label1="Action"
+          label2="Adventure"
+          label3="Anime"
+          label4="Comedy"
+          label5="Crime"
+          label6="Drama"
+          label7="Family"
+          label8="Fantasy"
+          label9="History"
+          label10="Horror"
+          label11="Kids"
+          label12="Music"
+        />
       </section>
     </main>
   );

@@ -2,7 +2,6 @@
   display: flex;
   width: 100%;
   background: #1e1e1e;
-  height: 97vh;
   padding: 2%;
 
   &__navbar {
@@ -27,4 +26,66 @@
       flex-wrap: wrap;
     }
   }
+}
+
+
+@media (max-width: 420px){
+.homePage-container {
+  display: flex;
+  flex-direction:column-reverse;
+
+  &__navbar {
+    display: flex;
+  }
+
+  &__main {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    flex-direction: column;
+
+    &__search {
+      display: flex;
+      margin: 0;
+      height: 12%;
+      width: 100%;
+    }
+
+    &__body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
+
+}
+
+@media (min-width: 420px) and (max-width: 768px){
+.homePage-container {
+  display: flex;
+  flex-direction:column-reverse;
+
+  &__navbar {
+    display: flex;
+  }
+
+  &__main {
+    display: flex;
+    margin: 0;
+    width: 100%;
+    flex-direction: column;
+
+    &__search {
+      display: flex;
+      margin: 0;
+      height: 12%;
+      width: 100%;
+    }
+
+    &__body {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+}
 }

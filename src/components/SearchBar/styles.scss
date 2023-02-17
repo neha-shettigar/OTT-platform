@@ -50,3 +50,35 @@
     padding: 1% 5%;
   }
 }
+
+@media (max-width: 420px) {
+  .searchbar-container {
+    &__button {
+      display: none;
+    }
+
+    &__input {
+      // width: 80%;
+      font-size: 18px;
+    }
+    &__object {
+      width: 5%;
+    }
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .searchbar-container {
+    &__button {
+      display: none;
+    }
+
+    &__input {
+      // width: 80%;
+      font-size: 22px;
+    }
+    &__object {
+      width: 5%;
+    }
+  }
+}
