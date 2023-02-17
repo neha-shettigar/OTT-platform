@@ -5,10 +5,10 @@
   height: 20%;
   padding-bottom: 5%;
   margin: 0;
-
+width: 100%;
   // padding-top: 40px;
   &__label {
-font-family: 'Open Sans', sans-serif;
+
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
@@ -24,13 +24,14 @@ font-family: 'Open Sans', sans-serif;
     height: 60%;
     margin: 0;
     padding-top: 2%;
+    width: 100%;
   }
   &__input {
     display: flex;
     width: 100%;
     background: #181728;
     border-radius: 8px;
-    font-family: 'Poppins';
+   
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -49,6 +50,7 @@ font-family: 'Open Sans', sans-serif;
   
   &__form {
     display: flex;
+    padding-top: 5%;
   }
   &__input {
     display: flex;

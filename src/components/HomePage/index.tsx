@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../Navbar';
-import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import icon from '../assets/navbar-logo-1.svg';
 import dashboard from '../assets/dashboard.svg';
@@ -8,8 +7,7 @@ import movies from '../assets/movies.svg';
 import series from '../assets/tv-series.svg';
 import bookmark from '../assets/bookmark.svg';
 import user from '../assets/account.svg';
-import poster1 from '../assets/movieCard.svg';
-import bookMark from '../assets/cardLogo.svg';
+
 import searchIcon from '../assets/search-normal.svg';
 import './styles.scss';
 
@@ -33,9 +31,14 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
 
       <section className="homePage-container__main">
         {/* <article className="homePage-container__main__search"> */}
-        <SearchBar value="x" onChangeValue={onChange} icon={searchIcon} />
+        <SearchBar
+          value=""
+          onChangeValue={onChange}
+          icon={searchIcon}
+          placeholder="Search for movies or TV series"
+        />
         {/* </article> */}
-        <article className="homePage-container__main__body">
+        {/* <article className="homePage-container__main__body">
           <MovieCard
             poster={poster1}
             icon={bookMark}
@@ -72,7 +75,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             name="Unchanted"
             review="Movie"
           />
-        </article>
+        </article> */}
       </section>
     </main>
   );

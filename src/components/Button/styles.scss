@@ -1,3 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: 'poppins', sans-serif;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
@@ -13,7 +26,7 @@
     padding: 2% 10%;
     border: none;
     align-items: center;
-    font-family: 'Open Sans', sans-serif;
+
   }
 }
 
@@ -21,5 +34,10 @@
   .button-container{
     display: flex;
     height: 10%;
+    padding: 0;
+
+    &__button{
+      padding: 0;
+    }
   }
 }
