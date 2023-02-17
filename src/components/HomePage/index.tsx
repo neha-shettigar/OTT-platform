@@ -32,10 +32,28 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
       />
 
       <section className="homePage-container__main">
-        <article className="homePage-container__main__search">
-          <SearchBar value="x" onChangeValue={onChange} icon={searchIcon} />
-        </article>
+        {/* <article className="homePage-container__main__search"> */}
+        <SearchBar value="x" onChangeValue={onChange} icon={searchIcon} />
+        {/* </article> */}
         <article className="homePage-container__main__body">
+          <MovieCard
+            poster={poster1}
+            icon={bookMark}
+            name="Unchanted"
+            review="Movie"
+          />
+          <MovieCard
+            poster={poster1}
+            icon={bookMark}
+            name="Unchanted"
+            review="Movie"
+          />
+          <MovieCard
+            poster={poster1}
+            icon={bookMark}
+            name="Unchanted"
+            review="Movie"
+          />
           <MovieCard
             poster={poster1}
             icon={bookMark}

@@ -5,7 +5,7 @@
   flex-direction: column;
   justify-content: flex-start;
 
-  &__section{
+  &__section {
     display: flex;
     margin: 0;
     height: 65%;
@@ -14,14 +14,15 @@
   &__link {
     display: flex;
     margin: 0;
-    height: 80%;
+    height: 100%;
+    width: 50%;
   }
-    &__poster{
-        // width: 80%;
-        margin: 0;
-        position: relative;
-    }
-  
+  &__poster {
+    // width: 80%;
+    margin: 0;
+    position: relative;
+  }
+
   &__button {
     margin: 0;
     position: absolute;
@@ -31,7 +32,8 @@
     border-radius: 10px;
     // padding-left: 20%;
   }
-  p,h3{
+  p,
+  h3 {
     margin: 0;
   }
 }

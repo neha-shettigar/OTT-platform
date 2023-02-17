@@ -1,6 +1,5 @@
 import React from 'react';
 import { InputTextField } from '../InputTextField';
-import { Button } from '../Button';
 import './styles.scss';
 
 interface SearchBarInterface {
@@ -22,21 +21,17 @@ const SearchBar = ({
 }: SearchBarInterface) => {
   return (
     <main className="searchbar-container">
-      <section className="searchbar-container__input">
-        <object className="searchbar-container__object" data={icon} />
-        <InputTextField
-          value={value}
-          className="searchbar-container__input"
-          placeholder={placeholder}
-          onChangeValue={onChangeValue}
-        />
-      </section>
+      <object className="searchbar-container__object" data={icon} />
+      <InputTextField
+        value={value}
+        className="searchbar-container__input"
+        placeholder={placeholder}
+        onChangeValue={onChangeValue}
+      />
       <section className="searchbar-container__button-container">
-        <Button
-          label={label}
-          className="searchbar-container__button"
-          onClickButton={onSubmit}
-        />
+        <button className="searchbar-container__button" type="submit">
+          Search
+        </button>
       </section>
     </main>
   );

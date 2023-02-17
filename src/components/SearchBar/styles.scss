@@ -1,5 +1,8 @@
 .searchbar-container {
   display: flex;
+  margin: 0;
+  padding: 0% 2%;
+  height: 12%;
 
   &__input {
     display: flex;
@@ -8,16 +11,23 @@
     font-weight: 400;
     font-size: 32px;
     line-height: 48px;
-    // color: rgba(255, 255, 255, 0.5);
-    // background: #1E1E1E;
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
   }
   &__object {
-    width: 30%;
+    // width: 30%;
+    margin: 0;
+    margin-right: 2%;
   }
 
   &__button-container {
     display: flex;
     margin: 0;
+    /* margin-right: 20%; */
+    align-items: center;
+    width: 100%;
+    justify-content: flex-end;
   }
 
   &__button {
@@ -33,8 +43,9 @@
     order: 0;
     flex-grow: 0;
     border: none;
-    padding: 10%;
-    height: 30%;
+    height: 50%;
     margin: 0;
+    // padding: 30% 50%;
+    padding: 1% 5%;
   }
 }
