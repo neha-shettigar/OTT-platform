@@ -18,8 +18,10 @@ interface HomePageInterface {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+// parent component
 const HomePage = ({ show, value, onChange }: HomePageInterface) => {
   return (
+    // main container
     <main className="homePage-container">
       <Navbar
         icon1={icon}
@@ -30,8 +32,10 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
         icon6={user}
       />
 
+      {/* homepage content container */}
       <section className="homePage-container__main">
         {/* <article className="homePage-container__main__search"> */}
+        {/*  search bar */}
         <SearchBar
           value=""
           onChangeValue={onChange}

@@ -12,6 +12,7 @@ interface LoginInterface {
   onClickSignUp: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+// Login component
 const Login = ({
   email,
   password,
@@ -22,8 +23,10 @@ const Login = ({
 }: LoginInterface) => {
   return (
     <div className="login-container">
+      {/* component header */}
       <h1>Movie OTT </h1>
       <main className="login-container__main">
+        {/* signIn container */}
         <aside className="login-container__signIn">
           <h2 className="login-container__signIn__header">
             Sign <span>In</span>
@@ -48,6 +51,8 @@ const Login = ({
             onClickButton={onClickSignIn}
           />
         </aside>
+
+        {/* signUp container */}
         <aside className="login-container__signUp">
           <div className="login-container__signUp__text">
             <h2>

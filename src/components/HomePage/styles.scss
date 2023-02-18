@@ -1,3 +1,4 @@
+// main wrapper
 .homePage-container {
   display: flex;
   width: 100%;
@@ -8,6 +9,7 @@
     display: flex;
   }
 
+  // content wrapper
   &__main {
     display: flex;
     margin: 0;
