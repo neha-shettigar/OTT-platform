@@ -1,0 +1,12 @@
+.carousel{
+    display:flex;
+    flex-direction:column;
+
+    &__link{
+        display:flex;
+    }
+
+    &__poster{
+        width:30%
+    }
+}

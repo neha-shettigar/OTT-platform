@@ -9,6 +9,13 @@ import series from '../assets/tv-series.svg';
 import bookmark from '../assets/bookmark.svg';
 import user from '../assets/account.svg';
 
+// import MovieCard from '../MovieCard';
+// import poster1 from '../assets/movieCard.svg';
+// import bookMark from '../assets/cardLogo.svg';
+
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import { Carousel } from 'react-responsive-carousel';
+// import Carousel from 'react-bootstrap/Carousel';
 import searchIcon from '../assets/search-normal.svg';
 import './styles.scss';
 
@@ -34,53 +41,13 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
 
       {/* homepage content container */}
       <section className="homePage-container__main">
-        {/* <article className="homePage-container__main__search"> */}
-        {/*  search bar */}
         <SearchBar
           value=""
           onChangeValue={onChange}
           icon={searchIcon}
           placeholder="Search for movies or TV series"
         />
-        {/* </article> */}
-        {/* <article className="homePage-container__main__body">
-          <MovieCard
-            poster={poster1}
-            icon={bookMark}
-            name="Unchanted"
-            review="Movie"
-          />
-          <MovieCard
-            poster={poster1}
-            icon={bookMark}
-            name="Unchanted"
-            review="Movie"
-          />
-          <MovieCard
-            poster={poster1}
-            icon={bookMark}
-            name="Unchanted"
-            review="Movie"
-          />
-          <MovieCard
-            poster={poster1}
-            icon={bookMark}
-            name="Unchanted"
-            review="Movie"
-          />
-          <MovieCard
-            poster={poster1}
-            icon={bookMark}
-            name="Unchanted"
-            review="Movie"
-          />
-          <MovieCard
-            poster={poster1}
-            icon={bookMark}
-            name="Unchanted"
-            review="Movie"
-          />
-        </article> */}
+
         <MoviesGenre
           label1="Action"
           label2="Adventure"
