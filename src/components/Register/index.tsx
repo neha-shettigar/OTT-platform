@@ -4,11 +4,11 @@ import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 
 interface RegisterInterface {
-  label: string;
-  fullName: string;
-  email: string;
-  password: string;
-  confirmPassword: string;
+  label?: string;
+  fullName?: string;
+  email?: string;
+  password?: string;
+  confirmPassword?: string;
   onChangeFullName: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;

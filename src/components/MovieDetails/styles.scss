@@ -1,0 +1,18 @@
+.movieDetails-container{
+    display: flex;
+gap: 5%;
+padding: 2%;
+    &__image{
+width: 50%;
+height: 100%;
+    }
+
+    &__details{
+    display: flex;
+    width: 70%;
+    margin: 0;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    }
+}

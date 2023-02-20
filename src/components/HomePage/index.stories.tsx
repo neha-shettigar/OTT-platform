@@ -5,7 +5,7 @@ import HomePage from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/HomePage',
+  title: 'Components/HomePage',
   component: HomePage,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

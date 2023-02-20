@@ -1,34 +1,33 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Register from './index';
+import SearchResult from './index';
+import { data } from '../../data';
+import bookMark from '../assets/cardLogo.svg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Components/Register',
-  component: Register,
+  title: 'Components/SearchResult',
+  component: SearchResult,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Register>;
+} as ComponentMeta<typeof SearchResult>;
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Register> = (args) => {
-  return <Register {...args} />;
+const Template: ComponentStory<typeof SearchResult> = (args) => {
+  return <SearchResult {...args} />;
 };
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  label: 'Register',
+  icon: bookMark,
+  poster: data[0].poster,
+  link: data[0].link,
+  title: data[0].title,
+  rating: data[0].rating,
 };
-export const RegisterUser = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-RegisterUser.args = {
-  label: 'Register',
-  fullName: 'Neha Shettigar',
-  email: 'neha@gmail.com',
-  password: 'neha@123',
-  confirmPassword: 'neha@123',
-};
+
+export {};

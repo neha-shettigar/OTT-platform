@@ -5,7 +5,7 @@ import MoviesGenre from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/MoviesGenre',
+  title: 'Components/MoviesGenre',
   component: MoviesGenre,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

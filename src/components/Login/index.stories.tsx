@@ -5,7 +5,7 @@ import Login from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/Login',
+  title: 'Components/Login',
   component: Login,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

@@ -10,35 +10,6 @@ import './styles.scss';
 const CarouselComponent = () => {
   return (
     <Carousel className="carousel">
-      {/* <a className="carousel__link" href={data[0].link}>
-        <img src={data[0].poster} className="carousel__poster" />
-      </a>
-     
-      <p>{data[0].rating}</p>
-
-      <h3>{data[0].title}</h3>
-
-      <p>{data[1].rating}</p>
-
-      <h3>{data[1].title}</h3>
-
-      <a className="carousel__link" href={data[2].link}>
-        <img src={data[2].poster} className="carousel__poster" />
-      </a>
-    
-    
-      <p>{data[2].rating}</p>
-
-      <h3>{data[2].title}</h3>
-
-      <a className="carousel__link" href={data[3].link}>
-        <img src={data[3].poster} className="carousel__poster" />
-      </a>
-      
-      <p>{data[3].rating}</p>
-
-      <h3>{data[3].title}</h3> */}
-
       <MovieCard
         icon={bookMark}
         poster={data[0].poster}
@@ -59,6 +30,55 @@ const CarouselComponent = () => {
         link={data[2].link}
         title={data[2].title}
         rating={data[2].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[3].poster}
+        link={data[3].link}
+        title={data[3].title}
+        rating={data[3].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[4].poster}
+        link={data[4].link}
+        title={data[4].title}
+        rating={data[4].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[5].poster}
+        link={data[5].link}
+        title={data[5].title}
+        rating={data[5].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[6].poster}
+        link={data[6].link}
+        title={data[6].title}
+        rating={data[6].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[7].poster}
+        link={data[7].link}
+        title={data[7].title}
+        rating={data[7].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[8].poster}
+        link={data[8].link}
+        title={data[8].title}
+        rating={data[8].rating}
+      />
+      <MovieCard
+        icon={bookMark}
+        poster={data[9].poster}
+        link={data[9].link}
+        title={data[9].title}
+        rating={data[9].rating}
       />
     </Carousel>
   );

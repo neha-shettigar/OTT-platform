@@ -5,7 +5,7 @@ import { InputTextField } from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/InputTextField',
+  title: 'Components/InputTextField',
   component: InputTextField,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

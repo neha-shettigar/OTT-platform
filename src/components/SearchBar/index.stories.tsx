@@ -6,7 +6,7 @@ import searchIcon from '../assets/search-normal.svg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/SearchBar',
+  title: 'Components/SearchBar',
   component: SearchBar,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

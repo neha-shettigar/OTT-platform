@@ -6,7 +6,7 @@ import CarouselComponent from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/CarouselComponent',
+  title: 'Components/CarouselComponent',
   component: CarouselComponent,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {

@@ -1,34 +1,30 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Register from './index';
+import MovieDetails from './index';
+import { data } from '../../data';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Components/Register',
-  component: Register,
+  title: 'Components/MovieDetails',
+  component: MovieDetails,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Register>;
+} as ComponentMeta<typeof MovieDetails>;
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Register> = (args) => {
-  return <Register {...args} />;
+const Template: ComponentStory<typeof MovieDetails> = (args) => {
+  return <MovieDetails {...args} />;
 };
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  label: 'Register',
-};
-export const RegisterUser = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-RegisterUser.args = {
-  label: 'Register',
-  fullName: 'Neha Shettigar',
-  email: 'neha@gmail.com',
-  password: 'neha@123',
-  confirmPassword: 'neha@123',
+  poster: data[1].poster,
+  title: data[1].title,
+  rating: data[1].rating,
+  category: data[1].category,
+  description: data[1].description,
 };

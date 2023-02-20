@@ -12,7 +12,7 @@ import user from '../assets/account.svg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Example/Navbar',
+  title: 'Components/Navbar',
   component: Navbar,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
