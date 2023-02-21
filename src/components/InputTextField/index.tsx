@@ -8,7 +8,7 @@ interface InputFieldInterface {
   disabled?: boolean;
   className?: string;
   placeholder?: string;
-  onChangeValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputTextField = ({

@@ -7,7 +7,7 @@ interface SearchBarInterface {
   icon?: string;
   placeholder?: string;
   label?: string;
-  onChangeValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChangeValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onSubmit?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
@@ -26,7 +26,7 @@ const SearchBar = ({
         value={value}
         className="searchbar-container__input"
         placeholder={placeholder}
-        onChangeValue={onChangeValue}
+        // onChangeValue={onChangeValue}
       />
       <section className="searchbar-container__button-container">
         <button className="searchbar-container__button" type="submit">

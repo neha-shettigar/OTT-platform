@@ -1,3 +1,6 @@
+.moviesGenre{
+  display: flex;
+}
 .moviesGenre-container {
   display: flex;
   margin: 0;
@@ -18,6 +21,8 @@
     margin-top: 2%;
     color: #ffffff;
     border-radius: 16px;
+    flex-direction: row;
+    justify-content: space-around;
   }
   &__link2 {
     background: #171e31;

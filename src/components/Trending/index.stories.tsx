@@ -1,21 +1,21 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Login from './index';
+import Trending from './index';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
-  title: 'Components/Login',
-  component: Login,
+  title: 'Components/Trending',
+  component: Trending,
   // More on argTypes: https://storybook.js.org/docs/react/api/argtypes
   argTypes: {
     backgroundColor: { control: 'color' },
   },
-} as ComponentMeta<typeof Login>;
+} as ComponentMeta<typeof Trending>;
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof Login> = (args) => {
-  return <Login />;
+const Template: ComponentStory<typeof Trending> = (args) => {
+  return <Trending />;
 };
 
 export const Default = Template.bind({});

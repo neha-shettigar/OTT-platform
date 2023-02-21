@@ -1,45 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
-interface NavbarInterface {
-  icon1: string;
-  icon2: string;
-  icon3: string;
-  icon4: string;
-  icon5: string;
-  icon6: string;
-}
+import icon from '../assets/navbar-logo-1.svg';
+import dashboard from '../assets/dashboard.svg';
+import movies from '../assets/movies.svg';
+import series from '../assets/tv-series.svg';
+import bookmark from '../assets/bookmark.svg';
+import user from '../assets/account.svg';
 
-const Navbar = ({
-  icon1,
-  icon2,
-  icon3,
-  icon4,
-  icon5,
-  icon6,
-}: NavbarInterface) => {
+// interface NavbarInterface {
+//   icon1?: string;
+//   icon2?: string;
+//   icon3?: string;
+//   icon4?: string;
+//   icon5?: string;
+//   icon6?: string;
+//   link1?: string;
+//   link2?: string;
+//   link3?: string;
+//   link4?: string;
+//   link5?: string;
+//   link6?: string;
+// }
+
+const Navbar = () => {
   return (
     <main className="navbar-container">
-      <a className="navbar-container__link" href="">
-        <object className="navbar-container__object" data={icon1} />
-      </a>
+      <Link to="/tending" className="navbar-container__link">
+        <object className="navbar-container__object" data={icon} />
+      </Link>
       <section className="navbar-container__section">
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon2} />
-        </a>
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon3} />
-        </a>
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon4} />
-        </a>
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon5} />
-        </a>
+        <Link to="/" className="navbar-container__link">
+          <object className="navbar-container__object" data={dashboard} />
+        </Link>
+        <Link to="" className="navbar-container__link">
+          <object className="navbar-container__object" data={movies} />
+        </Link>
+        <Link to="" className="navbar-container__link">
+          <object className="navbar-container__object" data={series} />
+        </Link>
+        <Link to="" className="navbar-container__link">
+          <object className="navbar-container__object" data={bookmark} />
+        </Link>
       </section>
-      <a className="navbar-container__link" href="">
-        <object className="navbar-container__object" data={icon6} />
-      </a>
+      <Link to="" className="navbar-container__link">
+        <object className="navbar-container__object" data={user} />
+      </Link>
     </main>
   );
 };

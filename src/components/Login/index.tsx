@@ -3,24 +3,35 @@ import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 import './styles.scss';
 
-interface LoginInterface {
-  email: string;
-  password: string;
-  onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClickSignIn: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onClickSignUp: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
+// interface LoginInterface {
+//   email: string;
+//   password: string;
+//   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
+//   onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
+//   onClickSignIn: (e: React.MouseEvent<HTMLButtonElement>) => void;
+//   onClickSignUp: (e: React.MouseEvent<HTMLButtonElement>) => void;
+// }
 
 // Login component
-const Login = ({
-  email,
-  password,
-  onChangeEmail,
-  onChangePassword,
-  onClickSignIn,
-  onClickSignUp,
-}: LoginInterface) => {
+const Login = () => {
+  const initialState = {
+    fullName: '',
+
+    email: '',
+
+    password: '',
+
+    confirmPassword: '',
+  };
+
+  const [user, setUser] = React.useState(initialState);
+  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setUser({ ...user, [e.target.name]: e.target.value });
+  };
+  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <div className="login-container">
       {/* component header */}
@@ -33,22 +44,20 @@ const Login = ({
           </h2>
           <InputTextField
             label="Email"
-            value={email}
             className="login-container__signIn__input"
-            onChangeValue={onChangeEmail}
+            onChangeValue={onChangeValue}
             placeholder="Email"
           />
           <InputTextField
             label="Password"
-            value={password}
             className="login-container__signIn__input"
-            onChangeValue={onChangePassword}
+            onChangeValue={onChangeValue}
             placeholder="Password"
           />
           <Button
             label="Sign In"
             className="login-container__signIn__button"
-            onClickButton={onClickSignIn}
+            onClickButton={onClickSignUp}
           />
         </aside>
 
