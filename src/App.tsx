@@ -15,6 +15,8 @@ import Login from './components/Login';
 import MoviesGenre from './components/MoviesGenre';
 import SeriesGenre from './components/SeriesGenre';
 import SearchResult from './components/SearchResult';
+import Register from './components/Register';
+import MovieDetails from './components/MovieDetails';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
           <Route path="movie-genre" element={<MoviesGenre />} />
           <Route path="series-genre" element={<SeriesGenre />} />
           <Route path="search-result" element={<SearchResult />} />
+          <Route path="register" element={<Register />} />
+          <Route path="movie-details" element={<MovieDetails />} />
         </Routes>
       </section>
     </main>
