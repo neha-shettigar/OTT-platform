@@ -11,6 +11,7 @@ interface SearchBarInterface {
   onSubmit?: (e: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+// contains input field and button component
 const SearchBar = ({
   value,
   icon,
@@ -20,7 +21,9 @@ const SearchBar = ({
   onSubmit,
 }: SearchBarInterface) => {
   return (
+    // main container
     <main className="searchbar-container">
+      {/* search icon */}
       <object className="searchbar-container__object" data={icon} />
       <InputTextField
         value={value}
@@ -28,6 +31,7 @@ const SearchBar = ({
         placeholder={placeholder}
         // onChangeValue={onChangeValue}
       />
+      {/* search button */}
       <section className="searchbar-container__button-container">
         <button className="searchbar-container__button" type="submit">
           Search

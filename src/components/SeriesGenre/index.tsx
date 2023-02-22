@@ -1,39 +1,30 @@
 import React from 'react';
-// import { Button } from '../Button';
-
+// import components
 import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
+
+// import svg
 import searchIcon from '../assets/search-normal.svg';
+
 import './styles.scss';
 
-// interface SeriesGenreInterface {
-//   label1: string;
-//   label2: string;
-//   label3: string;
-//   label4: string;
-//   label5: string;
-//   label6: string;
-//   label7: string;
-//   label8: string;
-//   label9: string;
-//   label10: string;
-//   label11: string;
-//   label12: string;
-// }
-
+// this component contains navbar, searchbar, links for each series genre
 const SeriesGenre = () => {
   return (
     <main className="homePage-container">
+      {/* navbar component */}
       <Navbar />
 
       {/* homepage content container */}
       <section className="homePage-container__main">
+        {/* searchbar component */}
         <SearchBar
           value=""
           // onChangeValue={onChange}
           icon={searchIcon}
           placeholder="Search for movies or TV series"
         />
+        {/* links for each genre */}
         <section className="seriesGenre-container">
           <a className="seriesGenre-container__link1" href="">
             Action

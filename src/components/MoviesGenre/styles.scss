@@ -1,4 +1,4 @@
-.moviesGenre{
+.moviesGenre {
   display: flex;
 }
 .moviesGenre-container {
@@ -10,6 +10,9 @@
   flex-wrap: wrap;
   flex-direction: row;
   padding: 2% 5%;
+  padding-top: 8%;
+
+  /* links for each genre */
 
   &__link1,
   &__link2 {
@@ -17,7 +20,7 @@
     width: 23%;
     background: #0e7490;
     // flex-direction: column;
-    padding: 9%;
+    padding: 8% 9%;
     margin-top: 2%;
     color: #ffffff;
     border-radius: 16px;
@@ -32,6 +35,9 @@
 @media (max-width: 420px) {
   .moviesGenre-container {
     display: flex;
+
+    /* links for each genre */
+
     &__link1,
     &__link2 {
       width: 50%;
@@ -44,6 +50,9 @@
 @media (min-width: 420px) and (max-width: 768px) {
   .moviesGenre-container {
     display: flex;
+
+    /* links for each genre */
+
     &__link1,
     &__link2 {
       width: 50%;

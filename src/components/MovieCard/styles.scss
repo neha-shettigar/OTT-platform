@@ -1,3 +1,4 @@
+// main container
 .movieCard-container {
   display: flex;
   // width: 25%;
@@ -10,20 +11,26 @@
     margin: 0;
     height: 65%;
     flex-direction: column;
+    text-align: left;
   }
 
+// movie links
   &__link {
     display: flex;
     margin: 0;
     height: 100%;
     width: 100%;
   }
+
+  // movie poster
   &__poster {
     // width: 80%;
     margin: 0;
     position: relative;
+    border-radius:5%;
   }
 
+  // bookmark button
   &__button {
     margin: 0;
     position: absolute;
@@ -31,9 +38,9 @@
     background-color: transparent;
     border: none;
     border-radius: 10px;
-    // padding-left: 20%;
-    // margin-left: 45%;
   }
+
+  // movie details
   p,
   h3 {
     margin: 0;

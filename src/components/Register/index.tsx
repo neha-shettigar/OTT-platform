@@ -1,22 +1,13 @@
 import React from 'react';
-import './styles.scss';
+// import components
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 
-// interface RegisterInterface {
-//   label?: string;
-//   fullName?: string;
-//   email?: string;
-//   password?: string;
-//   confirmPassword?: string;
-//   onChangeFullName: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   onChangeConfirmPassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   onClickButton: (e: React.MouseEvent<HTMLButtonElement>) => void;
-// }
+import './styles.scss';
 
+// this component contains input field and button components
 const Register = () => {
+  // initial state
   const initialState = {
     fullName: '',
 
@@ -28,19 +19,26 @@ const Register = () => {
   };
 
   const [user, setUser] = React.useState(initialState);
+
+  // handle function for value change
   const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     setUser({ ...user, [e.target.name]: e.target.value });
   };
+  // handle function for button
   const onClickRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
   };
   return (
+    // main container
     <div className="register-container">
+      {/* component header */}
       <div className="register-container__header">
         <h1>Movie OTT</h1>
       </div>
+      {/* container for header and input and button components */}
       <div className="register-container__register">
-        <h2 className="register-container__register__header">Regiter</h2>
+        <h2 className="register-container__register__header">Register</h2>
+        {/* input field for taking user input */}
         <InputTextField
           label="Full Name"
           placeholder="Full Name"
@@ -69,6 +67,7 @@ const Register = () => {
           className="register-container__register__input"
           onChangeValue={onChangeValue}
         />
+        {/* button for submitting the data */}
         <Button
           label="Register"
           className="register-container__register__button"

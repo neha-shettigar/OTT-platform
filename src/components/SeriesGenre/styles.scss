@@ -1,3 +1,4 @@
+// main component
 .seriesGenre-container {
   display: flex;
   margin: 0;
@@ -7,7 +8,9 @@
   flex-wrap: wrap;
   flex-direction: row;
   padding: 2% 5%;
+  padding-top: 8%;
 
+  // links for each genre
   &__link1,
   &__link2 {
     display: flex;
@@ -21,6 +24,7 @@
     flex-direction: row;
     justify-content: space-around;
   }
+
   &__link2 {
     background: #171e31;
   }
@@ -29,6 +33,7 @@
 @media (max-width: 420px) {
   .seriesGenre-container {
     display: flex;
+
     &__link1,
     &__link2 {
       width: 50%;

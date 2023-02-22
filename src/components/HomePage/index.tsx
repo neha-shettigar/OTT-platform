@@ -1,45 +1,43 @@
 import React from 'react';
+
+// import components
 import Navbar from '../Navbar';
 import SearchBar from '../SearchBar';
-
-// import MoviesGenre from '../MoviesGenre';
-// import MovieDetails from '../MovieDetails';
-// import BookMarks from '../BookMarks';
-// import icon from '../assets/navbar-logo-1.svg';
-// import dashboard from '../assets/dashboard.svg';
-// import movies from '../assets/movies.svg';
-// import series from '../assets/tv-series.svg';
 import bookmark from '../assets/bookmark.svg';
-// import user from '../assets/account.svg';
-
 import CarouselComponent from '../Carousel';
 import MovieCard from '../MovieCard';
-// import poster1 from '../assets/movieCard.svg';
-// import bookMark from '../assets/cardLogo.svg';
+
+// import data
 import { data } from '../../data';
+
+// searchIcon for searchbar
 import searchIcon from '../assets/search-normal.svg';
 
 import './styles.scss';
 
-// parent component
+// HomePage consists of NavBar, SearchBar, Carousel for trending items and movie tray
 const HomePage = () => {
   return (
     // main container
     <main className="homePage-container">
+      {/* navigation */}
       <Navbar />
-
       {/* homepage content container */}
       <section className="homePage-container__main">
+        {/* search bar */}
         <SearchBar
           value=""
           // onChangeValue={onChange}
           icon={searchIcon}
           placeholder="Search for movies or TV series"
         />
-        <h4>Trending</h4>
+        <h4 className="homePage-container__main__header">Trending</h4>
+        {/* Carousel for trending items */}
         <CarouselComponent />
+        {/* movie tray */}
         <h4>Popular</h4>
         <section className="homePage-container__main__popular">
+          {/* each movie is displayed using movie card */}
           <MovieCard
             poster={data[8].poster}
             rating={data[8].rating}
@@ -61,8 +59,6 @@ const HomePage = () => {
             icon={bookmark}
             link={data[2].link}
           />
-          {/* </article>
-          <article className="homePage-container__main__popular__row"> */}
           <MovieCard
             poster={data[1].poster}
             rating={data[1].rating}

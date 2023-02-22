@@ -1,15 +1,26 @@
 import React from 'react';
-
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
+// import carousel from library
 import { Carousel } from 'react-responsive-carousel';
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
+
+// import components
 import MovieCard from '../MovieCard/index';
+
+// import data
 import { data } from '../../data';
+
+// import svg
 import bookMark from '../assets/cardLogo.svg';
+
 import './styles.scss';
 
+// this component contains carousel which inturn contains movie cards
 const CarouselComponent = () => {
   return (
-    <Carousel className="carousel">
+    // carousel imported from the library
+    <Carousel>
+      {/* carousel items to slide */}
+
       <MovieCard
         icon={bookMark}
         poster={data[0].poster}

@@ -1,23 +1,26 @@
-.movieDetails-container{
-    display: flex;
-gap: 5%;
-padding: 2%;
-    &__image{
-width: 50%;
-height: 100%;
-    }
+// contaier for movie details
+.movieDetails-container {
+  display: flex;
+  gap: 5%;
+  padding: 2%;
 
-    &__details{
+  // movie poster
+  &__image {
+    width: 50%;
+    height: 100%;
+  }
+
+  // movie details
+  &__details {
     display: flex;
     width: 70%;
     margin: 0;
     flex-direction: column;
     justify-content: space-evenly;
     text-align: left;
-    p{
-        font-size: 18px;
-        line-height: normal;
+    p {
+      font-size: 18px;
+      line-height: normal;
     }
-
-    }
+  }
 }

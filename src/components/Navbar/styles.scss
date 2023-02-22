@@ -1,7 +1,9 @@
+// main container
 .navbar-container {
+   position: fixed;
   display: flex;
-  width: 5%;
-  height: 100vh;
+  width: 7%;
+  height: 95vh;
   flex-direction: column;
   gap: 10%;
   align-items: center;
@@ -9,7 +11,9 @@
   background: #171e31;
   border-radius: 16px;
   justify-content: space-around;
+  margin-top: 2%;
 
+  // links of the navbar
   &__link {
     display: flex;
     align-items: center;
@@ -33,7 +37,7 @@
     display: flex;
     width: 100%;
     flex-direction: row;
-    height:10%;
+    height: 10%;
 
     &__link {
       display: flex;
@@ -43,7 +47,7 @@
     }
     &__section {
       flex-direction: row;
-       width: 50%;
+      width: 50%;
     }
     &__object {
       width: 70%;
@@ -52,7 +56,7 @@
 }
 
 @media (min-width: 420px) and (max-width: 768px) {
- .navbar-container {
+  .navbar-container {
     display: flex;
     width: 100%;
     flex-direction: row;
@@ -66,7 +70,7 @@
     }
     &__section {
       flex-direction: row;
-       width: 50%;
+      width: 50%;
     }
     &__object {
       width: 70%;

@@ -1,38 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
+// import { login, AuthAction } from '../../states/actions';
+import { RootState } from '../../states/store';
+// import components
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
+
 import './styles.scss';
 
-// interface LoginInterface {
-//   email: string;
-//   password: string;
-//   onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
-//   onClickSignIn: (e: React.MouseEvent<HTMLButtonElement>) => void;
-//   onClickSignUp: (e: React.MouseEvent<HTMLButtonElement>) => void;
-// }
+interface LoginInterface {
+  onSuccess: () => void;
+}
+// Login component contains input components for user inputs and a button component for submitting
+const Login = ({ onSuccess }: LoginInterface) => {
+  //  const dispatch:Dispatch<AuthAction> = useDispatch();
+  const auth = useSelector((state: RootState) => state.auth);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-// Login component
-const Login = () => {
-  const initialState = {
-    fullName: '',
-
-    email: '',
-
-    password: '',
-
-    confirmPassword: '',
+  const onClickSignUp = async (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    //  dispatch(login(email, password));
   };
 
-  const [user, setUser] = React.useState(initialState);
-  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+  if (auth.token != null) {
+    onSuccess();
+  }
+
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setEmail(e.target.value);
   };
-  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
+
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setPassword(e.target.value);
   };
 
   return (
+    // main container
     <div className="login-container">
       {/* component header */}
       <h1>Movie OTT </h1>
@@ -45,13 +49,15 @@ const Login = () => {
           <InputTextField
             label="Email"
             className="login-container__signIn__input"
-            onChangeValue={onChangeValue}
+            value={email}
+            onChangeValue={onChangeEmail}
             placeholder="Email"
           />
           <InputTextField
             label="Password"
             className="login-container__signIn__input"
-            onChangeValue={onChangeValue}
+            value={password}
+            onChangeValue={onChangePassword}
             placeholder="Password"
           />
           <Button

@@ -2,7 +2,7 @@
 .homePage-container {
   display: flex;
   width: 100%;
-  background: #1e1e1e;
+background: #10141e;
   padding: 2%;
   padding-top: 0;
   color: white;
@@ -12,35 +12,33 @@
   font-size: 40px;
   line-height: 60px;
 
-  &__navbar {
-    display: flex;
-  }
-
   // content wrapper
   &__main {
     display: flex;
     margin: 0;
     width: 100%;
+    min-height: 100vh;
     flex-direction: column;
     padding: 2%;
+    margin-left: 8%;
 
+    h4 {
+      font-style: normal;
+      font-weight: 400;
+      font-size: 40px;
+      line-height: 60px;
+      
+    }
+    &__header{
+      padding-top: 8%;
+    }
+
+
+    // movie tray container
     &__popular {
       display: flex;
       justify-content: space-between;
       flex-direction: row;
-    flex-wrap: wrap;
-    
-    }
-
-    &__search {
-      display: flex;
-      margin: 0;
-      height: 12%;
-      width: 100%;
-    }
-
-    &__body {
-      display: flex;
       flex-wrap: wrap;
     }
   }
@@ -51,27 +49,12 @@
     display: flex;
     flex-direction: column-reverse;
 
-    &__navbar {
-      display: flex;
-    }
-
+    // content wrapper
     &__main {
       display: flex;
       margin: 0;
       width: 100%;
       flex-direction: column;
-
-      &__search {
-        display: flex;
-        margin: 0;
-        height: 12%;
-        width: 100%;
-      }
-
-      &__body {
-        display: flex;
-        flex-wrap: wrap;
-      }
     }
   }
 }
@@ -81,27 +64,12 @@
     display: flex;
     flex-direction: column-reverse;
 
-    &__navbar {
-      display: flex;
-    }
-
+    // content wrapper
     &__main {
       display: flex;
       margin: 0;
       width: 100%;
       flex-direction: column;
-
-      &__search {
-        display: flex;
-        margin: 0;
-        height: 12%;
-        width: 100%;
-      }
-
-      &__body {
-        display: flex;
-        flex-wrap: wrap;
-      }
     }
   }
 }

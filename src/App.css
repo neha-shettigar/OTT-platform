@@ -5,6 +5,7 @@ body{
   display: flex;
   text-align: center;
   font-weight: 700;
+  text-align: left;
 }
 .App-container__navbar{
   display: flex;

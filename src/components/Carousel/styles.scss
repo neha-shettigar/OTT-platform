@@ -1,4 +1,5 @@
-.carousel {
+// carousel main container
+.carousel-container{
   display: flex;
   flex-direction: column;
   font-family: 'Poppins';
@@ -6,12 +7,5 @@
   font-weight: 500;
   font-size: 24px;
   line-height: 36px;
-
-  &__link {
-    display: flex;
-  }
-
-  &__poster {
-    width: 30%;
-  }
+  gap: 2%;
 }

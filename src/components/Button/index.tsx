@@ -5,7 +5,7 @@ export interface ButtonInterface {
   label?: string;
   disabled?: boolean;
   className?: string;
-  onClickButton?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onClickButton?: (e: React.MouseEvent<HTMLButtonElement>) => Promise<void>;
 }
 
 export const Button = ({
@@ -16,7 +16,7 @@ export const Button = ({
 }: ButtonInterface) => {
   return (
     <div className="button-container">
-      <button className={className} type="submit" onClick={onClickButton}>
+      <button className={className} type="submit">
         {label}
       </button>
     </div>
