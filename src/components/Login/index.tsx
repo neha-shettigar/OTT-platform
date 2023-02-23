@@ -1,40 +1,22 @@
-import React, { useState } from 'react';
-import { useSelector } from 'react-redux';
-// import { login, AuthAction } from '../../states/actions';
-import { RootState } from '../../states/store';
+import React from 'react';
+
 // import components
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 
 import './styles.scss';
 
-interface LoginInterface {
-  onSuccess: () => void;
-}
 // Login component contains input components for user inputs and a button component for submitting
-const Login = ({ onSuccess }: LoginInterface) => {
-  //  const dispatch:Dispatch<AuthAction> = useDispatch();
-  const auth = useSelector((state: RootState) => state.auth);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+const Login = () => {
+  const [email, setEmail] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
-  const onClickSignUp = async (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    //  dispatch(login(email, password));
-  };
-
-  if (auth.token != null) {
-    onSuccess();
-  }
-
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
-  };
-
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-  };
-
+  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) =>
+    setPassword(password);
   return (
     // main container
     <div className="login-container">
