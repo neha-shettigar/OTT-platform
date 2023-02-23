@@ -1,6 +1,6 @@
 import React from 'react';
 // import Link from the library
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 
 // import svg
 import icon from '../assets/navbar-logo-1.svg';
@@ -17,31 +17,31 @@ const Navbar = () => {
   return (
     <main className="navbar-container">
       {/* links represented by icons */}
-      <Link to="/tending" className="navbar-container__link">
+      <a href="" className="navbar-container__link">
         <object className="navbar-container__object" data={icon} />
-      </Link>
+      </a>
 
       <section className="navbar-container__section">
-        <Link to="/" className="navbar-container__link">
+        <a href="/home" className="navbar-container__link">
           <object className="navbar-container__object" data={dashboard} />
-        </Link>
+        </a>
 
-        <Link to="" className="navbar-container__link">
+        <a href="/movie-genre" className="navbar-container__link">
           <object className="navbar-container__object" data={movies} />
-        </Link>
+        </a>
 
-        <Link to="" className="navbar-container__link">
+        <a href="/series-genre" className="navbar-container__link">
           <object className="navbar-container__object" data={series} />
-        </Link>
+        </a>
 
-        <Link to="" className="navbar-container__link">
+        <a href="/bookmarks" className="navbar-container__link">
           <object className="navbar-container__object" data={bookmark} />
-        </Link>
+        </a>
       </section>
 
-      <Link to="" className="navbar-container__link">
+      <a href="/tsconfig.json" className="navbar-container__link">
         <object className="navbar-container__object" data={user} />
-      </Link>
+      </a>
     </main>
   );
 };

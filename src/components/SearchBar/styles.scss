@@ -16,7 +16,7 @@
     font-weight: 400;
     font-size: 28px;
     line-height: 48px;
-   background: #10141e;
+    background: #10141e;
     border: none;
     color: rgba(255, 255, 255, 0.5);
     width: 100%;
@@ -64,33 +64,33 @@
 }
 
 @media (max-width: 420px) {
-  .searchbar-container {
-    &__button {
-      display: none;
-    }
+  .seriesGenre-container {
+    display: flex;
+    margin-top: 10%;
+    /* links for each genre */
 
-    &__input {
-      // width: 80%;
-      font-size: 18px;
-    }
-    &__object {
-      width: 5%;
+    &__link1,
+    &__link2 {
+      width: 50%;
+      border-radius: 16px;
+      justify-content: center;
     }
   }
 }
 
 @media (min-width: 420px) and (max-width: 768px) {
-  .searchbar-container {
-    &__button {
-      display: none;
-    }
+  .seriesGenre-container {
+    display: flex;
+    margin-top: 5%;
+    /* links for each genre */
 
-    &__input {
-      // width: 80%;
+    &__link1,
+    &__link2 {
+      width: 50%;
+      border-radius: 16px;
+      justify-content: center;
+      padding: 12% 8%;
       font-size: 22px;
-    }
-    &__object {
-      width: 5%;
     }
   }
 }

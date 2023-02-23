@@ -1,4 +1,3 @@
-
 // main container
 .register-container {
   display: flex;
@@ -45,7 +44,7 @@
       text-align: center;
       height: 10%;
     }
-    // input field component 
+    // input field component
     &__input {
       font-style: normal;
       font-weight: 400;
@@ -58,7 +57,7 @@
       width: 100%;
       padding: 2% 3%;
     }
-    
+
     // button component
     &__button {
       padding: 2% 10%;
@@ -83,6 +82,11 @@
 
     &__header {
       margin: 0;
+    }
+    &__register {
+      &__input {
+        margin-top: 5%;
+      }
     }
   }
 }

@@ -1,4 +1,6 @@
-// main component
+.seriesGenre {
+  display: flex;
+}
 .seriesGenre-container {
   display: flex;
   margin: 0;
@@ -10,21 +12,22 @@
   padding: 2% 5%;
   padding-top: 8%;
 
-  // links for each genre
+  /* links for each genre */
+
   &__link1,
   &__link2 {
     display: flex;
     width: 23%;
-    background: #0f766e;
+    background: #0F766E;
     // flex-direction: column;
-    padding: 9%;
+    font-size: 24px;
+    padding: 8% 9%;
     margin-top: 2%;
     color: #ffffff;
     border-radius: 16px;
     flex-direction: row;
     justify-content: space-around;
   }
-
   &__link2 {
     background: #171e31;
   }
@@ -33,6 +36,23 @@
 @media (max-width: 420px) {
   .seriesGenre-container {
     display: flex;
+    margin-top: 10%;
+    /* links for each genre */
+
+    &__link1,
+    &__link2 {
+      width: 50%;
+      border-radius: 16px;
+      justify-content: center;
+    }
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .seriesGenre-container {
+    display: flex;
+    margin-top: 5%;
+    /* links for each genre */
 
     &__link1,
     &__link2 {
@@ -40,6 +60,7 @@
       border-radius: 16px;
       justify-content: center;
       padding: 12% 8%;
+      font-size: 22px;
     }
   }
 }

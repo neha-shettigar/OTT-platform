@@ -2,7 +2,7 @@
 .homePage-container {
   display: flex;
   width: 100%;
-background: #10141e;
+  background: #10141e;
   padding: 2%;
   padding-top: 0;
   color: white;
@@ -27,12 +27,17 @@ background: #10141e;
       font-weight: 400;
       font-size: 40px;
       line-height: 60px;
-      
     }
-    &__header{
+    span {
+      margin-left: 2%;
+      font-size: 14px;
+      padding: 5px 10px;
+      border: 2px solid #f0e6e6;
+      border-radius: 8px;
+    }
+    &__header {
       padding-top: 8%;
     }
-
 
     // movie tray container
     &__popular {
@@ -55,6 +60,9 @@ background: #10141e;
       margin: 0;
       width: 100%;
       flex-direction: column;
+      &__header {
+        padding-top: 20%;
+      }
     }
   }
 }

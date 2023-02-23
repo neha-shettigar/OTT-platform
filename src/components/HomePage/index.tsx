@@ -31,11 +31,15 @@ const HomePage = () => {
           icon={searchIcon}
           placeholder="Search for movies or TV series"
         />
-        <h4 className="homePage-container__main__header">Trending</h4>
+        <h4 className="homePage-container__main__header">
+          Trending<span>MOVIE</span>
+        </h4>
         {/* Carousel for trending items */}
         <CarouselComponent />
         {/* movie tray */}
-        <h4>Popular</h4>
+        <h4>
+          Popular <span>MOVIE</span>
+        </h4>
         <section className="homePage-container__main__popular">
           {/* each movie is displayed using movie card */}
           <MovieCard

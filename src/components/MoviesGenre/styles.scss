@@ -20,6 +20,7 @@
     width: 23%;
     background: #0e7490;
     // flex-direction: column;
+    font-size: 24px;
     padding: 8% 9%;
     margin-top: 2%;
     color: #ffffff;
@@ -35,7 +36,7 @@
 @media (max-width: 420px) {
   .moviesGenre-container {
     display: flex;
-
+    margin-top: 10%;
     /* links for each genre */
 
     &__link1,
@@ -50,7 +51,7 @@
 @media (min-width: 420px) and (max-width: 768px) {
   .moviesGenre-container {
     display: flex;
-
+    margin-top: 5%;
     /* links for each genre */
 
     &__link1,
