@@ -29,15 +29,18 @@ const MovieDetails = () => {
         />
         <section className="movieDetails-container">
           {/* movie poster */}
-          <img src={data[6].poster} className="movieDetails-container__image" />
+          <img
+            src={data[10].poster}
+            className="movieDetails-container__image"
+          />
           {/* movie details */}
           <section className="movieDetails-container__details">
-            <h5>{data[6].title}</h5>
+            <h5>{data[10].title}</h5>
             <p>
-              {data[6].rating}
-              <span>{data[6].category}</span>
+              {data[10].rating}
+              <span>{data[10].category}</span>
             </p>
-            <p>{data[6].description}</p>
+            <p>{data[10].description}</p>
           </section>
         </section>
       </section>

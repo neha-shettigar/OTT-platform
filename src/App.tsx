@@ -10,6 +10,7 @@ import SeriesGenre from './components/SeriesGenre';
 import SearchResult from './components/SearchResult';
 import Register from './components/Register';
 import MovieDetails from './components/MovieDetails';
+import ErrorPage from './components/ErrorPage';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="bookmarks" element={<BookMarks />} />
           <Route path="search-result" element={<SearchResult />} />
           <Route path="movie-details" element={<MovieDetails />} />
+          <Route path="error" element={<ErrorPage />} />
         </Routes>
       </section>
     </main>

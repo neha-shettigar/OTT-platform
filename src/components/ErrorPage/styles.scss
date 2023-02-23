@@ -1,0 +1,17 @@
+.errorPage-container {
+  // display: flex;
+  background-image: url('../assets/errorPage-background.svg');
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+
+  h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 27.23px;
+    line-height: 41px;
+    text-align: left;
+    color: #ffffff;
+  }
+}
