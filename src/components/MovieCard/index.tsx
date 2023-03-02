@@ -1,36 +1,57 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from 'react';
+import { Link } from 'react-router-dom';
+import bookmarkedIcon from '../assets/bookmarkedIcon.svg';
+import unbookmarkedIcon from '../assets/unbookmarkedIcon.svg';
 import './styles.scss';
 
 interface MovieCardInterface {
-  poster?: string;
-  rating?: string;
+  id?: number;
+  poster_path?: string;
+  media_type?: string;
   title?: string;
-  icon?: string;
-  link?: string;
+  className: string;
+  isBookmarked: boolean;
+  isInCarousel?: boolean;
+  onBookmark: () => void;
 }
 
-// this component contains item poster, details and a bookmark button
+const getPosterURL = (posterPath?: string) => {
+  return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`;
+};
+
 const MovieCard = ({
-  poster,
-  rating,
+  id,
+  poster_path,
+  media_type,
   title,
-  icon,
-  link,
+  className,
+  isBookmarked,
+  isInCarousel,
+  onBookmark,
 }: MovieCardInterface) => {
+  const onClickButton = () => {
+    onBookmark();
+  };
+
   return (
-    // main container
-    <main className="movieCard-container">
-      <section className="movieCard-container__section">
-        {/* link of the item */}
-        <a className="movieCard-container__link" href={link}>
-          {/* item poster */}
-          <img src={poster} className="movieCard-container__poster" />
-        </a>
-        {/* button for bookmark */}
-        <button className="movieCard-container__button">
-          <object className="movieCard-container__icon" data={icon} />
+    <main className={className}>
+      <section className={`${className}__section`}>
+        <Link to={`/movieDetails/${id}`} className={`${className}__link`}>
+          <img
+            src={getPosterURL(poster_path)}
+            className={`${className}__poster`}
+            alt={`${title} poster`}
+          />
+        </Link>
+        <button className={`${className}__button`} onClick={onClickButton}>
+          <img
+            className={`${className}__icon`}
+            src={isBookmarked ? bookmarkedIcon : unbookmarkedIcon}
+          />
         </button>
-        <p>{rating}</p>
+        <p>{media_type}</p>
         <h3>{title}</h3>
       </section>
     </main>

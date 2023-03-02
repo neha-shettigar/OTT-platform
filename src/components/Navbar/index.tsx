@@ -1,8 +1,6 @@
 import React from 'react';
-// import Link from the library
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-// import svg
 import icon from '../assets/navbar-logo-1.svg';
 import dashboard from '../assets/dashboard.svg';
 import movies from '../assets/movies.svg';
@@ -12,37 +10,41 @@ import user from '../assets/account.svg';
 
 import './styles.scss';
 
-// this component contains links for different pages represented by icons
 const Navbar = () => {
   return (
-    <main className="navbar-container">
-      {/* links represented by icons */}
-      <a href="" className="navbar-container__link">
+    <nav className="navbar-container">
+      <Link to="/" className="navbar-container__link">
         <object className="navbar-container__object" data={icon} />
-      </a>
+      </Link>
 
-      <section className="navbar-container__section">
-        <a href="/home" className="navbar-container__link">
-          <object className="navbar-container__object" data={dashboard} />
-        </a>
+      <div className="navbar-container__section">
+        <Link to="/" className="navbar-container__link">
+          <object
+            className="navbar-container__object__section"
+            data={dashboard}
+          />
+        </Link>
 
-        <a href="/movie-genre" className="navbar-container__link">
-          <object className="navbar-container__object" data={movies} />
-        </a>
+        <Link to="/moviegenre" className="navbar-container__link">
+          <object className="navbar-container__object__section" data={movies} />
+        </Link>
 
-        <a href="/series-genre" className="navbar-container__link">
-          <object className="navbar-container__object" data={series} />
-        </a>
+        <Link to="/seriesgenre" className="navbar-container__link">
+          <object className="navbar-container__object__section" data={series} />
+        </Link>
 
-        <a href="/bookmarks" className="navbar-container__link">
-          <object className="navbar-container__object" data={bookmark} />
-        </a>
-      </section>
+        <Link to="/bookmarks" className="navbar-container__link">
+          <object
+            className="navbar-container__object__section"
+            data={bookmark}
+          />
+        </Link>
+      </div>
 
-      <a href="/tsconfig.json" className="navbar-container__link">
+      <Link to="/profile" className="navbar-container__link">
         <object className="navbar-container__object" data={user} />
-      </a>
-    </main>
+      </Link>
+    </nav>
   );
 };
 

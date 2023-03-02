@@ -22,7 +22,6 @@ const SeriesGenre = () => {
           value=""
           // onChangeValue={onChange}
           icon={searchIcon}
-          placeholder="Search for movies or TV series"
         />
         {/* links for each genre */}
         <section className="seriesGenre-container">

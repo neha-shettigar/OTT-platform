@@ -6,7 +6,7 @@
   margin-top: 5%;
 
   // movie poster
-  &__image {
+  &__poster {
     width: 35%;
     height: 95%;
   }
@@ -21,6 +21,21 @@
     text-align: left;
     gap: 6%;
 
+    &__para{
+      display: flex;
+      justify-content: space-between;
+    }
+    &__genre{
+      display: flex;
+      width: 10%;
+
+      &__section{
+        display: flex;
+      }
+    }
+span{
+  display: flex;
+}
     h5 {
       font-weight: 500;
       font-size: 48px;

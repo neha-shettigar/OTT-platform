@@ -15,7 +15,7 @@ const meta = {
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof MovieDetails> = (args) => {
-  return <MovieDetails />;
+  return <MovieDetails {...args} />;
 };
 
 export const Default = Template.bind({});

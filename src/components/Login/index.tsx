@@ -1,13 +1,16 @@
 import React from 'react';
-
-// import components
+// import { Dispatch } from 'redux';
+// import { useDispatch } from 'react-redux';
+// import { login } from '../../states/actions';
+// import { AuthAction } from '../../states/types';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
-
 import './styles.scss';
 
-// Login component contains input components for user inputs and a button component for submitting
+// interface LoginProps {}
+
 const Login = () => {
+  // const dispatch:Dispatch<AuthAction> = useDispatch();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -15,15 +18,16 @@ const Login = () => {
     setEmail(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) =>
-    setPassword(password);
+
+  const handleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    // dispatch(login(email, password));
+  };
+
   return (
-    // main container
     <div className="login-container">
-      {/* component header */}
       <h1>Movie OTT </h1>
       <main className="login-container__main">
-        {/* signIn container */}
         <aside className="login-container__signIn">
           <h2 className="login-container__signIn__header">
             Sign <span>In</span>
@@ -45,11 +49,9 @@ const Login = () => {
           <Button
             label="Sign In"
             className="login-container__signIn__button"
-            onClickButton={onClickSignUp}
+            onClickButton={handleSignIn}
           />
         </aside>
-
-        {/* signUp container */}
         <aside className="login-container__signUp">
           <div className="login-container__signUp__text">
             <h2>
@@ -62,7 +64,7 @@ const Login = () => {
           <Button
             label="Sign Up"
             className="login-container__signUp__button"
-            onClickButton={onClickSignUp}
+            onClickButton={() => console.log('Sign up button clicked')}
           />
         </aside>
       </main>

@@ -1,12 +1,15 @@
 body{
   padding: 0;
 }
+* {
+  box-sizing: border-box;
+}
 .App-container {
   display: flex;
   text-align: center;
   font-weight: 700;
   text-align: left;
-  height: 100vh;
+  /* height: 100vh; */
 }
 .App-container__navbar{
   display: flex;

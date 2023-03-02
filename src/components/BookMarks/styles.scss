@@ -1,5 +1,24 @@
 // contains bookmarked items
-.bookmarks-container{
+.bookmarks-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10%;
+}
+
+@media (max-width: 420px) {
+  .bookmarks-container {
     display: flex;
-    justify-content:space-between;
+    margin-top: 30%;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .bookmarks-container {
+    display: flex;
+    margin-top: 15%;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
 }
