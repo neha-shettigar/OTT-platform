@@ -12,6 +12,7 @@ interface MovieCardInterface {
   media_type?: string;
   title?: string;
   className: string;
+  release_date: string;
   isBookmarked: boolean;
   isInCarousel?: boolean;
   onBookmark: () => void;
@@ -29,6 +30,7 @@ const MovieCard = ({
   className,
   isBookmarked,
   isInCarousel,
+  release_date,
   onBookmark,
 }: MovieCardInterface) => {
   const onClickButton = () => {
@@ -51,7 +53,9 @@ const MovieCard = ({
             src={isBookmarked ? bookmarkedIcon : unbookmarkedIcon}
           />
         </button>
-        <p>{media_type}</p>
+        <p>
+          {release_date} {media_type}
+        </p>
         <h3>{title}</h3>
       </section>
     </main>

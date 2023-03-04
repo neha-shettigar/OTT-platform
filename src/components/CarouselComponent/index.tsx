@@ -8,7 +8,7 @@ import './styles.scss';
 const BOOKMARKS_KEY = 'bookmarks';
 
 const CarouselComponent = () => {
-  const [movies, setMovies] = useState([]);
+  const [movies, setMovies]: any = useState([]);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
 
   useEffect(() => {
@@ -21,7 +21,7 @@ const CarouselComponent = () => {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/trending/all/day?api_key=13622fc50c5257d370284ea008163f90&language=en-US&page=1`,
+        `https://api.themoviedb.org/3/trending/movie/week?api_key=13622fc50c5257d370284ea008163f90&language=en-US&page=1`,
       )
       .then(({ data: { results } }) => {
         setMovies(results);
@@ -50,6 +50,7 @@ const CarouselComponent = () => {
         return (
           <MovieCard
             key={index}
+            // release_date={movie.first_air_date.substring(0, 4)}
             {...movie}
             className="carousel-movieCard"
             poster_path={movie.poster_path}

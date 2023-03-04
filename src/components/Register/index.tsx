@@ -1,77 +1,91 @@
-import React from 'react';
-// import components
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import React, { useState } from 'react';
+import './styles.scss';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 
-import './styles.scss';
+import { useDispatch } from 'react-redux';
+import { registerSuccess, registerFail } from '../../states/auth';
 
-// this component contains input field and button components
 const Register = () => {
-  // initial state
-  const initialState = {
-    fullName: '',
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setconfirmPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-    email: '',
+  const dispatch = useDispatch();
 
-    password: '',
+  const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setUsername(e.target.value);
+  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setEmail(e.target.value);
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setPassword(e.target.value);
+  const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setconfirmPassword(e.target.value);
 
-    confirmPassword: '',
+  const handleRegister = () => {
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+    } else {
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      const users = JSON.parse(localStorage.getItem('users') ?? '[]');
+      const existingUser = users.find((user: any) => user.email === email);
+      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+      if (existingUser) {
+        dispatch(registerFail('Email already exists'));
+      } else {
+        const newUser = { username, email, password };
+        dispatch(registerSuccess(newUser));
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
+        localStorage.setItem('users', JSON.stringify([...users, newUser]));
+      }
+    }
   };
 
-  const [user, setUser] = React.useState(initialState);
-
-  // handle function for value change
-  const onChangeValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
-  };
-  // handle function for button
-  const onClickRegister = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-  };
   return (
-    // main container
     <div className="register-container">
-      {/* component header */}
       <div className="register-container__header">
         <h1>Movie OTT</h1>
       </div>
-      {/* container for header and input and button components */}
       <div className="register-container__register">
         <h2 className="register-container__register__header">Register</h2>
-        {/* input field for taking user input */}
         <InputTextField
           label="Full Name"
           placeholder="Full Name"
-          value={initialState.fullName}
+          // value={user.username}
           className="register-container__register__input"
-          onChangeValue={onChangeValue}
+          onChangeValue={onChangeUsername}
         />
         <InputTextField
           label="Email"
           placeholder="Email"
-          value={initialState.email}
+          // value={user.email}
           className="register-container__register__input"
-          onChangeValue={onChangeValue}
+          onChangeValue={onChangeEmail}
         />
         <InputTextField
           label="Password"
           placeholder="Password"
-          value={initialState.password}
+          // value={user.password}
           className="register-container__register__input"
-          onChangeValue={onChangeValue}
+          onChangeValue={onChangePassword}
+          type="password"
         />
         <InputTextField
           label="Confirm Password"
           placeholder="Confirm Password"
-          value={initialState.confirmPassword}
+          // value={user.confirmPassword}
           className="register-container__register__input"
-          onChangeValue={onChangeValue}
+          onChangeValue={onChangeConfirmPassword}
+          type="password"
         />
-        {/* button for submitting the data */}
+        {errorMessage.length > 0 && <p>{errorMessage}</p>}
         <Button
           label="Register"
           className="register-container__register__button"
-          onClickButton={onClickRegister}
+          onClickButton={handleRegister}
         />
       </div>
     </div>

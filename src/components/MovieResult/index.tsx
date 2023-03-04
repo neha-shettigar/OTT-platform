@@ -11,7 +11,7 @@ interface MovieCardInterface {
   link?: string;
 }
 const getResultPosterURL = (posterPath: string | undefined) => {
-  return `https://www.themoviedb.org/t/p/w94_and_h141_bestv2/${posterPath}`;
+  return `https://www.themoviedb.org/t/p/w300_and_h450_bestv2${posterPath}`;
 };
 
 // this component contains item poster, details and a bookmark button

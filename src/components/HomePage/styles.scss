@@ -40,6 +40,32 @@
       padding-top: 8%;
     }
 
+    &__pagination {
+      display: flex;
+      align-items: center;
+      gap: 1%;
+      justify-content: center;
+
+      &__button {
+        background: #171e31;
+        color: #f0e6e6;
+        border: none;
+        width: 4%;
+        border-radius: 10px;
+        font-size: 16px;
+        height: 2%;
+      }
+      &__button:active{
+        background-color: #f0e6e6;
+        color: #10141e;
+      }
+
+      &__button:hover{
+        background-color: #f0e6e6;
+        color: #10141e;
+      }
+    }
+
     // movie tray container
     &__popular {
       display: flex;

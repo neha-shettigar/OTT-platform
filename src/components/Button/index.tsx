@@ -16,7 +16,7 @@ export const Button = ({
 }: ButtonInterface) => {
   return (
     <div className="button-container">
-      <button className={className} type="submit">
+      <button className={className} type="submit" onClick={onClickButton}>
         {label}
       </button>
     </div>

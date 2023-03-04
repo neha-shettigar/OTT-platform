@@ -1,5 +1,6 @@
 /* container for search result */
-.searchResult {
+.searchResult-container {
+ margin-top: 10%;
   display: flex;
   width: 100%;
   background: #10141e;
@@ -13,18 +14,12 @@
   line-height: 60px;
   min-height: 100%;
 
-  // content wrapper
-  &__main {
-    display: flex;
-    margin: 0;
-    width: 93%;
-    min-height: 100vh;
-    flex-direction: column;
-    /* padding: 2%; */
-    margin-left: 8%;
-  }
 
-  &__container {
-    display: flex;
+
+
+
+    &__section{
+      display: flex;
+      flex-wrap: wrap;
+    }
   }
-}

@@ -1,67 +1,55 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from 'react';
-// import components
+import axios from 'axios';
 import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
-
-// import svg
+import SearchResult from '../SearchResult';
 import searchIcon from '../assets/search-normal.svg';
-
 import './styles.scss';
 
-// this component contains navbar, searchbar, links for each series genre
 const SeriesGenre = () => {
+  const [searchResults, setSearchResults] = React.useState([]);
+  const [flag, setFlag] = React.useState(false);
+  const [genres, setGenres] = React.useState([]);
+
+  React.useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/genre/tv/list?api_key=13622fc50c5257d370284ea008163f90&language=en-US`,
+      )
+      .then((response) => {
+        setGenres(response.data.genres);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handleSearch = (results: any) => {
+    setSearchResults(results);
+    setFlag(!flag);
+  };
+
   return (
     <main className="homePage-container">
-      {/* navbar component */}
       <Navbar />
-
-      {/* homepage content container */}
       <section className="homePage-container__main">
-        {/* searchbar component */}
-        <SearchBar
-          value=""
-          // onChangeValue={onChange}
-          icon={searchIcon}
-        />
-        {/* links for each genre */}
-        <section className="seriesGenre-container">
-          <a className="seriesGenre-container__link1" href="">
-            Action
-          </a>
-          <a className="seriesGenre-container__link2" href="">
-            Adventure
-          </a>
-          <a className="seriesGenre-container__link1" href="">
-            Anime
-          </a>
-          <a className="seriesGenre-container__link2" href="">
-            Comedy
-          </a>
-          <a className="seriesGenre-container__link1" href="">
-            Crime
-          </a>
-          <a className="seriesGenre-container__link2" href="">
-            Drama
-          </a>
-          <a className="seriesGenre-container__link1" href="">
-            Family
-          </a>
-          <a className="seriesGenre-container__link2" href="">
-            Fantasy
-          </a>
-          <a className="seriesGenre-container__link1" href="">
-            History
-          </a>
-          <a className="seriesGenre-container__link2" href="">
-            Horror
-          </a>
-          <a className="seriesGenre-container__link1" href="">
-            Kids
-          </a>
-          <a className="seriesGenre-container__link2" href="">
-            Music
-          </a>
-        </section>
+        <SearchBar value="" icon={searchIcon} onSearch={handleSearch} />
+        {flag ? (
+          <SearchResult results={searchResults} />
+        ) : (
+          <nav className="seriesGenre-container">
+            {genres.map((genre: any, index) => (
+              <a
+                key={index}
+                className={`seriesGenre-container__link${
+                  index % 2 === 0 ? 1 : 2
+                }`}
+                href={`/genre/${genre.id}`}
+              >
+                {genre.name}
+              </a>
+            ))}
+          </nav>
+        )}
       </section>
     </main>
   );

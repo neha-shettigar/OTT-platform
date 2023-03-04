@@ -1,57 +1,70 @@
 import React from 'react';
-// import { Dispatch } from 'redux';
-// import { useDispatch } from 'react-redux';
-// import { login } from '../../states/actions';
-// import { AuthAction } from '../../states/types';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
+import { useDispatch } from 'react-redux';
+import { signInSuccess, signInFail } from '../../states/auth';
 import './styles.scss';
 
-// interface LoginProps {}
-
+// Login component
 const Login = () => {
-  // const dispatch:Dispatch<AuthAction> = useDispatch();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+
+  const dispatch = useDispatch();
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-
-  const handleSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const onClickSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // dispatch(login(email, password));
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/prefer-nullish-coalescing
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(
+      (user: any) => user.email === email && user.password === password,
+    );
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    if (user) {
+      dispatch(signInSuccess(user));
+      localStorage.setItem('currentUser', JSON.stringify(user));
+    } else {
+      dispatch(signInFail('Invalid email or password'));
+    }
   };
 
   return (
     <div className="login-container">
+      {/* component header */}
       <h1>Movie OTT </h1>
       <main className="login-container__main">
+        {/* signIn container */}
         <aside className="login-container__signIn">
           <h2 className="login-container__signIn__header">
             Sign <span>In</span>
           </h2>
           <InputTextField
             label="Email"
-            className="login-container__signIn__input"
             value={email}
+            className="login-container__signIn__input"
             onChangeValue={onChangeEmail}
             placeholder="Email"
           />
           <InputTextField
             label="Password"
-            className="login-container__signIn__input"
             value={password}
+            className="login-container__signIn__input"
             onChangeValue={onChangePassword}
             placeholder="Password"
           />
           <Button
             label="Sign In"
             className="login-container__signIn__button"
-            onClickButton={handleSignIn}
+            onClickButton={onClickSignIn}
           />
         </aside>
+
+        {/* signUp container */}
         <aside className="login-container__signUp">
           <div className="login-container__signUp__text">
             <h2>
@@ -64,7 +77,7 @@ const Login = () => {
           <Button
             label="Sign Up"
             className="login-container__signUp__button"
-            onClickButton={() => console.log('Sign up button clicked')}
+            onClickButton={onClickSignUp}
           />
         </aside>
       </main>
