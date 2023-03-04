@@ -44,7 +44,7 @@ function App() {
             {/* <Route path="/" element={<MoviesGenre />} /> */}
             {/* <Route path='searchResult' element={<SearchResult/>}/> */}
             <Route
-              path="/"
+              path="home"
               element={
                 <React.Suspense fallback={<div>Loading...</div>}>
                   <HomePage />
@@ -60,7 +60,7 @@ function App() {
               }
             />
             <Route
-              path="login"
+              path="/"
               element={
                 <React.Suspense fallback={<div>Loading...</div>}>
                   <Login />

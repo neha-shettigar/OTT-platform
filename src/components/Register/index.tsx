@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import './styles.scss';
 import { InputTextField } from '../InputTextField';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
 
 import { useDispatch } from 'react-redux';
@@ -15,6 +16,7 @@ const Register = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(e.target.value);
@@ -40,6 +42,7 @@ const Register = () => {
         dispatch(registerSuccess(newUser));
         localStorage.setItem('currentUser', JSON.stringify(newUser));
         localStorage.setItem('users', JSON.stringify([...users, newUser]));
+        navigate('/');
       }
     }
   };

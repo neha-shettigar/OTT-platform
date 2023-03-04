@@ -2,6 +2,7 @@ import React from 'react';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { signInSuccess, signInFail } from '../../states/auth';
 import './styles.scss';
 
@@ -11,12 +12,15 @@ const Login = () => {
   const [password, setPassword] = React.useState('');
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
     setEmail(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {};
+  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
+    navigate('/register');
+  };
   const onClickSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/prefer-nullish-coalescing
@@ -28,6 +32,7 @@ const Login = () => {
     if (user) {
       dispatch(signInSuccess(user));
       localStorage.setItem('currentUser', JSON.stringify(user));
+      navigate('/home');
     } else {
       dispatch(signInFail('Invalid email or password'));
     }
