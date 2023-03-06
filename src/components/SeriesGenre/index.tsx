@@ -5,6 +5,7 @@ import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
 import SearchResult from '../SearchResult';
 import searchIcon from '../assets/search-normal.svg';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
 const SeriesGenre = () => {
@@ -38,15 +39,16 @@ const SeriesGenre = () => {
         ) : (
           <nav className="seriesGenre-container">
             {genres.map((genre: any, index) => (
-              <a
+              <Link
                 key={index}
                 className={`seriesGenre-container__link${
                   index % 2 === 0 ? 1 : 2
                 }`}
-                href={`/genre/${genre.id}`}
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                to={`/genre/${genre.id}`}
               >
                 {genre.name}
-              </a>
+              </Link>
             ))}
           </nav>
         )}

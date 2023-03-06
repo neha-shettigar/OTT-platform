@@ -6,6 +6,7 @@ import './App.css';
 import BookMarks from './components/BookMarks';
 import ErrorPage from './components/ErrorPage';
 import MovieDetails from './components/MovieDetails';
+import MoviesByGenre from './components/MoviesByGenre';
 
 // import Login from './components/Login';
 
@@ -33,9 +34,7 @@ function App() {
   const SearchResult = React.lazy(
     async () => await import('./components/SearchResult'),
   );
-  const MovieSeriesList = React.lazy(
-    async () => await import('./components/MovieSeriesList'),
-  );
+
   return (
     <div className="App-container">
       <div className="App-container__body">
@@ -84,14 +83,6 @@ function App() {
                 </React.Suspense>
               }
             />
-            <Route
-              path="genre/:genreId"
-              element={
-                <React.Suspense fallback={<div>Loading...</div>}>
-                  <MovieSeriesList genreId={123} />
-                </React.Suspense>
-              }
-            />
 
             {/* ... */}
             <Route
@@ -101,7 +92,7 @@ function App() {
 
             <Route path="/movieDetails/:movieId" element={<MovieDetails />} />
             <Route path="/bookmarks" element={<BookMarks />} />
-
+            <Route path="/genre/:genreId" element={<MoviesByGenre />} />
             <Route path="error" element={<ErrorPage />} />
           </Routes>
         </Router>

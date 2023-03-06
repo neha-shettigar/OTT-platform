@@ -1,9 +1,9 @@
 /* container for search result */
 .searchResult-container {
- margin-top: 10%;
+  margin-top: 10%;
   display: flex;
   width: 100%;
-  background: #10141e;
+  // background: #10141e;
   padding: 2%;
   padding-top: 0;
   color: white;
@@ -14,12 +14,34 @@
   line-height: 60px;
   min-height: 100%;
 
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
 
-
-
-
-    &__section{
-      display: flex;
-      flex-wrap: wrap;
+@media (max-width: 420px) {
+  .searchResult-container {
+    &__section {
+      justify-content: space-between;
+      margin-top: 15%;
     }
   }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .seriesGenre-container {
+    display: flex;
+    margin-top: 5%;
+    /* links for each genre */
+
+    &__link1,
+    &__link2 {
+      width: 50%;
+      border-radius: 16px;
+      justify-content: center;
+      padding: 12% 8%;
+      font-size: 22px;
+    }
+  }
+}

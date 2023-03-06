@@ -31,7 +31,7 @@
     margin-top: 2%;
   }
 
-  &__searchResult{
+  &__searchResult {
     display: flex;
     width: 100%;
   }
@@ -66,23 +66,31 @@
     // padding: 30% 50%;
     padding: 3% 5%;
   }
-  &__searchResult-container{
+  &__searchResult-container {
     display: flex;
     width: 100%;
   }
 }
 
 @media (max-width: 420px) {
-  .seriesGenre-container {
-    display: flex;
-    margin-top: 10%;
-    /* links for each genre */
+  .searchbar-container {
+    align-items: flex-start;
+    margin-top: 5%;
+    gap: 3%;
+    width: 90%;
 
-    &__link1,
-    &__link2 {
-      width: 50%;
-      border-radius: 16px;
-      justify-content: center;
+    &__button-container {
+      height: 50%;
+    }
+    &__button {
+      height: 100%;
+    }
+
+    &__input {
+      height: 90%;
+    }
+    &__object {
+      margin-top: 1%;
     }
   }
 }

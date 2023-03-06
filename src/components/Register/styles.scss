@@ -82,10 +82,23 @@
 
     &__header {
       margin: 0;
+      font-size: 16px;
+      h1 {
+        font-size: 24px;
+      }
     }
     &__register {
+      padding: 5% 0% 7%;
+      height: 70%;
+      &__header {
+        font-size: 16px;
+      }
       &__input {
         margin-top: 5%;
+      }
+
+      &__button {
+        font-size: 16px;
       }
     }
   }
@@ -95,5 +108,17 @@
   .register-container {
     display: flex;
     padding: 15% 10%;
+
+    &__register {
+      position: relative;
+      width: 100%;
+      background: #1d253a;
+      border-radius: 12px;
+      padding: 5% 0% 7%;
+      height: 70%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

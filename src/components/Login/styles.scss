@@ -19,20 +19,23 @@ body {
   width: 100%;
   flex-direction: column;
   align-items: center;
+  margin: 0;
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(127, 0, 0, 0.45)),
     url('../assets/Netflix-Background.jpg');
-    
-// component header
+
+  // component header
   h1 {
     line-height: 54px;
     height: 10%;
     color: red;
+    margin: 0;
   }
 
   // signIn and signUp container
   &__main {
     display: flex;
     width: 100%;
+    margin: 0;
   }
 
   // signIn container
@@ -47,6 +50,12 @@ body {
     flex-direction: column;
     width: 100%;
     justify-content: space-between;
+
+    &__error {
+      margin: 0;
+      color: white;
+      font-size: 20px;
+    }
 
     &__header {
       font-size: 24px;
@@ -172,7 +181,7 @@ body {
       width: 100%;
       flex-direction: column;
       gap: 5%;
-      height: 80%;
+      height: 100%;
       margin: 0;
     }
 
@@ -184,6 +193,20 @@ body {
     &__signIn {
       display: flex;
       height: 100%;
+
+      &__input {
+        font-size: 12px;
+      }
+
+      &__button {
+        font-size: 12px;
+      }
+
+      &__header {
+        font-size: 16px;
+        height: 20%;
+        padding-bottom: 5%;
+      }
     }
 
     // signUp container
@@ -194,12 +217,13 @@ body {
       height: 80%;
 
       h2 {
-        font-size: 18px;
+        font-size: 16px;
         height: 80%;
       }
 
       p {
-        font-size: 16px;
+        font-size: 12px;
+        padding-top: 45%;
       }
     }
   }
@@ -210,18 +234,23 @@ body {
   .login-container {
     display: flex;
     padding: 5% 15%;
-
+    justify-content: space-evenly;
+    h1 {
+      height: 5%;
+    }
     // signIn signUp container
     &__main {
       display: flex;
       width: 100%;
       flex-direction: column;
+
+      gap: 7%;
     }
 
     // signIn container
     &__signIn {
       display: flex;
-      padding: 8%;
+      padding: 10% 8%;
     }
 
     // signUp container
@@ -234,11 +263,12 @@ body {
       h2 {
         font-size: 20px;
         height: 85%;
+        margin: 0;
       }
 
       p {
         font-size: 16px;
-        padding-top: 50%;
+        padding-top: 60%;
       }
     }
   }

@@ -1,40 +1,56 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signInSuccess, signInFail } from '../../states/auth';
+import axios from 'axios';
 import './styles.scss';
 
 // Login component
 const Login = () => {
-  const [email, setEmail] = React.useState('');
+  const [identifier, setUsername] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [error, setError] = React.useState('');
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setEmail(e.target.value);
+  const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setUsername(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
   const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
     navigate('/register');
   };
-  const onClickSignIn = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onClickSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions, @typescript-eslint/prefer-nullish-coalescing
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    const user = users.find(
-      (user: any) => user.email === email && user.password === password,
-    );
-    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-    if (user) {
-      dispatch(signInSuccess(user));
-      localStorage.setItem('currentUser', JSON.stringify(user));
-      navigate('/home');
-    } else {
-      dispatch(signInFail('Invalid email or password'));
+    try {
+      const response = await axios.post(
+        'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local',
+      );
+      console.log(response.data);
+
+      const users = response.data;
+      console.log(users);
+
+      const user = users.find(
+        (user: any) =>
+          user.username === identifier && user.password === password,
+      );
+      if (user) {
+        dispatch(signInSuccess(user));
+        localStorage.setItem('currentUser', JSON.stringify(user));
+        navigate('/home');
+      } else {
+        dispatch(signInFail('Invalid email or password'));
+        setError('Invalid email or password');
+      }
+    } catch (error) {
+      console.error(error);
+      dispatch(signInFail('Failed to sign in'));
+      setError('Failed to sign in');
     }
   };
 
@@ -50,9 +66,9 @@ const Login = () => {
           </h2>
           <InputTextField
             label="Email"
-            value={email}
+            value={identifier}
             className="login-container__signIn__input"
-            onChangeValue={onChangeEmail}
+            onChangeValue={onChangeUsername}
             placeholder="Email"
           />
           <InputTextField
@@ -65,8 +81,12 @@ const Login = () => {
           <Button
             label="Sign In"
             className="login-container__signIn__button"
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onClickButton={onClickSignIn}
           />
+          {error.length > 0 && (
+            <div className="login-container__signIn__error">{error}</div>
+          )}
         </aside>
 
         {/* signUp container */}

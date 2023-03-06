@@ -1,12 +1,13 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState } from 'react';
-import './styles.scss';
+import axios from 'axios';
 import { InputTextField } from '../InputTextField';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
-
 import { useDispatch } from 'react-redux';
 import { registerSuccess, registerFail } from '../../states/auth';
+import './styles.scss';
+// import bcrypt from 'bcryptjs';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -14,9 +15,9 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const users = JSON.parse(localStorage.getItem('users') ?? '[]');
 
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(e.target.value);
@@ -31,22 +32,24 @@ const Register = () => {
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match');
     } else {
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-      const users = JSON.parse(localStorage.getItem('users') ?? '[]');
-      const existingUser = users.find((user: any) => user.email === email);
-      // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-      if (existingUser) {
-        dispatch(registerFail('Email already exists'));
-      } else {
-        const newUser = { username, email, password };
-        dispatch(registerSuccess(newUser));
-        localStorage.setItem('currentUser', JSON.stringify(newUser));
-        localStorage.setItem('users', JSON.stringify([...users, newUser]));
-        navigate('/');
-      }
+      axios
+        .post(
+          'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
+          { username, email, password },
+        )
+        .then((response) => {
+          const newUser = response.data;
+          dispatch(registerSuccess(newUser));
+          localStorage.setItem('currentUser', JSON.stringify(newUser));
+          localStorage.setItem('users', JSON.stringify([...users, newUser]));
+          navigate('/');
+        })
+        .catch(() => {
+          setErrorMessage('Email already exists');
+          dispatch(registerFail(setErrorMessage));
+        });
     }
   };
-
   return (
     <div className="register-container">
       <div className="register-container__header">
@@ -57,21 +60,18 @@ const Register = () => {
         <InputTextField
           label="Full Name"
           placeholder="Full Name"
-          // value={user.username}
           className="register-container__register__input"
           onChangeValue={onChangeUsername}
         />
         <InputTextField
           label="Email"
           placeholder="Email"
-          // value={user.email}
           className="register-container__register__input"
           onChangeValue={onChangeEmail}
         />
         <InputTextField
           label="Password"
           placeholder="Password"
-          // value={user.password}
           className="register-container__register__input"
           onChangeValue={onChangePassword}
           type="password"
@@ -79,7 +79,6 @@ const Register = () => {
         <InputTextField
           label="Confirm Password"
           placeholder="Confirm Password"
-          // value={user.confirmPassword}
           className="register-container__register__input"
           onChangeValue={onChangeConfirmPassword}
           type="password"

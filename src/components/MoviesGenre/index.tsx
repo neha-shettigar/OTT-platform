@@ -1,6 +1,8 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
+// MoviesGenre.tsx
+
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
 import SearchResult from '../SearchResult';
@@ -38,15 +40,16 @@ const MoviesGenre = () => {
         ) : (
           <nav className="moviesGenre-container">
             {genres.map((genre: any, index) => (
-              <a
+              <Link
                 key={index}
                 className={`moviesGenre-container__link${
                   index % 2 === 0 ? 1 : 2
                 }`}
-                href={`/genre/${genre.id}`}
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                to={`/genre/${genre.id}`}
               >
                 {genre.name}
-              </a>
+              </Link>
             ))}
           </nav>
         )}

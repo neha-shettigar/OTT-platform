@@ -1,5 +1,8 @@
 // main container
-.movieCard-container,.movieResult-container {
+.movieCard-container,
+.movieResult-container,
+.moviesByGenre-container__card,
+.seriesByGenre-container__card {
   display: flex;
   width: 25%;
   height: 300px;
@@ -14,7 +17,7 @@
     text-align: left;
   }
 
-// movie links
+  // movie links
   &__link {
     display: flex;
     margin: 0;
@@ -27,7 +30,7 @@
     width: 80%;
     margin: 0;
     position: relative;
-    border-radius:5%;
+    border-radius: 5%;
   }
 
   // bookmark button
@@ -60,4 +63,31 @@
     font-size: 24px;
     line-height: 36px;
   }
+}
+
+@media (max-width: 420px) {
+  .movieCard-container,
+  .movieResult-container {
+    display: flex;
+    width: 48%;
+    height: 200px;
+
+    &__poster {
+      height: 100%;
+      width: 100%;
+    }
+
+    &__link {
+      height: 85%;
+    }
+    &__button {
+      padding-left: 35%;
+    }
+    &__icon {
+      width: 50%;
+    }
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
 }

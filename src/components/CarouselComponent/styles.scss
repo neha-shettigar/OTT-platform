@@ -1,5 +1,5 @@
 // carousel main container
-.carousel-container{
+.carousel-container {
   display: flex;
   flex-direction: column;
   font-family: 'Poppins';
@@ -24,7 +24,7 @@
     text-align: left;
   }
 
-// movie links
+  // movie links
   &__link {
     display: flex;
     margin: 0;
@@ -37,7 +37,7 @@
     width: 80%;
     margin: 0;
     position: relative;
-    border-radius:5%;
+    border-radius: 5%;
   }
 
   // bookmark button
@@ -48,6 +48,8 @@
     background-color: transparent;
     border: none;
     border-radius: 10px;
+  }
+  &__icon {
   }
 
   // movie details
@@ -63,11 +65,36 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.06em;
-     word-spacing: 10px
+    word-spacing: 10px;
   }
   h3 {
     font-weight: 500;
     font-size: 24px;
     line-height: 36px;
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+}
+
+@media (max-width: 420px) {
+  .carousel-movieCard {
+    width: 95%;
+    height: 60%;
+
+    &__link {
+      height: 100%;
+    }
+    &__button {
+      width: 20%;
+
+      margin-left: 70%;
+    }
+    &__icon {
+      width: 50%;
+    }
+    h3 {
+      line-height: 24px;
+    }
   }
 }

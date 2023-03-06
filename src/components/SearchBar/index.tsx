@@ -14,7 +14,7 @@ const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
   const [query, setQuery] = React.useState('');
   const [, setResults] = React.useState([]);
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
 
     axios
@@ -40,19 +40,23 @@ const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
   return (
     <main className="searchbar-container">
       <object className="searchbar-container__object" data={icon} />
-      <form onSubmit={handleSubmit}>
-        <InputTextField
-          value={query}
-          className="searchbar-container__input"
-          placeholder="Search"
-          onChangeValue={onChangeSearch}
-        />
-        <section className="searchbar-container__button-container">
-          <button className="searchbar-container__button" type="submit">
-            Search
-          </button>
-        </section>
-      </form>
+      {/* <form className="searchbar-container__form" onSubmit={handleSubmit}> */}
+      <InputTextField
+        value={query}
+        className="searchbar-container__input"
+        placeholder="Search"
+        onChangeValue={onChangeSearch}
+      />
+      <section className="searchbar-container__button-container">
+        <button
+          className="searchbar-container__button"
+          type="submit"
+          onClick={handleSubmit}
+        >
+          Search
+        </button>
+      </section>
+      {/* </form> */}
       {/* {results.length > 0 && (
         <section className="searchbar-container__searchResult-container">
           <SearchResult results={results} />

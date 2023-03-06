@@ -13,36 +13,38 @@ import './styles.scss';
 const Navbar = () => {
   return (
     <nav className="navbar-container">
-      <Link to="/" className="navbar-container__link">
-        <object className="navbar-container__object" data={icon} />
+      <Link to="#" className="navbar-container__link">
+        <img className="navbar-container__img1" src={icon} />
       </Link>
 
       <div className="navbar-container__section">
-        <Link to="/" className="navbar-container__link">
-          <object
-            className="navbar-container__object__section"
-            data={dashboard}
-          />
+        <Link to="/home" className="navbar-container__link">
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={dashboard} />
+          </button>
         </Link>
 
         <Link to="/moviegenre" className="navbar-container__link">
-          <object className="navbar-container__object__section" data={movies} />
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={movies} />
+          </button>
         </Link>
 
         <Link to="/seriesgenre" className="navbar-container__link">
-          <object className="navbar-container__object__section" data={series} />
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={series} />
+          </button>
         </Link>
 
         <Link to="/bookmarks" className="navbar-container__link">
-          <object
-            className="navbar-container__object__section"
-            data={bookmark}
-          />
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={bookmark} />
+          </button>
         </Link>
       </div>
 
-      <Link to="/profile" className="navbar-container__link">
-        <object className="navbar-container__object" data={user} />
+      <Link to="#" className="navbar-container__link">
+        <img className="navbar-container__img1" src={user} />
       </Link>
     </nav>
   );
