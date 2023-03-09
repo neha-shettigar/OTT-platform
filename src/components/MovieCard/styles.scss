@@ -67,7 +67,7 @@
 
 @media (max-width: 420px) {
   .movieCard-container,
-  .movieResult-container {
+  .moviesByGenre-container__card,.seriesByGenre-container__card,.movieResult-container {
     display: flex;
     width: 48%;
     height: 200px;

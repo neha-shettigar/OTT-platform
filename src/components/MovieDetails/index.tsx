@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
@@ -63,7 +64,8 @@ const MovieDetails = () => {
             <article className="movieDetails-container__details">
               <h2>{movieDetails.title}</h2>
               <h2>{movieDetails.name}</h2>
-              <p>{movieDetails.tagline}</p>
+              {movieDetails.tagline ? <p>{movieDetails.tagline}</p> : null}
+
               <h4>{movieDetails.vote_average}</h4>
               <section className="movieDetails-container__details__para">
                 <p>
@@ -71,15 +73,8 @@ const MovieDetails = () => {
                 </p>
                 <p>
                   Language
-                  <span>
-                    {/* {Boolean(movieDetails.spokenLanguages) &&
-                      movieDetails.spokenLanguages.map((lang: any) => (
-                        // eslint-disable-next-line react/jsx-key
-                        <p>{lang.english_name}</p>
-                      ))} */}
-                    {movieDetails.spokenLanguages}
-                  </span>
-                  <span>{movieDetails.spokenLanguages}</span>
+                  {/* <span>{movieDetails.spokenLanguages}</span> */}
+                  <span>English</span>
                 </p>
                 <p>
                   Release Date<span>{movieDetails.release_date}</span>

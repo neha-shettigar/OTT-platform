@@ -21,21 +21,21 @@
     text-align: left;
     gap: 6%;
 
-    &__para{
+    &__para {
       display: flex;
       justify-content: space-between;
     }
-    &__genre{
+    &__genre {
       display: flex;
       width: 10%;
 
-      &__section{
+      &__section {
         display: flex;
       }
     }
-span{
-  display: flex;
-}
+    span {
+      display: flex;
+    }
     h5 {
       font-weight: 500;
       font-size: 48px;
@@ -48,4 +48,33 @@ span{
       margin: 0;
     }
   }
+}
+
+@media (max-width: 420px) {
+  .movieDetails-container {
+    display: flex;
+    gap: 5%;
+    margin-top: 30%;
+    padding: 2%;
+    flex-direction: column;
+
+    &__poster{
+      width: 100%;
+    }
+    
+    &__details{
+      width: 100%;
+      h2{
+        font-size: 30px;
+
+      }
+      p,span{
+        font-size:12px;
+        line-height: 30px;
+      }
+      span{
+        padding: 2% 4%;
+      }
+    }
+}
 }

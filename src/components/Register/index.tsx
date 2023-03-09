@@ -50,8 +50,11 @@ const Register = () => {
           localStorage.setItem('users', JSON.stringify([...users, newUser]));
           navigate('/');
         })
-        .catch(() => {
-          setErrorMessage('Email already exists');
+        .catch((error) => {
+          setErrorMessage(error.message);
+          console.log(error.request.response.data);
+          console.log(error.message);
+
           dispatch(registerFail(setErrorMessage));
         });
     }
