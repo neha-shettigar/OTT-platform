@@ -1,18 +1,51 @@
-.movieDetails-container{
-    display: flex;
-gap: 5%;
-padding: 2%;
-    &__image{
-width: 50%;
-height: 100%;
-    }
+// contaier for movie details
+.movieDetails-container {
+  display: flex;
+  gap: 5%;
+  padding: 2%;
+  margin-top: 5%;
 
-    &__details{
+  // movie poster
+  &__poster {
+    width: 35%;
+    height: 95%;
+  }
+
+  // movie details
+  &__details {
     display: flex;
     width: 70%;
     margin: 0;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 6%;
 
+    &__para{
+      display: flex;
+      justify-content: space-between;
     }
+    &__genre{
+      display: flex;
+      width: 10%;
+
+      &__section{
+        display: flex;
+      }
+    }
+span{
+  display: flex;
+}
+    h5 {
+      font-weight: 500;
+      font-size: 48px;
+      line-height: 72px;
+      margin: 0;
+    }
+    p {
+      font-size: 18px;
+      line-height: normal;
+      margin: 0;
+    }
+  }
 }

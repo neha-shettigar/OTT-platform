@@ -15,20 +15,9 @@ const meta = {
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Register> = (args) => {
-  return <Register {...args} />;
+  return <Register />;
 };
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  label: 'Register',
-};
-export const RegisterUser = Template.bind({});
-// More on args: https://storybook.js.org/docs/react/writing-stories/args
-RegisterUser.args = {
-  label: 'Register',
-  fullName: 'Neha Shettigar',
-  email: 'neha@gmail.com',
-  password: 'neha@123',
-  confirmPassword: 'neha@123',
-};
+Default.args = {};

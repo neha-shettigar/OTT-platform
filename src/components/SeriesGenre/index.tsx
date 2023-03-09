@@ -1,74 +1,58 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from 'react';
-// import { Button } from '../Button';
+import axios from 'axios';
+import SearchBar from '../SearchBar';
+import Navbar from '../Navbar';
+import SearchResult from '../SearchResult';
+import searchIcon from '../assets/search-normal.svg';
+import { Link } from 'react-router-dom';
 import './styles.scss';
 
-interface SeriesGenreInterface {
-  label1: string;
-  label2: string;
-  label3: string;
-  label4: string;
-  label5: string;
-  label6: string;
-  label7: string;
-  label8: string;
-  label9: string;
-  label10: string;
-  label11: string;
-  label12: string;
-}
+const SeriesGenre = () => {
+  const [searchResults, setSearchResults] = React.useState([]);
+  const [flag, setFlag] = React.useState(false);
+  const [genres, setGenres] = React.useState([]);
 
-const SeriesGenre = ({
-  label1,
-  label2,
-  label3,
-  label4,
-  label5,
-  label6,
-  label7,
-  label8,
-  label9,
-  label10,
-  label11,
-  label12,
-}: SeriesGenreInterface) => {
+  React.useEffect(() => {
+    axios
+      .get(
+        `https://api.themoviedb.org/3/genre/tv/list?api_key=13622fc50c5257d370284ea008163f90&language=en-US`,
+      )
+      .then((response) => {
+        setGenres(response.data.genres);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  const handleSearch = (results: any) => {
+    setSearchResults(results);
+    setFlag(!flag);
+  };
+
   return (
-    <main className="seriesGenre-container">
-      <a className="seriesGenre-container__link1" href="">
-        {label1}
-      </a>
-      <a className="seriesGenre-container__link2" href="">
-        {label2}
-      </a>
-      <a className="seriesGenre-container__link1" href="">
-        {label3}
-      </a>
-      <a className="seriesGenre-container__link2" href="">
-        {label4}
-      </a>
-      <a className="seriesGenre-container__link1" href="">
-        {label5}
-      </a>
-      <a className="seriesGenre-container__link2" href="">
-        {label6}
-      </a>
-      <a className="seriesGenre-container__link1" href="">
-        {label7}
-      </a>
-      <a className="seriesGenre-container__link2" href="">
-        {label8}
-      </a>
-      <a className="seriesGenre-container__link1" href="">
-        {label9}
-      </a>
-      <a className="seriesGenre-container__link2" href="">
-        {label10}
-      </a>
-      <a className="seriesGenre-container__link1" href="">
-        {label11}
-      </a>
-      <a className="seriesGenre-container__link2" href="">
-        {label12}
-      </a>
+    <main className="homePage-container">
+      <Navbar />
+      <section className="homePage-container__main">
+        <SearchBar value="" icon={searchIcon} onSearch={handleSearch} />
+        {flag ? (
+          <SearchResult results={searchResults} />
+        ) : (
+          <nav className="seriesGenre-container">
+            {genres.map((genre: any, index) => (
+              <Link
+                key={index}
+                className={`seriesGenre-container__link${
+                  index % 2 === 0 ? 1 : 2
+                }`}
+                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
+                to={`/genre/${genre.id}`}
+              >
+                {genre.name}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </section>
     </main>
   );
 };

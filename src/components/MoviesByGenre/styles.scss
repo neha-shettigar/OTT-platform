@@ -1,0 +1,10 @@
+.moviesByGenre-container {
+  display: flex;
+  margin-left: 10%;
+
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8%;
+  }
+}

@@ -3,7 +3,6 @@ import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import MovieCard from './index';
 import { data } from '../../data';
-import bookMark from '../assets/cardLogo.svg';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -23,9 +22,7 @@ const Template: ComponentStory<typeof MovieCard> = (args) => {
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Default.args = {
-  icon: bookMark,
-  poster: data[0].poster,
-  link: data[0].link,
+  poster_path: data[0].poster,
+  media_type: data[0].rating,
   title: data[0].title,
-  rating: data[0].rating,
 };

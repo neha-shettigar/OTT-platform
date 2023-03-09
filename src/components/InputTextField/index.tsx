@@ -5,19 +5,23 @@ interface InputFieldInterface {
   label?: string;
   error?: string;
   value?: string;
+  type?: string;
   disabled?: boolean;
   className?: string;
   placeholder?: string;
-  onChangeValue: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+  onChangeValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const InputTextField = ({
   label,
+
   error,
   value,
   disabled,
   placeholder,
   className,
+  type,
   onChangeValue,
 }: InputFieldInterface) => {
   return (
@@ -30,7 +34,7 @@ export const InputTextField = ({
       </label>
       <form className="input-container__form">
         <input
-          type="text"
+          type={type}
           name="username"
           className={className}
           value={value}

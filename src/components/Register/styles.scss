@@ -1,19 +1,20 @@
+// main container
 .register-container {
   display: flex;
   padding: 4% 32% 3%;
+  width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(127, 0, 0, 0.45)),
     url('../assets/Netflix-Background.jpg');
 
   flex-direction: column;
   align-items: center;
-  height: 97vh;
+  height: 100vh;
   align-items: center;
+
+  // h1 that displays 'OTT Platform'
   &__header {
     height: 10%;
     h1 {
-      // font-family: 'Poppins', sans-serif;
-      // font-style: normal;
-      // font-weight: 600;
       font-size: 36px;
       line-height: 54px;
       text-align: center;
@@ -23,6 +24,7 @@
     }
   }
 
+  // container for input and button components
   &__register {
     position: relative;
     width: 100%;
@@ -42,6 +44,7 @@
       text-align: center;
       height: 10%;
     }
+    // input field component
     &__input {
       font-style: normal;
       font-weight: 400;
@@ -54,6 +57,8 @@
       width: 100%;
       padding: 2% 3%;
     }
+
+    // button component
     &__button {
       padding: 2% 10%;
       background: #bb261a;
@@ -77,6 +82,24 @@
 
     &__header {
       margin: 0;
+      font-size: 16px;
+      h1 {
+        font-size: 24px;
+      }
+    }
+    &__register {
+      padding: 5% 0% 7%;
+      height: 70%;
+      &__header {
+        font-size: 16px;
+      }
+      &__input {
+        margin-top: 5%;
+      }
+
+      &__button {
+        font-size: 16px;
+      }
     }
   }
 }
@@ -85,5 +108,17 @@
   .register-container {
     display: flex;
     padding: 15% 10%;
+
+    &__register {
+      position: relative;
+      width: 100%;
+      background: #1d253a;
+      border-radius: 12px;
+      padding: 5% 0% 7%;
+      height: 70%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
   }
 }

@@ -13,7 +13,7 @@ export const data = [
 
     rating: 'UG',
 
-    link: 'CZIt20emgLY',
+    link: 'https://imdb8.p.rapidapi.com/auto-complete',
 
     description:
       "A crash landing leaves Kitai Raige and his father Cypher stranded on Earth, a millennium after events forced humanity's escape. With Cypher injured, Kitai must embark on a perilous journey to signal for help.",
