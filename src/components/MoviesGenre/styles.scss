@@ -24,8 +24,10 @@
     margin-top: 2%;
     color: #ffffff;
     border-radius: 16px;
+    line-height: 24px;
     flex-direction: row;
     justify-content: space-around;
+    text-decoration:none;
   }
   &__link2 {
     background: #171e31;
@@ -36,13 +38,20 @@
   .moviesGenre-container {
     display: flex;
     margin-top: 10%;
+    gap: 4%;
     /* links for each genre */
 
     &__link1,
     &__link2 {
-      width: 50%;
       border-radius: 16px;
       justify-content: center;
+      width: 48%;
+      font-size: 16px;
+      line-height: 16px;
+      padding: 10%;
+      margin: 0;
+      margin-top: 4%;
+
     }
   }
 }

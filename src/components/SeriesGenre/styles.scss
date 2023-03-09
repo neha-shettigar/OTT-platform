@@ -18,7 +18,8 @@
   &__link2 {
     display: flex;
     width: 23%;
-    background: #0F766E;
+    line-height: 24px;
+    background: #0f766e;
     // flex-direction: column;
     font-size: 24px;
     padding: 8% 9%;
@@ -27,6 +28,7 @@
     border-radius: 16px;
     flex-direction: row;
     justify-content: space-around;
+    text-decoration:none;
   }
   &__link2 {
     background: #171e31;
@@ -37,13 +39,23 @@
   .seriesGenre-container {
     display: flex;
     margin-top: 10%;
+    gap: 2%;
     /* links for each genre */
 
     &__link1,
     &__link2 {
-      width: 50%;
       border-radius: 16px;
       justify-content: center;
+      width: 48%;
+      line-height: 16px;
+      display: flex;
+ 
+      padding: 10%;
+      font-size: 16px;
+      align-items: center;
+      margin: 0;
+      margin-top: 4%;
+      text-decoration:none;
     }
   }
 }

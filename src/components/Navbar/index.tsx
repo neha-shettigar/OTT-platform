@@ -13,7 +13,7 @@ import './styles.scss';
 const Navbar = () => {
   return (
     <nav className="navbar-container">
-      <Link to="#" className="navbar-container__link">
+      <Link to="#" className="navbar-container__link1">
         <img className="navbar-container__img1" src={icon} />
       </Link>
 
@@ -43,7 +43,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <Link to="#" className="navbar-container__link">
+      <Link to="#" className="navbar-container__link1">
         <img className="navbar-container__img1" src={user} />
       </Link>
     </nav>

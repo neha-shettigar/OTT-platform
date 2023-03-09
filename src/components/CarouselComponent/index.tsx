@@ -31,14 +31,23 @@ const CarouselComponent = () => {
       });
   }, []);
 
-  const handleBookmark = (movieId: number) => {
-    if (bookmarks.includes(movieId)) {
-      setBookmarks(bookmarks.filter((id) => id !== movieId));
-    } else {
-      setBookmarks([...bookmarks, movieId]);
-    }
-  };
+  const handleBookmark = (id: number) => {
+    setMovies((prevMovies: any) => {
+      const newMovies = prevMovies.map((movie: any) => {
+        if (movie.id === id) {
+          // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+          movie.isBookmarked = !movie.isBookmarked;
+        }
+        return movie;
+      });
 
+      // Save bookmarks to localStorage
+      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+      return newMovies;
+    });
+  };
   useEffect(() => {
     localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
   }, [bookmarks]);
@@ -46,7 +55,7 @@ const CarouselComponent = () => {
   return (
     <Carousel>
       {movies.map((movie: any, index: number) => {
-        const isBookmarked = bookmarks.includes(movie.id);
+        // const isBookmarked = bookmarks.includes(movie.id);
         return (
           <MovieCard
             key={index}
@@ -55,7 +64,7 @@ const CarouselComponent = () => {
             className="carousel-movieCard"
             poster_path={movie.poster_path}
             alt={`${movie.title} poster`}
-            isBookmarked={isBookmarked}
+            isBookmarked={movie.isBookmarked}
             onBookmark={() => handleBookmark(movie.id)}
           />
         );

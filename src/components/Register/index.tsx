@@ -1,20 +1,23 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState } from 'react';
 import axios from 'axios';
+// import bcrypt from 'bcryptjs'; // import bcryptjs library
 import { InputTextField } from '../InputTextField';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
 import { useDispatch } from 'react-redux';
 import { registerSuccess, registerFail } from '../../states/auth';
 import './styles.scss';
-// import bcrypt from 'bcryptjs';
 
+// export const hashPasswordFunction = (password: string): any =>
+//   bcrypt.hashSync(password, 10);
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setconfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  // const [,setHashPassword]=useState('')
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const users = JSON.parse(localStorage.getItem('users') ?? '[]');
@@ -32,6 +35,9 @@ const Register = () => {
     if (password !== confirmPassword) {
       setErrorMessage('Passwords do not match');
     } else {
+      // hash the password before sending it to the server
+      // const hashPassword=hashPasswordFunction(password);
+      // setHashPassword(hashPassword);
       axios
         .post(
           'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
@@ -50,6 +56,7 @@ const Register = () => {
         });
     }
   };
+
   return (
     <div className="register-container">
       <div className="register-container__header">

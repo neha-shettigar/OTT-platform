@@ -33,7 +33,21 @@ const MoviesByGenre = () => {
   console.log('movies');
 
   const handleBookmark = (id: number) => {
-    // TODO: Implement bookmark functionality
+    setMovies((prevMovies: any) => {
+      const newMovies = prevMovies.map((movie: any) => {
+        if (movie.id === id) {
+          // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+          movie.isBookmarked = !movie.isBookmarked;
+        }
+        return movie;
+      });
+
+      // Save bookmarks to localStorage
+      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+      return newMovies;
+    });
   };
   const handleSearch = (results: any) => {
     setSearchResults(results);

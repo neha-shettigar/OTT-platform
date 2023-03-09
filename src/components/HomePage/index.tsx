@@ -26,7 +26,7 @@ const HomePage = () => {
   const loadMovies = (page: number) => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=13622fc50c5257d370284ea008163f90&language=en-US&page=${page}`,
+        `https://api.themoviedb.org/3/movie/popular?api_key=13622fc50c5257d370284ea008163f90&language=en-US&page=${page}&adult=false`,
       )
       .then((result) => {
         setMovies(result.data.results);

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 // MoviesGenre.tsx
 
 import React from 'react';
@@ -45,7 +46,6 @@ const MoviesGenre = () => {
                 className={`moviesGenre-container__link${
                   index % 2 === 0 ? 1 : 2
                 }`}
-                // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
                 to={`/genre/${genre.id}`}
               >
                 {genre.name}

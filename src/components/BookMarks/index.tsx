@@ -3,6 +3,7 @@ import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
 import searchIcon from '../assets/search-normal.svg';
+
 import './styles.scss';
 
 interface BookmarkInterface {
@@ -44,7 +45,7 @@ const BookMarks = () => {
             <MovieCard
               key={movie.id}
               {...movie}
-              release_date={movie.release_date.substring(0, 4)}
+              // release_date={movie.release_date.substring(0, 4)}
               isInCarousel={false} // or true, depending on where it's being rendered
               // className={
               //   isInCarousel ? 'carousel-movieCard' : 'movieCard-container'

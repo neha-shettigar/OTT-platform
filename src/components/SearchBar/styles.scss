@@ -49,6 +49,8 @@
 
   // button component
   &__button {
+    display: flex;
+    align-items: center;
     background: #5a6a90;
     border-radius: 8px;
     font-family: 'Poppins';
@@ -88,6 +90,7 @@
 
     &__input {
       height: 90%;
+      font-size: 16px;
     }
     &__object {
       margin-top: 1%;

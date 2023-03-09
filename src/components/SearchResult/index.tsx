@@ -35,7 +35,7 @@ const SearchResult = ({ results }: SearchResultProps) => {
         <section className="searchResult-container__section">
           {searchResults.map((result: any, index: number) => (
             <MovieCard
-              key={index}
+              key={result.id}
               {...result}
               className="movieResult-container"
               poster_path={result.poster_path}

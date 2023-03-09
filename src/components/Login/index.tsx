@@ -1,19 +1,18 @@
-/* eslint-disable @typescript-eslint/strict-boolean-expressions */
-import React from 'react';
+import React, { useState } from 'react';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signInSuccess, signInFail } from '../../states/auth';
-import axios from 'axios';
+// import { hashPasswordFunction } from '../Register';
+// import bcrypt from 'bcryptjs';
+
 import './styles.scss';
 
-// Login component
 const Login = () => {
-  const [identifier, setUsername] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [error, setError] = React.useState('');
-
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -21,37 +20,51 @@ const Login = () => {
     setUsername(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
-  const onClickSignUp = (e: React.MouseEvent<HTMLButtonElement>) => {
-    navigate('/register');
+
+  const onClickSignUp = () => navigate('/register');
+  // const hashPassword = hashPasswordFunction(password);
+  const data = {
+    username,
+    password,
   };
-  const onClickSignIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local',
-      );
-      console.log(response.data);
 
-      const users = response.data;
-      console.log(users);
+  const onClickSignIn = () => {
+    setError('');
 
-      const user = users.find(
-        (user: any) =>
-          user.username === identifier && user.password === password,
-      );
-      if (user) {
-        dispatch(signInSuccess(user));
-        localStorage.setItem('currentUser', JSON.stringify(user));
-        navigate('/home');
-      } else {
-        dispatch(signInFail('Invalid email or password'));
-        setError('Invalid email or password');
-      }
-    } catch (error) {
-      console.error(error);
-      dispatch(signInFail('Failed to sign in'));
-      setError('Failed to sign in');
-    }
+    fetch('https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier: data.username,
+        password: data.password,
+      }),
+    })
+      .then(async (response) => {
+        if (response.ok) {
+          // const user = await response.json();
+          // const storedPassword = user.password;
+          // const validPassword = await bcrypt.compare(
+          //   data.password,
+          //   storedPassword,
+          // );
+
+          // if (validPassword) {
+          dispatch(signInSuccess(data));
+          localStorage.setItem('userdata', JSON.stringify(data));
+          navigate('home');
+          console.log('User signed in successfully');
+          // }
+        } else {
+          dispatch(signInFail('Invalid email or password'));
+          setError('Invalid credentials');
+        }
+      })
+      .catch((error) => {
+        dispatch(signInFail('Failed to sign in'));
+        console.log('Error signing in: ', error);
+      });
   };
 
   return (
@@ -65,15 +78,16 @@ const Login = () => {
             Sign <span>In</span>
           </h2>
           <InputTextField
-            label="Email"
-            value={identifier}
+            label="Username"
+            value={username}
             className="login-container__signIn__input"
             onChangeValue={onChangeUsername}
-            placeholder="Email"
+            placeholder="Username"
           />
           <InputTextField
             label="Password"
             value={password}
+            type="password"
             className="login-container__signIn__input"
             onChangeValue={onChangePassword}
             placeholder="Password"
@@ -84,9 +98,8 @@ const Login = () => {
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onClickButton={onClickSignIn}
           />
-          {error.length > 0 && (
-            <div className="login-container__signIn__error">{error}</div>
-          )}
+
+          <div className="login-container__signIn__error">{error}</div>
         </aside>
 
         {/* signUp container */}
