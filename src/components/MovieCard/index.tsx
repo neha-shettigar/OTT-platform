@@ -18,9 +18,9 @@ interface MovieCardInterface {
   onBookmark: () => void;
 }
 
-const getPosterURL = (posterPath?: string) => {
-  return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`;
-};
+// const getPosterURL = (posterPath?: string) => {
+//   return `https://www.themoviedb.org/t/p/w220_and_h330_face${posterPath}`;
+// };
 
 const MovieCard = ({
   id,
@@ -42,7 +42,7 @@ const MovieCard = ({
       <section className={`${className}__section`}>
         <Link to={`/movieDetails/${id}`} className={`${className}__link`}>
           <img
-            src={getPosterURL(poster_path)}
+            src={poster_path}
             className={`${className}__poster`}
             alt={`${title} poster`}
           />

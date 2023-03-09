@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import axios from 'axios';
+
 import MovieCard from '../MovieCard';
 import './styles.scss';
 const BOOKMARKS_KEY = 'bookmarks';
@@ -19,15 +19,29 @@ const CarouselComponent = () => {
   }, []);
 
   useEffect(() => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/trending/movie/week?api_key=13622fc50c5257d370284ea008163f90&language=en-US&page=1`,
-      )
-      .then(({ data: { results } }) => {
-        setMovies(results);
+    const jwt =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc4MzUwMjU4LCJleHAiOjE2ODA5NDIyNTh9.XEWy1GJThfuj7bMHPOEVrqq32pjrUNnog1jgu9YbLCY';
+
+    fetch(
+      'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/movies?populate=*',
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      },
+    )
+      .then(async (response) => {
+        if (response.ok) {
+          return await response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
+      .then((data) => {
+        console.log(data);
+        setMovies(data.data);
       })
       .catch((error) => {
-        console.log(error);
+        console.error('Error fetching data:', error);
       });
   }, []);
 
@@ -61,10 +75,12 @@ const CarouselComponent = () => {
             key={index}
             // release_date={movie.first_air_date.substring(0, 4)}
             {...movie}
+            title={movie.attributes.Name}
             className="carousel-movieCard"
-            poster_path={movie.poster_path}
+            poster_path={movie.attributes.poster_image.data.attributes.url}
             alt={`${movie.title} poster`}
             isBookmarked={movie.isBookmarked}
+            media_type={movie.attributes.category}
             onBookmark={() => handleBookmark(movie.id)}
           />
         );

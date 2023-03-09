@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
 
@@ -11,7 +12,6 @@ import SearchResult from '../SearchResult';
 // searchIcon for searchbar
 import searchIcon from '../assets/search-normal.svg';
 
-import axios from 'axios';
 import './styles.scss';
 
 // HomePage consists of NavBar, SearchBar, Carousel for trending items and movie tray
@@ -24,18 +24,36 @@ const HomePage = () => {
   const [selectedButton, setSelectedButton] = React.useState('');
 
   const loadMovies = (page: number) => {
-    axios
-      .get(
-        `https://api.themoviedb.org/3/movie/popular?api_key=13622fc50c5257d370284ea008163f90&language=en-US&page=${page}&adult=false`,
-      )
+    const jwt =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiaWF0IjoxNjc4MzUwMjU4LCJleHAiOjE2ODA5NDIyNTh9.XEWy1GJThfuj7bMHPOEVrqq32pjrUNnog1jgu9YbLCY';
+
+    fetch(
+      'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/movies?populate=*',
+      {
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
+      },
+    )
+      .then(async (response) => {
+        if (response.ok) {
+          return await response.json();
+        }
+        throw new Error('Network response was not ok.');
+      })
       .then((result) => {
-        setMovies(result.data.results);
-        setTotalPages(result.data.total_pages);
+        console.log(result.data);
+
+        setMovies(result.data);
+
+        setTotalPages(result.meta.pagination.pageSize);
       })
       .catch((error) => {
         console.error('Error fetching movie data:', error);
       });
   };
+  console.log(movies);
+  console.log(totalPages);
 
   // fetch popular movies on component mount
   React.useEffect(() => {
@@ -98,16 +116,19 @@ const HomePage = () => {
             </h4>
             <section className="homePage-container__main__popular">
               {/* each movie is displayed using movie card */}
-              {movies.map((movie: any, index) => (
+              {movies.map((movie: any, index: number) => (
                 <MovieCard
-                  key={movie.id}
+                  key={index}
+                  // release_date={movie.first_air_date.substring(0, 4)}
                   {...movie}
+                  title={movie.attributes.Name}
                   className="movieCard-container"
-                  poster_path={movie.poster_path}
-                  media_type={movie.media_type}
-                  title={movie.title}
-                  release_date={movie.release_date.substring(0, 4)}
+                  // poster_path={
+                  //   movie.attributes.poster_image.data.attributes.url
+                  // }
+                  alt={`${movie.title} poster`}
                   isBookmarked={movie.isBookmarked}
+                  media_type={movie.attributes.category}
                   onBookmark={() => handleBookmark(movie.id)}
                 />
               ))}
