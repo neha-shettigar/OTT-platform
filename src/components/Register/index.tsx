@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState } from 'react';
 import axios from 'axios';
-// import bcrypt from 'bcryptjs'; // import bcryptjs library
 import { InputTextField } from '../InputTextField';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
@@ -9,35 +8,72 @@ import { useDispatch } from 'react-redux';
 import { registerSuccess, registerFail } from '../../states/auth';
 import './styles.scss';
 
-// export const hashPasswordFunction = (password: string): any =>
-//   bcrypt.hashSync(password, 10);
 const Register = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setconfirmPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  // const [,setHashPassword]=useState('')
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [usernameError, setUsernameError] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
+  const [confirmPasswordError, setConfirmPasswordError] = useState('');
+  const [, setErrorMessage] = useState('');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const users = JSON.parse(localStorage.getItem('users') ?? '[]');
 
-  const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setUsername(e.target.value);
-  const onChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setEmail(e.target.value);
-  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setPassword(e.target.value);
-  const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setconfirmPassword(e.target.value);
+  const validateUsername = () => {
+    if (username.trim() === '') {
+      setUsernameError('Please enter a username');
+    } else if (username.length < 4) {
+      setUsernameError('Username must be at least 4 characters long');
+    } else {
+      setUsernameError('');
+    }
+  };
+
+  const validateEmail = () => {
+    if (email.trim() === '') {
+      setEmailError('Please enter an email address');
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setEmailError('Please enter a valid email address');
+    } else {
+      setEmailError('');
+    }
+  };
+
+  const validatePassword = () => {
+    if (password.trim() === '') {
+      setPasswordError('Please enter a password');
+    } else if (password.length < 8) {
+      setPasswordError('Password must be at least 8 characters long');
+    } else {
+      setPasswordError('');
+    }
+  };
+
+  const validateConfirmPassword = () => {
+    if (confirmPassword.trim() === '') {
+      setConfirmPasswordError('Please confirm your password');
+    } else if (confirmPassword !== password) {
+      setConfirmPasswordError('Passwords do not match');
+    } else {
+      setConfirmPasswordError('');
+    }
+  };
 
   const handleRegister = () => {
-    if (password !== confirmPassword) {
-      setErrorMessage('Passwords do not match');
-    } else {
-      // hash the password before sending it to the server
-      // const hashPassword=hashPasswordFunction(password);
-      // setHashPassword(hashPassword);
+    validateUsername();
+    validateEmail();
+    validatePassword();
+    validateConfirmPassword();
+
+    if (
+      usernameError === '' &&
+      emailError === '' &&
+      passwordError === '' &&
+      confirmPasswordError === ''
+    ) {
       axios
         .post(
           'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
@@ -49,14 +85,14 @@ const Register = () => {
           localStorage.setItem('currentUser', JSON.stringify(newUser));
           localStorage.setItem('users', JSON.stringify([...users, newUser]));
           navigate('/');
+          alert('Register Successful');
         })
-        .catch((error) => {
-          setErrorMessage(error.message);
-          console.log(error.request.response.data);
-          console.log(error.message);
-
+        .catch(() => {
+          setErrorMessage('Email already exists');
           dispatch(registerFail(setErrorMessage));
         });
+    } else {
+      alert('Please fix the errors in the form');
     }
   };
 
@@ -66,34 +102,54 @@ const Register = () => {
         <h1>Movie OTT</h1>
       </div>
       <div className="register-container__register">
-        <h2 className="register-container__register__header">Register</h2>
+        {usernameError.length > 0 && <p>{usernameError}</p>}
         <InputTextField
-          label="Full Name"
-          placeholder="Full Name"
+          label="Username"
+          value={username}
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setUsername(e.target.value)
+          }
           className="register-container__register__input"
-          onChangeValue={onChangeUsername}
+          onBlur={validateUsername}
+          error={usernameError}
         />
+        {emailError.length > 0 && <p>{emailError}</p>}
         <InputTextField
           label="Email"
-          placeholder="Email"
+          type="email"
+          value={email}
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
           className="register-container__register__input"
-          onChangeValue={onChangeEmail}
+          onBlur={validateEmail}
+          error={emailError}
         />
+        {passwordError.length > 0 && <p>{passwordError}</p>}
         <InputTextField
           label="Password"
-          placeholder="Password"
-          className="register-container__register__input"
-          onChangeValue={onChangePassword}
           type="password"
+          value={password}
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setPassword(e.target.value)
+          }
+          className="register-container__register__input"
+          onBlur={validatePassword}
+          error={passwordError}
         />
+        {confirmPassword.length > 0 && <p>{confirmPasswordError}</p>}
         <InputTextField
           label="Confirm Password"
-          placeholder="Confirm Password"
-          className="register-container__register__input"
-          onChangeValue={onChangeConfirmPassword}
           type="password"
+          value={confirmPassword}
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setConfirmPassword(e.target.value)
+          }
+          className="register-container__register__input"
+          onBlur={validateConfirmPassword}
+          error={confirmPasswordError}
         />
-        {errorMessage.length > 0 && <p>{errorMessage}</p>}
+
         <Button
           label="Register"
           className="register-container__register__button"

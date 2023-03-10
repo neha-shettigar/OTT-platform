@@ -1,6 +1,6 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
-import React from 'react';
+/* eslint-disable @typescript-eslint/naming-convention */
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import bookmarkedIcon from '../assets/bookmarkedIcon.svg';
 import unbookmarkedIcon from '../assets/unbookmarkedIcon.svg';
@@ -33,8 +33,11 @@ const MovieCard = ({
   release_date,
   onBookmark,
 }: MovieCardInterface) => {
+  const [activeButton, setActiveButton] = useState<string>(''); // state variable to keep track of the active button
+
   const onClickButton = () => {
     onBookmark();
+    setActiveButton('bookmarks'); // update the active button state when the "bookmarks" button is clicked
   };
 
   return (
@@ -47,7 +50,12 @@ const MovieCard = ({
             alt={`${title} poster`}
           />
         </Link>
-        <button className={`${className}__button`} onClick={onClickButton}>
+        <button
+          className={`${className}__button ${
+            activeButton === 'bookmarks' ? 'active' : ''
+          }`} // add "active" class to the "bookmarks" button when it is active
+          onClick={onClickButton}
+        >
           <img
             className={`${className}__icon`}
             src={isBookmarked ? bookmarkedIcon : unbookmarkedIcon}

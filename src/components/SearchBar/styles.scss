@@ -99,18 +99,19 @@
 }
 
 @media (min-width: 420px) and (max-width: 768px) {
-  .seriesGenre-container {
-    display: flex;
-    margin-top: 5%;
-    /* links for each genre */
+  .searchbar-container {
+    height: 5%;
 
-    &__link1,
-    &__link2 {
-      width: 50%;
-      border-radius: 16px;
-      justify-content: center;
-      padding: 12% 8%;
-      font-size: 22px;
+    &__input {
+      font-size: 24px;
+      height: 100%;
+    }
+    &__object {
+      margin: 0;
+      width: 10%;
+      height: 70%;
+      margin-top: 2%;
+      margin-right: 5%;
     }
   }
 }

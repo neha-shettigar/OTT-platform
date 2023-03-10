@@ -5,7 +5,8 @@ export interface ButtonInterface {
   label?: string;
   disabled?: boolean;
   className?: string;
-  onClickButton?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  children?: React.ReactNode;
+  onClickButton: () => void;
 }
 
 export const Button = ({

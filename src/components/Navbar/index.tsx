@@ -43,7 +43,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <Link to="#" className="navbar-container__link1">
+      <Link to="/" className="navbar-container__link1">
         <img className="navbar-container__img1" src={user} />
       </Link>
     </nav>

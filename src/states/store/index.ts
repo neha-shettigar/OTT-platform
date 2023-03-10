@@ -1,11 +1,11 @@
 // index.js
-
-import { legacy_createStore, combineReducers } from 'redux';
+import bookmarkReducers from '../bookmarkReducer';
 import authReducer from '../auth';
+import { legacy_createStore, combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
   auth: authReducer,
-  // other reducers...
+  bookmarks: bookmarkReducers,
 });
 
 const store = legacy_createStore(rootReducer);

@@ -34,6 +34,11 @@
     align-items: center;
     display: flex;
     flex-direction: column;
+    p{
+      font-size: 16px;
+      color: red;
+      font-weight: 200;
+    }
 
     &__header {
       font-style: normal;
@@ -89,12 +94,18 @@
     }
     &__register {
       padding: 5% 0% 7%;
-      height: 70%;
+      // height: 70%;
+      height: 500px;
+
+      p{
+        font-size: 12px;
+      }
       &__header {
         font-size: 16px;
       }
       &__input {
         margin-top: 5%;
+            margin-bottom: 5%;
       }
 
       &__button {
@@ -114,8 +125,8 @@
       width: 100%;
       background: #1d253a;
       border-radius: 12px;
-      padding: 5% 0% 7%;
-      height: 70%;
+      padding: 5% 10% 7%;
+      height: 700px;
       align-items: center;
       display: flex;
       flex-direction: column;

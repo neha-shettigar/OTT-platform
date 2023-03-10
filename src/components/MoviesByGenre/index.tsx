@@ -67,13 +67,14 @@ const MoviesByGenre = () => {
               {movies.map((movie: any) => (
                 <MovieCard
                   key={movie.id}
+                  {...movie}
                   id={movie.id}
                   poster_path={movie.poster_path}
                   media_type="movie"
                   title={movie.title}
                   className="moviesByGenre-container__card"
                   release_date={movie.release_date}
-                  isBookmarked={false}
+                  isBookmarked={movie.isBookmarked}
                   onBookmark={() => handleBookmark(movie.id)}
                 />
               ))}

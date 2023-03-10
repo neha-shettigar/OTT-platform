@@ -9,7 +9,7 @@ interface InputFieldInterface {
   disabled?: boolean;
   className?: string;
   placeholder?: string;
-
+  onBlur?: () => void;
   onChangeValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -23,6 +23,7 @@ export const InputTextField = ({
   className,
   type,
   onChangeValue,
+  onBlur,
 }: InputFieldInterface) => {
   return (
     <div className="input-container">

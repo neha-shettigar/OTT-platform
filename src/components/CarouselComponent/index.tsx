@@ -58,7 +58,7 @@ const CarouselComponent = () => {
         // const isBookmarked = bookmarks.includes(movie.id);
         return (
           <MovieCard
-            key={index}
+            key={movie.id}
             // release_date={movie.first_air_date.substring(0, 4)}
             {...movie}
             className="carousel-movieCard"
