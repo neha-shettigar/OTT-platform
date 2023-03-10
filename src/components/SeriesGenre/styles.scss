@@ -29,6 +29,8 @@
     flex-direction: row;
     justify-content: space-around;
     text-decoration:none;
+    height: 20%;
+    align-items: center;
   }
   &__link2 {
     background: #171e31;
@@ -49,8 +51,8 @@
       width: 48%;
       line-height: 16px;
       display: flex;
- 
-      padding: 10%;
+ height: 0;
+      padding: 15%;
       font-size: 16px;
       align-items: center;
       margin: 0;
