@@ -15,11 +15,9 @@ const meta = {
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof HomePage> = (args) => {
-  return <HomePage {...args} />;
+  return <HomePage />;
 };
 
 export const Default = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
-Default.args = {
-  show: true,
-};
+Default.args = {};

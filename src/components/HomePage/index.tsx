@@ -1,137 +1,140 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 import React from 'react';
+
+// import components
 import Navbar from '../Navbar';
 import SearchBar from '../SearchBar';
-
-// import MoviesGenre from '../MoviesGenre';
-// import MovieDetails from '../MovieDetails';
-// import BookMarks from '../BookMarks';
-import icon from '../assets/navbar-logo-1.svg';
-import dashboard from '../assets/dashboard.svg';
-import movies from '../assets/movies.svg';
-import series from '../assets/tv-series.svg';
-import bookmark from '../assets/bookmark.svg';
-import user from '../assets/account.svg';
-
-import CarouselComponent from '../Carousel';
+import CarouselComponent from '../CarouselComponent';
 import MovieCard from '../MovieCard';
-// import poster1 from '../assets/movieCard.svg';
-// import bookMark from '../assets/cardLogo.svg';
-import { data } from '../../data';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
-// import { Carousel } from 'react-responsive-carousel';
-// import Carousel from 'react-bootstrap/Carousel';
-import searchIcon from '../assets/search-normal.svg';
+import SearchResult from '../SearchResult';
+import { moviesApi } from '../../utils';
 
-// import {
-//   BrowserRouter,
-//   Routes,
-//   Route,
-// } from 'react-router-dom';
+// searchIcon for searchbar
+import searchIcon from '../../assets/search-normal.svg';
 
 import './styles.scss';
 
-interface HomePageInterface {
-  show: boolean;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-}
+// HomePage consists of NavBar, SearchBar, Carousel for trending items and movie tray
+const HomePage = () => {
+  const [movies, setMovies] = React.useState([]);
+  const [searchResults, setSearchResults] = React.useState([]);
+  const [flag, setFlag] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [totalPages, setTotalPages] = React.useState(1);
+  const [selectedButton, setSelectedButton] = React.useState('');
 
-// parent component
-const HomePage = ({ show, value, onChange }: HomePageInterface) => {
+  const loadMovies = (page: number) => {
+    moviesApi
+      .get(`/movie/popular?&language=en-US&page=${page}&adult=false`)
+      .then((result) => {
+        setMovies(result.data.results);
+        setTotalPages(result.data.total_pages);
+      })
+      .catch((error) => {
+        console.error('Error fetching movie data:', error);
+      });
+  };
+
+  // fetch popular movies on component mount
+  React.useEffect(() => {
+    loadMovies(currentPage);
+  }, [currentPage, loadMovies]);
+
+  const handleBookmark = (id: number) => {
+    setMovies((prevMovies: any) => {
+      const newMovies = prevMovies.map((movie: any) => {
+        if (movie.id === id) {
+          movie.isBookmarked = !movie.isBookmarked;
+        }
+        return movie;
+      });
+
+      // Save bookmarks to localStorage
+      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
+      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+      return newMovies;
+    });
+  };
+
+  const handleSearch = (results: any) => {
+    setSearchResults(results);
+    setFlag(true);
+  };
+
+  const handlePageChange = (page: number, button: any) => {
+    setSelectedButton(button);
+    setCurrentPage(page);
+  };
+
   return (
     // main container
     <main className="homePage-container">
-      <Navbar
-        icon1={icon}
-        icon2={dashboard}
-        icon3={movies}
-        icon4={series}
-        icon5={bookmark}
-        icon6={user}
-      />
-
+      {/* navigation */}
+      <Navbar />
       {/* homepage content container */}
       <section className="homePage-container__main">
+        {/* search bar */}
         <SearchBar
           value=""
-          onChangeValue={onChange}
+          // onChangeValue={onChange}
           icon={searchIcon}
-          placeholder="Search for movies or TV series"
+          onSearch={handleSearch}
         />
-
-        <h4>Trending</h4>
-        <CarouselComponent />
-
-        {/* <MoviesGenre
-          label1="Action"
-          label2="Adventure"
-          label3="Anime"
-          label4="Comedy"
-          label5="Crime"
-          label6="Drama"
-          label7="Family"
-          label8="Fantasy"
-          label9="History"
-          label10="Horror"
-          label11="Kids"
-          label12="Music"
-        /> */}
-
-        {/* <MovieDetails poster={data[1].poster}
-          title={data[1].title}
-          rating={data[1].rating}
-          category={data[1].category}
-          description={data[1].description}/>
-      </section> */}
-        <h4>Popular</h4>
-        <section className="homePage-container__main__popular">
-          {/* <article className="homePage-container__main__popular__row"> */}
-          <MovieCard
-            poster={data[8].poster}
-            rating={data[8].rating}
-            title={data[8].title}
-            icon={bookmark}
-            link={data[8].link}
-          />
-          <MovieCard
-            poster={data[9].poster}
-            rating={data[9].rating}
-            title={data[9].title}
-            icon={bookmark}
-            link={data[9].link}
-          />
-          <MovieCard
-            poster={data[2].poster}
-            rating={data[2].rating}
-            title={data[2].title}
-            icon={bookmark}
-            link={data[2].link}
-          />
-          {/* </article>
-          <article className="homePage-container__main__popular__row"> */}
-          <MovieCard
-            poster={data[1].poster}
-            rating={data[1].rating}
-            title={data[1].title}
-            icon={bookmark}
-            link={data[1].link}
-          />
-          <MovieCard
-            poster={data[3].poster}
-            rating={data[3].rating}
-            title={data[3].title}
-            icon={bookmark}
-            link={data[3].link}
-          />
-          <MovieCard
-            poster={data[13].poster}
-            rating={data[13].rating}
-            title={data[13].title}
-            icon={bookmark}
-            link={data[13].link}
-          />
-          {/* </article> */}
-        </section>
+        {flag ? (
+          <SearchResult results={searchResults} />
+        ) : (
+          <div>
+            <h4 className="homePage-container__main__header">
+              Trending<span>MOVIE</span>
+            </h4>
+            {/* Carousel for trending items */}
+            <CarouselComponent />
+            {/* movie tray */}
+            <h4>
+              Popular <span>MOVIE</span>
+            </h4>
+            <section className="homePage-container__main__popular">
+              {/* each movie is displayed using movie card */}
+              {movies.map((movie: any, index) => (
+                <MovieCard
+                  key={movie.id}
+                  {...movie}
+                  className="movieCard-container"
+                  poster_path={movie.poster_path}
+                  media_type={movie.media_type}
+                  title={movie.title}
+                  release_date={movie.release_date.substring(0, 4)}
+                  isBookmarked={movie.isBookmarked}
+                  onBookmark={() => handleBookmark(movie.id)}
+                />
+              ))}
+            </section>
+            {totalPages > 1 && (
+              <div className="homePage-container__main__pagination">
+                {[...Array(Math.min(totalPages, 5))].map((_, i) => {
+                  const pageNumber = i + 1;
+                  const isCurrentPage = pageNumber === currentPage;
+                  return (
+                    <button
+                      value="page"
+                      aria-selected={selectedButton === 'page'}
+                      key={pageNumber}
+                      className={`homePage-container__main__pagination__button ${
+                        isCurrentPage ? 'active' : ''
+                      }`}
+                      onClick={() => handlePageChange(pageNumber, 'page')}
+                    >
+                      {pageNumber}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+        )}
       </section>
     </main>
   );

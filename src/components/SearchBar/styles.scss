@@ -1,9 +1,14 @@
+// main container
 .searchbar-container {
+  position: fixed;
+  z-index: 1;
   display: flex;
-  margin: 0;
+  margin-top: 2%;
   padding: 0% 2%;
   height: 10%;
+  width: 80%;
 
+  // input field component
   &__input {
     display: flex;
     font-family: 'Poppins';
@@ -11,19 +16,22 @@
     font-weight: 400;
     font-size: 28px;
     line-height: 48px;
-    background: transparent;
+    background: #10141e;
     border: none;
     color: rgba(255, 255, 255, 0.5);
     width: 100%;
-  }
-  &__object {
-    // width: 30%;
-    width: 3%;
-    margin: 0;
-    margin-right: 2%;
-    height: 50%;
+    border-radius: 10px;
   }
 
+  // search icon
+  &__object {
+
+   margin-bottom: 1%;
+   padding: 2%;
+
+  }
+
+  // button component container
   &__button-container {
     display: flex;
     margin: 0;
@@ -32,9 +40,13 @@
     width: 100%;
     padding-top: 1%;
     justify-content: flex-end;
+    align-items: center;
   }
 
+  // button component
   &__button {
+    display: flex;
+    align-items: center;
     background: #5a6a90;
     border-radius: 8px;
     font-family: 'Poppins';
@@ -47,41 +59,56 @@
     order: 0;
     flex-grow: 0;
     border: none;
-    height: 50%;
+    height: 60%;
     margin: 0;
     // padding: 30% 50%;
-    padding: 1% 5%;
+    padding: 3% 5%;
+  }
+  &__searchResult-container {
+    display: flex;
+    width: 100%;
   }
 }
 
 @media (max-width: 420px) {
   .searchbar-container {
+    align-items: flex-start;
+    margin-top: 5%;
+    gap: 3%;
+    width: 90%;
+    height: 90px;
+
+    &__button-container {
+      height: 50%;
+    }
     &__button {
-      display: none;
+      height: 100%;
     }
 
     &__input {
-      // width: 80%;
-      font-size: 18px;
+      height: 90%;
+      font-size: 16px;
     }
     &__object {
-      width: 5%;
+      margin-top: 1%;
     }
   }
 }
 
 @media (min-width: 420px) and (max-width: 768px) {
   .searchbar-container {
-    &__button {
-      display: none;
-    }
+    height: 5%;
 
     &__input {
-      // width: 80%;
-      font-size: 22px;
+      font-size: 24px;
+      height: 100%;
     }
     &__object {
-      width: 5%;
+      margin: 0;
+      width: 10%;
+      height: 70%;
+      margin-top: 2%;
+      margin-right: 5%;
     }
   }
 }

@@ -1,0 +1,23 @@
+.moviesByGenre-container {
+  display: flex;
+  // margin-left: 10%;
+
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 8%;
+  }
+}
+
+@media (max-width: 420px) {
+  .moviesByGenre-container {
+    margin: 0;
+    &__section {
+      margin-top: 20%;
+    }
+
+    &__card{
+      margin-left:2% ;
+    }
+  }
+}

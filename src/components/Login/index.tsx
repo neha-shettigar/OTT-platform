@@ -1,26 +1,72 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { InputTextField } from '../InputTextField';
 import { Button } from '../Button';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { signInSuccess, signInFail } from '../../states/auth';
+// import { hashPasswordFunction } from '../Register';
+// import bcrypt from 'bcryptjs';
+
 import './styles.scss';
 
-interface LoginInterface {
-  email: string;
-  password: string;
-  onChangeEmail: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onChangePassword: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onClickSignIn: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  onClickSignUp: (e: React.MouseEvent<HTMLButtonElement>) => void;
-}
+const Login = () => {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-// Login component
-const Login = ({
-  email,
-  password,
-  onChangeEmail,
-  onChangePassword,
-  onClickSignIn,
-  onClickSignUp,
-}: LoginInterface) => {
+  const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setUsername(e.target.value);
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
+    setPassword(e.target.value);
+
+  const onClickSignUp = () => navigate('/register');
+  // const hashPassword = hashPasswordFunction(password);
+  const data = {
+    username,
+    password,
+  };
+
+  const onClickSignIn = () => {
+    setError('');
+
+    fetch('https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        identifier: data.username,
+        password: data.password,
+      }),
+    })
+      .then(async (response) => {
+        if (response.ok) {
+          // const user = await response.json();
+          // const storedPassword = user.password;
+          // const validPassword = await bcrypt.compare(
+          //   data.password,
+          //   storedPassword,
+          // );
+
+          // if (validPassword) {
+          dispatch(signInSuccess(data));
+          localStorage.setItem('userdata', JSON.stringify(data));
+          navigate('home');
+          console.log('User signed in successfully');
+          // }
+        } else {
+          dispatch(signInFail('Invalid email or password'));
+          setError('Invalid credentials');
+        }
+      })
+      .catch((error) => {
+        dispatch(signInFail('Failed to sign in'));
+        console.log('Error signing in: ', error);
+      });
+  };
+
   return (
     <div className="login-container">
       {/* component header */}
@@ -32,15 +78,16 @@ const Login = ({
             Sign <span>In</span>
           </h2>
           <InputTextField
-            label="Email"
-            value={email}
+            label="Username"
+            value={username}
             className="login-container__signIn__input"
-            onChangeValue={onChangeEmail}
-            placeholder="Email"
+            onChangeValue={onChangeUsername}
+            placeholder="Username"
           />
           <InputTextField
             label="Password"
             value={password}
+            type="password"
             className="login-container__signIn__input"
             onChangeValue={onChangePassword}
             placeholder="Password"
@@ -48,8 +95,11 @@ const Login = ({
           <Button
             label="Sign In"
             className="login-container__signIn__button"
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onClickButton={onClickSignIn}
           />
+
+          <div className="login-container__signIn__error">{error}</div>
         </aside>
 
         {/* signUp container */}

@@ -5,13 +5,16 @@ export interface ButtonInterface {
   label?: string;
   disabled?: boolean;
   className?: string;
-  onClickButton?: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  error?: string;
+  children?: React.ReactNode;
+  onClickButton: () => void;
 }
 
 export const Button = ({
   label,
   disabled,
   className,
+  error,
   onClickButton,
 }: ButtonInterface) => {
   return (
@@ -19,6 +22,7 @@ export const Button = ({
       <button className={className} type="submit" onClick={onClickButton}>
         {label}
       </button>
+      {error != null ? <p>{error}</p> : null}
     </div>
   );
 };

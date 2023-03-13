@@ -1,46 +1,52 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import icon from '../../assets/navbar-logo-1.svg';
+import dashboard from '../../assets/dashboard.svg';
+import movies from '../../assets/movies.svg';
+import series from '../../assets/tv-series.svg';
+import bookmark from '../../assets/bookmark.svg';
+import user from '../../assets/account.svg';
+
 import './styles.scss';
 
-interface NavbarInterface {
-  icon1: string;
-  icon2: string;
-  icon3: string;
-  icon4: string;
-  icon5: string;
-  icon6: string;
-}
-
-const Navbar = ({
-  icon1,
-  icon2,
-  icon3,
-  icon4,
-  icon5,
-  icon6,
-}: NavbarInterface) => {
+const Navbar = () => {
   return (
-    <main className="navbar-container">
-      <a className="navbar-container__link" href="">
-        <object className="navbar-container__object" data={icon1} />
-      </a>
-      <section className="navbar-container__section">
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon2} />
-        </a>
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon3} />
-        </a>
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon4} />
-        </a>
-        <a className="navbar-container__link" href="">
-          <object className="navbar-container__object" data={icon5} />
-        </a>
-      </section>
-      <a className="navbar-container__link" href="">
-        <object className="navbar-container__object" data={icon6} />
-      </a>
-    </main>
+    <nav className="navbar-container">
+      <Link to="#" className="navbar-container__link1">
+        <img className="navbar-container__img1" src={icon} />
+      </Link>
+
+      <div className="navbar-container__section">
+        <Link to="/home" className="navbar-container__link">
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={dashboard} />
+          </button>
+        </Link>
+
+        <Link to="/moviegenre" className="navbar-container__link">
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={movies} />
+          </button>
+        </Link>
+
+        <Link to="/seriesgenre" className="navbar-container__link">
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={series} />
+          </button>
+        </Link>
+
+        <Link to="/bookmarks" className="navbar-container__link">
+          <button className="navbar-container__link__button">
+            <img className="navbar-container__img__section" src={bookmark} />
+          </button>
+        </Link>
+      </div>
+
+      <Link to="/" className="navbar-container__link1">
+        <img className="navbar-container__img1" src={user} />
+      </Link>
+    </nav>
   );
 };
 

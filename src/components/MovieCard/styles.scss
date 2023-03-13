@@ -1,7 +1,11 @@
-.movieCard-container {
+// main container
+.movieCard-container,
+.movieResult-container,
+.moviesByGenre-container__card,
+.seriesByGenre-container__card {
   display: flex;
-  // width: 25%;
-  height: 300px;
+  width: 25%;
+  height: 350px;
   flex-direction: column;
   justify-content: flex-start;
 
@@ -10,30 +14,38 @@
     margin: 0;
     height: 65%;
     flex-direction: column;
+    text-align: left;
   }
 
+  // movie links
   &__link {
     display: flex;
     margin: 0;
     height: 100%;
     width: 100%;
   }
+
+  // movie poster
   &__poster {
-    // width: 80%;
+    width: 92%;
     margin: 0;
     position: relative;
+    border-radius: 5%;
   }
 
+  // bookmark button
   &__button {
     margin: 0;
     position: absolute;
-    z-index: 1;
+    // z-index: 1;
     background-color: transparent;
     border: none;
     border-radius: 10px;
-    // padding-left: 20%;
-    // margin-left: 45%;
+    margin-left: 260px;
+    margin-top: 1%;
   }
+
+  // movie details
   p,
   h3 {
     margin: 0;
@@ -46,10 +58,60 @@
     font-size: 16px;
     line-height: 24px;
     letter-spacing: 0.06em;
+    word-spacing: 20px;
   }
   h3 {
     font-weight: 500;
     font-size: 24px;
     line-height: 36px;
+  }
+}
+
+@media (max-width: 420px) {
+  .movieCard-container,
+  .moviesByGenre-container__card,
+  .seriesByGenre-container__card,
+  .movieResult-container {
+    display: flex;
+    width: 48%;
+    height: 250px;
+
+    &__poster {
+      height: 100%;
+      width: 100%;
+    }
+
+    &__link {
+      height: 85%;
+    }
+    &__button {
+      margin: 0;
+      padding-left: 34%;
+      padding-top: 2%;
+    }
+    &__icon {
+      width: 60%;
+    }
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .movieCard-container,
+  .moviesByGenre-container__card,
+  .seriesByGenre-container__card,
+  .movieResult-container {
+    display: flex;
+
+    &__poster {
+      height: 100%;
+      width: 100%;
+    }
+    &__link {
+      width: 92%;
+    }
+
+    &__button {
+      margin: 0;
+    }
   }
 }
