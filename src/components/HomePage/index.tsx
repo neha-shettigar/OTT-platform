@@ -61,7 +61,7 @@ const HomePage = () => {
 
   const handleSearch = (results: any) => {
     setSearchResults(results);
-    setFlag(true);
+    setFlag(!flag);
   };
 
   const handlePageChange = (page: number, button: any) => {
@@ -98,10 +98,11 @@ const HomePage = () => {
             </h4>
             <section className="homePage-container__main__popular">
               {/* each movie is displayed using movie card */}
-              {movies.map((movie: any, index) => (
+              {movies.map((movie: any) => (
                 <MovieCard
                   key={movie.id}
                   {...movie}
+                  id={movie.id}
                   className="movieCard-container"
                   poster_path={movie.poster_path}
                   media_type={movie.media_type}

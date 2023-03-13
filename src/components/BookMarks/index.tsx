@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
 import searchIcon from '../../assets/search-normal.svg';
+import { addBookmark, removeBookmark } from '../../states/actions';
+import { RootState } from '../../states/store';
 
 import './styles.scss';
 
@@ -16,19 +19,24 @@ interface BookmarkInterface {
 }
 
 const BookMarks = () => {
-  // const [isInCarousel] = React.useState(true);
-  const [bookmarks, setBookmarks] = useState<BookmarkInterface[]>(() => {
+  const [, setBookmarks] = React.useState<BookmarkInterface[]>(() => {
     // Retrieve bookmarks from localStorage
     const savedBookmarks = localStorage.getItem('bookmarks');
     return savedBookmarks != null ? JSON.parse(savedBookmarks) : [];
   });
+  const bookmarks = useSelector((state: RootState) => state.bookmarks);
+  const dispatch = useDispatch();
 
   const toggleBookmark = (movie: BookmarkInterface) => {
-    const index = bookmarks.findIndex((b) => b.id === movie.id);
+    const index = bookmarks.findIndex((b: any) => b.id === movie.id);
     if (index >= 0) {
-      setBookmarks((bookmarks) => bookmarks.filter((b) => b.id !== movie.id));
+      dispatch(removeBookmark(movie.id));
+      setBookmarks((bookmarks: any) =>
+        bookmarks.filter((b: any) => b.id !== movie.id),
+      );
     } else {
       setBookmarks((bookmarks) => [...bookmarks, movie]);
+      dispatch(addBookmark(movie));
     }
 
     // Save bookmarks to localStorage
@@ -41,7 +49,7 @@ const BookMarks = () => {
       <section className="homePage-container__main">
         <SearchBar value="" icon={searchIcon} />
         <section className="bookmarks-container">
-          {bookmarks.map((movie) => (
+          {bookmarks.map((movie: any) => (
             <MovieCard
               key={movie.id}
               {...movie}
@@ -63,5 +71,4 @@ const BookMarks = () => {
     </main>
   );
 };
-
 export default BookMarks;

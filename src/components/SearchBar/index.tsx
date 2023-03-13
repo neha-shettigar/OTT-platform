@@ -13,7 +13,8 @@ interface SearchBarInterface {
 
 const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
   const [query, setQuery] = React.useState('');
-  const [, setResults] = React.useState([]);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [result, setResults] = React.useState([]);
 
   function handleSubmit(event: React.MouseEvent<HTMLButtonElement>) {
     event.preventDefault();
