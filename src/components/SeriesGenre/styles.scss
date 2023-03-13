@@ -29,7 +29,7 @@
     flex-direction: row;
     justify-content: space-around;
     text-decoration:none;
-    height: 20%;
+    // height: 20%;
     align-items: center;
   }
   &__link2 {
@@ -40,7 +40,7 @@
 @media (max-width: 420px) {
   .seriesGenre-container {
     display: flex;
-    margin-top: 10%;
+    margin-top: 15%;
     gap: 2%;
     /* links for each genre */
 

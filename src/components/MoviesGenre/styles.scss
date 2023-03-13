@@ -28,7 +28,7 @@
     flex-direction: row;
     justify-content: space-around;
     text-decoration:none;
-    height: 16%;
+    // height: 16%;
     align-items: center;
   }
   &__link2 {
@@ -39,7 +39,7 @@
 @media (max-width: 420px) {
   .moviesGenre-container {
     display: flex;
-    margin-top: 10%;
+    margin-top: 15%;
     gap: 4%;
     /* links for each genre */
 

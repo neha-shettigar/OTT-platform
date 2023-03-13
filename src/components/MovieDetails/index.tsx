@@ -69,18 +69,19 @@ const MovieDetails = () => {
               <h4>{movieDetails.vote_average}</h4>
               <section className="movieDetails-container__details__para">
                 <p>
-                  Length<span>{movieDetails.runtime}min</span>
+                  Length<span className="span1">{movieDetails.runtime}min</span>
                 </p>
                 <p>
                   Language
                   {/* <span>{movieDetails.spokenLanguages}</span> */}
-                  <span>English</span>
+                  <span className="span1">English</span>
                 </p>
                 <p>
-                  Release Date<span>{movieDetails.release_date}</span>
+                  Release Date
+                  <span className="span1">{movieDetails.release_date}</span>
                 </p>
                 <p>
-                  Status<span>{movieDetails.status}</span>
+                  Status<span className="span1">{movieDetails.status}</span>
                 </p>
               </section>
               {/* <p>
@@ -97,6 +98,7 @@ const MovieDetails = () => {
                   </section>
                 </p>
               </article>
+              <h6>Synopsis</h6>
               <p>{movieDetails.overview}</p>
             </article>
           </section>

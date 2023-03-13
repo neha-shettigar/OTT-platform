@@ -102,9 +102,11 @@ const Register = () => {
         <h1>Movie OTT</h1>
       </div>
       <div className="register-container__register">
+        <div className="register-container__register__header">Register</div>
         {usernameError.length > 0 && <p>{usernameError}</p>}
         <InputTextField
-          label="Username"
+          label="Full Name"
+          placeholder="Full Name"
           value={username}
           onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
             setUsername(e.target.value)
@@ -116,6 +118,7 @@ const Register = () => {
         {emailError.length > 0 && <p>{emailError}</p>}
         <InputTextField
           label="Email"
+          placeholder="Email"
           type="email"
           value={email}
           onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -128,6 +131,7 @@ const Register = () => {
         {passwordError.length > 0 && <p>{passwordError}</p>}
         <InputTextField
           label="Password"
+          placeholder="Password"
           type="password"
           value={password}
           onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
@@ -140,6 +144,7 @@ const Register = () => {
         {confirmPassword.length > 0 && <p>{confirmPasswordError}</p>}
         <InputTextField
           label="Confirm Password"
+          placeholder="Confirm Password"
           type="password"
           value={confirmPassword}
           onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>

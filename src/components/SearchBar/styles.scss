@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 1;
   display: flex;
-  margin: 0;
+  margin-top: 2%;
   padding: 0% 2%;
   height: 10%;
   width: 80%;
@@ -80,6 +80,7 @@
     margin-top: 5%;
     gap: 3%;
     width: 90%;
+    height: 90px;
 
     &__button-container {
       height: 50%;

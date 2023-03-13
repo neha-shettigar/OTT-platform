@@ -3,7 +3,7 @@
   display: flex;
   gap: 5%;
   padding: 2%;
-  margin-top: 5%;
+  margin-top: 7%;
 
   // movie poster
   &__poster {
@@ -36,6 +36,14 @@
     }
     span {
       display: flex;
+      background-color: white;
+      color:  #10141e;
+    }
+    .span1{
+      border:none;
+      background-color: transparent;
+      color: white;
+      
     }
     h5 {
       font-weight: 500;
@@ -46,6 +54,10 @@
     p {
       font-size: 18px;
       line-height: normal;
+      margin: 0;
+    }
+    h6{
+      font-family: 200;
       margin: 0;
     }
   }
