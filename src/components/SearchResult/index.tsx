@@ -46,7 +46,9 @@ const SearchResult = ({ results }: SearchResultProps) => {
           ))}
         </section>
       ) : (
-        <p>No results found</p>
+        <div className="searchResult-container__section__no-results">
+          <p>No results found</p>
+        </div>
       )}
     </section>
   );

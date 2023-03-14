@@ -58,10 +58,10 @@ const HomePage = () => {
       return newMovies;
     });
   };
-
+  // when click on search button
   const handleSearch = (results: any) => {
     setSearchResults(results);
-    setFlag(true);
+    setFlag(!flag);
   };
 
   const handlePageChange = (page: number, button: any) => {

@@ -12,16 +12,23 @@
   font-weight: 400;
   font-size: 40px;
   line-height: 60px;
-  min-height: 100%;
+  // min-height: 100%;
 
   &__section {
     display: flex;
     flex-wrap: wrap;
+
+    // &__no-results{
+    //   background-image: url('../assets/no-results.svg');
+    //   background-repeat: no-repeat;
+    //   background-size: cover;
+    // }
   }
 }
 
 @media (max-width: 420px) {
   .searchResult-container {
+    margin-top: 15%;
     &__section {
       justify-content: space-between;
       margin-top: 15%;

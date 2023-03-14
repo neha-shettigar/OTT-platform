@@ -27,12 +27,15 @@ export const InputTextField = ({
 }: InputFieldInterface) => {
   return (
     <div className="input-container">
-      <label
-        htmlFor="input-container__input"
-        className="input-container__label"
-      >
-        {label}
-      </label>
+      <section className="input-container__section">
+        <label
+          htmlFor="input-container__input"
+          className="input-container__label"
+        >
+          {label}
+        </label>
+        {error != null ? <p>{error}</p> : null}
+      </section>
       <form className="input-container__form">
         <input
           type={type}

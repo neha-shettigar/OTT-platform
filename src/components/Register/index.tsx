@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
 import { InputTextField } from '../InputTextField';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '../Button';
@@ -26,7 +26,7 @@ const Register = () => {
     if (username.trim() === '') {
       setUsernameError('Please enter a username');
     } else if (username.length < 4) {
-      setUsernameError('Username must be at least 4 characters long');
+      setUsernameError('Name at least 4 characters long');
     } else {
       setUsernameError('');
     }
@@ -46,7 +46,7 @@ const Register = () => {
     if (password.trim() === '') {
       setPasswordError('Please enter a password');
     } else if (password.length < 8) {
-      setPasswordError('Password must be at least 8 characters long');
+      setPasswordError('Password at least 8 characters long');
     } else {
       setPasswordError('');
     }
@@ -68,32 +68,37 @@ const Register = () => {
     validatePassword();
     validateConfirmPassword();
 
-    if (
-      usernameError === '' &&
-      emailError === '' &&
-      passwordError === '' &&
-      confirmPasswordError === ''
-    ) {
-      axios
-        .post(
-          'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
-          { username, email, password },
-        )
-        .then((response) => {
-          const newUser = response.data;
-          dispatch(registerSuccess(newUser));
-          localStorage.setItem('currentUser', JSON.stringify(newUser));
-          localStorage.setItem('users', JSON.stringify([...users, newUser]));
-          navigate('/');
-          alert('Register Successful');
-        })
-        .catch(() => {
-          setErrorMessage('Email already exists');
-          dispatch(registerFail(setErrorMessage));
-        });
-    } else {
-      alert('Please fix the errors in the form');
-    }
+    // if (
+    //   usernameError === '' &&
+    //   emailError === '' &&
+    //   passwordError === '' &&
+    //   confirmPasswordError === ''
+    // ) {
+    fetch(
+      'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, email, password }),
+      },
+    )
+      .then(async (response) => await response.json())
+      .then((newUser) => {
+        dispatch(registerSuccess(newUser));
+        localStorage.setItem('currentUser', JSON.stringify(newUser));
+        localStorage.setItem('users', JSON.stringify([...users, newUser]));
+        navigate('/');
+        // alert('Register Successful');
+      })
+      .catch(() => {
+        setErrorMessage('Email already exists');
+        dispatch(registerFail(setErrorMessage));
+      });
+    // } else {
+    //   alert('Please fix the errors in the form');
+    // }
   };
 
   return (
@@ -103,7 +108,7 @@ const Register = () => {
       </div>
       <div className="register-container__register">
         <div className="register-container__register__header">Register</div>
-        {usernameError.length > 0 && <p>{usernameError}</p>}
+
         <InputTextField
           label="Full Name"
           placeholder="Full Name"
@@ -115,7 +120,7 @@ const Register = () => {
           onBlur={validateUsername}
           error={usernameError}
         />
-        {emailError.length > 0 && <p>{emailError}</p>}
+
         <InputTextField
           label="Email"
           placeholder="Email"
@@ -128,7 +133,7 @@ const Register = () => {
           onBlur={validateEmail}
           error={emailError}
         />
-        {passwordError.length > 0 && <p>{passwordError}</p>}
+
         <InputTextField
           label="Password"
           placeholder="Password"
@@ -141,7 +146,7 @@ const Register = () => {
           onBlur={validatePassword}
           error={passwordError}
         />
-        {confirmPassword.length > 0 && <p>{confirmPasswordError}</p>}
+
         <InputTextField
           label="Confirm Password"
           placeholder="Confirm Password"
