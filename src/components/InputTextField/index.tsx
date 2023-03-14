@@ -13,12 +13,22 @@ interface InputFieldInterface {
   onChangeValue?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
+/**
+ * this component contains ustomizable input fields.
+ * @param label of the input field
+ * @param value of the field
+ * @param placeholder for the field
+ * @param className of the field
+ * @param type of the input
+ * @param error message to be displayed
+ * @param onChangeValue handle function for the input field
+ * @param onBlur
+ * @returns a form field with a label and an input element
+ */
 export const InputTextField = ({
   label,
-
   error,
   value,
-  disabled,
   placeholder,
   className,
   type,
@@ -28,12 +38,14 @@ export const InputTextField = ({
   return (
     <div className="input-container">
       <section className="input-container__section">
+        {/* label of the input field */}
         <label
           htmlFor="input-container__input"
           className="input-container__label"
         >
           {label}
         </label>
+        {/* error message */}
         {error != null ? <p>{error}</p> : null}
       </section>
       <form className="input-container__form">

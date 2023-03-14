@@ -5,10 +5,12 @@
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
-  line-height: 36px;
+  font-size: 1.5rem;
+  line-height: 2.25rem;
   gap: 2%;
 }
+
+// card container
 .carousel-movieCard {
   display: flex;
   width: 100%;
@@ -47,11 +49,10 @@
     // z-index: 1;
     background-color: transparent;
     border: none;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     margin-left: 260px;
     margin-top: 4%;
   }
-
 
   // movie details
   p,
@@ -63,36 +64,40 @@
   }
   p {
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     letter-spacing: 0.06em;
-    word-spacing: 10px;
+    word-spacing: 0.625rem;
   }
   h3 {
     font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 }
 
-@media (min-width: 420px) and (max-width: 768px) {
-  .carousel-movieCard{
+// media query for tab view
+
+@media (min-width: 41.25rem) and (max-width: 768px) {
+  .carousel-movieCard {
     width: 100%;
     height: 80%;
-  
-  p{
-    font-size: 12px;
+
+    p {
+      font-size: 0.75rem;
+    }
+    h3 {
+      font-size: 1.125rem;
+    }
+    &__button {
+      margin: 0;
+    }
   }
-  h3{
-    font-size: 18px;
-  }
-  &__button{
-    margin: 0;
-  }
-}
 }
 
-@media (max-width: 420px) {
+// media query for mobile view
+
+@media (max-width: 41.25rem) {
   .carousel-movieCard {
     width: 100%;
     height: 65%;
@@ -109,7 +114,7 @@
       width: 50%;
     }
     h3 {
-      line-height: 24px;
+      line-height: 1.5rem;
     }
   }
 }

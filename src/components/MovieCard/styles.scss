@@ -40,7 +40,7 @@
     // z-index: 1;
     background-color: transparent;
     border: none;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     margin-left: 260px;
     margin-top: 1%;
   }
@@ -55,19 +55,19 @@
   }
   p {
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     letter-spacing: 0.06em;
-    word-spacing: 20px;
+    word-spacing: 1.25rem;
   }
   h3 {
     font-weight: 500;
-    font-size: 24px;
-    line-height: 36px;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 41.25rem) {
   .movieCard-container,
   .moviesByGenre-container__card,
   .seriesByGenre-container__card,
@@ -95,7 +95,7 @@
   }
 }
 
-@media (min-width: 420px) and (max-width: 768px) {
+@media (min-width: 41.25rem) and (max-width: 768px) {
   .movieCard-container,
   .moviesByGenre-container__card,
   .seriesByGenre-container__card,

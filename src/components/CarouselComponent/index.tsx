@@ -1,14 +1,24 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState, useEffect } from 'react';
+// import components
 import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import MovieCard from '../MovieCard';
 import { moviesApi } from '../../utils';
 
+import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './styles.scss';
 
 const BOOKMARKS_KEY = 'bookmarks';
 
+/**
+ * This is a React functional component that renders a carousel of movie cards fetched from an external API.
+ * There are also two useEffect() hooks used in the component.
+ * The first hook runs only once, when the component mounts,
+ * and it retrieves the bookmarked movies from the localStorage and sets the bookmarks state accordingly.
+ * The second hook also runs only once when the component mounts,
+ * and it fetches the trending movies of the week from the API and sets the movies state to the results.
+ * @returns carousel for the trending movies
+ */
 const CarouselComponent = () => {
   const [movies, setMovies]: any = useState([]);
   const [bookmarks, setBookmarks] = useState<number[]>([]);
@@ -31,6 +41,12 @@ const CarouselComponent = () => {
       });
   }, []);
 
+  /**
+   *  This function toggles the isBookmarked property of the clicked movie in the movies state
+   * and updates the bookmarks state by extracting the id values of all bookmarked movies from the movies state.
+   * The bookmarks state is then saved to the localStorage.
+   * @param id
+   */
   const handleBookmark = (id: number) => {
     setMovies((prevMovies: any) => {
       const newMovies = prevMovies.map((movie: any) => {
@@ -53,13 +69,14 @@ const CarouselComponent = () => {
   }, [bookmarks]);
 
   return (
+    // carousel component from an external library
     <Carousel>
+      {/* maps through the movies state to render a MovieCard component for each
+      movie */}
       {movies.map((movie: any, index: number) => {
-        // const isBookmarked = bookmarks.includes(movie.id);
         return (
           <MovieCard
             key={movie.id}
-            // release_date={movie.first_air_date.substring(0, 4)}
             {...movie}
             className="carousel-movieCard"
             poster_path={movie.poster_path}

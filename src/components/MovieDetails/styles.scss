@@ -37,33 +37,32 @@
     span {
       display: flex;
       background-color: white;
-      color:  #10141e;
+      color: #10141e;
     }
-    .span1{
-      border:none;
+    .span1 {
+      border: none;
       background-color: transparent;
       color: white;
-      
     }
     h5 {
       font-weight: 500;
-      font-size: 48px;
+      font-size: 3rem;
       line-height: 72px;
       margin: 0;
     }
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
       line-height: normal;
       margin: 0;
     }
-    h6{
+    h6 {
       font-family: 200;
       margin: 0;
     }
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 41.25rem) {
   .movieDetails-container {
     display: flex;
     gap: 5%;
@@ -71,44 +70,44 @@
     padding: 2%;
     flex-direction: column;
 
-    &__poster{
-      width:300px;
+    &__poster {
+      width: 300px;
       // height: 80%;
       margin: auto;
     }
-    
-    &__details{
-      width: 100%;
-      h2{
-        font-size: 30px;
 
+    &__details {
+      width: 100%;
+      h2 {
+        font-size: 30px;
       }
-      p,span{
-        font-size:12px;
+      p,
+      span {
+        font-size: 0.75rem;
         line-height: 30px;
       }
-      span{
+      span {
         padding: 2% 4%;
       }
     }
-}
+  }
 }
 
-@media (min-width: 420px) and (max-width: 768px){
-  .movieDetails-container{
+@media (min-width: 41.25rem) and (max-width: 768px) {
+  .movieDetails-container {
     margin-top: 15%;
 
-    &__details{
+    &__details {
       width: 100%;
-      h2{
+      h2 {
         font-size: 30px;
-
       }
-      p,span{
-        font-size:12px;
+      p,
+      span {
+        font-size: 0.75rem;
         line-height: 30px;
       }
-      span{
+      span {
         padding: 2% 4%;
       }
     }

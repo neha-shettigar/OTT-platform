@@ -4,11 +4,14 @@ import { Button } from '../Button';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { signInSuccess, signInFail } from '../../states/auth';
-// import { hashPasswordFunction } from '../Register';
-// import bcrypt from 'bcryptjs';
 
 import './styles.scss';
 
+/**
+ * This is a React functional component that renders a login page.
+ * uses the useState hook to manage the state of username, password, and error.
+ * @returns a header, a sign-in container, and a sign-up container.
+ */
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -16,18 +19,22 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // handle ffunctions update the state of the corresponding input fields when the user types in them.
   const onChangeUsername = (e: React.ChangeEvent<HTMLInputElement>) =>
     setUsername(e.target.value);
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) =>
     setPassword(e.target.value);
 
   const onClickSignUp = () => navigate('/register');
-  // const hashPassword = hashPasswordFunction(password);
+
   const data = {
     username,
     password,
   };
 
+  /**
+   * sends a POST request to the API endpoint '/api/auth/local' with the user's entered credentials
+   */
   const onClickSignIn = () => {
     setError('');
 
@@ -41,26 +48,21 @@ const Login = () => {
         password: data.password,
       }),
     })
+      //   if the response is successful, dispatches the signInSuccess action with the user's data,
+      // sets the user data in local storage, and navigates to the home page.
       .then(async (response) => {
         if (response.ok) {
-          // const user = await response.json();
-          // const storedPassword = user.password;
-          // const validPassword = await bcrypt.compare(
-          //   data.password,
-          //   storedPassword,
-          // );
-
-          // if (validPassword) {
           dispatch(signInSuccess(data));
           localStorage.setItem('userdata', JSON.stringify(data));
           navigate('home');
           console.log('User signed in successfully');
-          // }
         } else {
           dispatch(signInFail('Invalid email or password'));
           setError('Invalid credentials');
         }
       })
+      //     If the response is unsuccessful, dispatches the signInFail action
+      //  and sets an error message to display
       .catch((error) => {
         dispatch(signInFail('Failed to sign in'));
         console.log('Error signing in: ', error);
@@ -70,7 +72,10 @@ const Login = () => {
   return (
     <div className="login-container">
       {/* component header */}
-      <h1>Movie OTT </h1>
+      <section className="login-container__section">
+        <div className="login-container__header"></div>
+        <h1>Movie OTT</h1>
+      </section>
       <main className="login-container__main">
         {/* signIn container */}
         <aside className="login-container__signIn">

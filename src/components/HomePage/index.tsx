@@ -16,7 +16,13 @@ import searchIcon from '../../assets/search-normal.svg';
 
 import './styles.scss';
 
-// HomePage consists of NavBar, SearchBar, Carousel for trending items and movie tray
+/**
+ * This component fetches the popular movies from an API endpoint on mount, using the useEffect hook,
+ *  and displays them using the MovieCard component.
+ * @returns a search bar and a SearchResult component if the user searches for a movie.
+ *  carousel component for trending movies.
+ * pagination buttons that allow the user to navigate through the pages of the popular movies list.
+ */
 const HomePage = () => {
   const [movies, setMovies] = React.useState([]);
   const [searchResults, setSearchResults] = React.useState([]);
@@ -26,13 +32,15 @@ const HomePage = () => {
   const [selectedButton, setSelectedButton] = React.useState('');
 
   const loadMovies = (page: number) => {
-    moviesApi
-      .get(`/movie/popular?&language=en-US&page=${page}&adult=false`)
+    moviesApi // The axios instance created for making API requests
+      .get(`/movie/popular?&language=en-US&page=${page}&adult=false`) // Send a GET request to the specified endpoint with the specified parameters
       .then((result) => {
-        setMovies(result.data.results);
-        setTotalPages(result.data.total_pages);
+        // If the request is successful, update the state with the response data
+        setMovies(result.data.results); // Update the movies state with the list of movie results
+        setTotalPages(result.data.total_pages); // Update the totalPages state with the total number of pages returned by the API
       })
       .catch((error) => {
+        // If the request fails, log the error to the console
         console.error('Error fetching movie data:', error);
       });
   };
@@ -42,6 +50,10 @@ const HomePage = () => {
     loadMovies(currentPage);
   }, [currentPage, loadMovies]);
 
+  /**
+   * toggles the isBookmarked property of the movie in the state and saves the bookmarks to the local storage.
+   * @param id
+   */
   const handleBookmark = (id: number) => {
     setMovies((prevMovies: any) => {
       const newMovies = prevMovies.map((movie: any) => {
@@ -60,10 +72,15 @@ const HomePage = () => {
   };
 
   const handleSearch = (results: any) => {
-    setSearchResults(results);
-    setFlag(!flag);
+    setSearchResults(results); // Update searchResults state with the new results value
+    setFlag(!flag); // Toggle the flag state by negating its current value
   };
 
+  /**
+   *  when a button is clicked,this function updates the current page state variable and the selected button state variable.
+   * @param page number
+   * @param button for representing page number
+   */
   const handlePageChange = (page: number, button: any) => {
     setSelectedButton(button);
     setCurrentPage(page);
@@ -102,7 +119,6 @@ const HomePage = () => {
                 <MovieCard
                   key={movie.id}
                   {...movie}
-                  id={movie.id}
                   className="movieCard-container"
                   poster_path={movie.poster_path}
                   media_type={movie.media_type}
@@ -113,11 +129,12 @@ const HomePage = () => {
                 />
               ))}
             </section>
-            {totalPages > 1 && (
+            {totalPages > 1 && ( // If there is more than one page of results, render the pagination component
               <div className="homePage-container__main__pagination">
                 {[...Array(Math.min(totalPages, 5))].map((_, i) => {
-                  const pageNumber = i + 1;
-                  const isCurrentPage = pageNumber === currentPage;
+                  // Render up to 5 pagination buttons, or the total number of pages, whichever is smaller
+                  const pageNumber = i + 1; // Calculate the page number for the button
+                  const isCurrentPage = pageNumber === currentPage; // Determine if the button represents the current page
                   return (
                     <button
                       value="page"
@@ -126,9 +143,10 @@ const HomePage = () => {
                       className={`homePage-container__main__pagination__button ${
                         isCurrentPage ? 'active' : ''
                       }`}
-                      onClick={() => handlePageChange(pageNumber, 'page')}
+                      onClick={() => handlePageChange(pageNumber, 'page')} // Call the handlePageChange function when the button is clicked
                     >
                       {pageNumber}
+                      {/* Display the page number on the button */}
                     </button>
                   );
                 })}

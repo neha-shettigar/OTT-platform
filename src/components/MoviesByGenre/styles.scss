@@ -9,15 +9,15 @@
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 41.25rem) {
   .moviesByGenre-container {
     margin: 0;
     &__section {
       margin-top: 20%;
     }
 
-    &__card{
-      margin-left:2% ;
+    &__card {
+      margin-left: 2%;
     }
   }
 }

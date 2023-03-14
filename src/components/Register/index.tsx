@@ -99,7 +99,8 @@ const Register = () => {
 
   return (
     <main className="register-container">
-      <section className="register-container__header">
+      <section className="register-container__section">
+        <div className="register-container__header"></div>
         <h1>Movie OTT</h1>
       </section>
       <section className="register-container__register">
