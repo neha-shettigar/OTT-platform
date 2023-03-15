@@ -23,21 +23,15 @@ const Register = () => {
   const users = JSON.parse(localStorage.getItem('users') ?? '[]');
 
   const validateUsername = () => {
-    if (username.trim() === '') {
-      setUsernameError('Please enter a username');
-    } else if (username.length < 4) {
+    if (username.length < 3) {
       setUsernameError('Name at least 4 characters long');
     } else {
       setUsernameError('');
     }
   };
-
   const validateEmail = () => {
+    // trim() Removes the leading and trailing white space and line terminator characters from a string.
     if (email.trim() === '') {
-      setEmailError('Please enter an email address');
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      setEmailError('Please enter a valid email address');
-    } else {
       setEmailError('');
     }
   };
@@ -53,9 +47,7 @@ const Register = () => {
   };
 
   const validateConfirmPassword = () => {
-    if (confirmPassword.trim() === '') {
-      setConfirmPasswordError('Please confirm your password');
-    } else if (confirmPassword !== password) {
+    if (confirmPassword !== password) {
       setConfirmPasswordError('Passwords do not match');
     } else {
       setConfirmPasswordError('');
@@ -64,16 +56,9 @@ const Register = () => {
 
   const handleRegister = () => {
     validateUsername();
-    validateEmail();
     validatePassword();
     validateConfirmPassword();
 
-    // if (
-    //   usernameError === '' &&
-    //   emailError === '' &&
-    //   passwordError === '' &&
-    //   confirmPasswordError === ''
-    // ) {
     fetch(
       'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
       {
@@ -84,28 +69,43 @@ const Register = () => {
         body: JSON.stringify({ username, email, password }),
       },
     )
-      .then(async (response) => await response.json())
+      .then(async (response) => {
+        await response.json();
+        console.log(response);
+        if (response.status === 200) {
+          navigate('/');
+          alert('Register Successful');
+          localStorage.setItem('users', JSON.stringify([...users, response]));
+        } else {
+          setEmailError('Email is invalid or already exists');
+        }
+      })
+
       .then((newUser) => {
         dispatch(registerSuccess(newUser));
-        localStorage.setItem('currentUser', JSON.stringify(newUser));
-        localStorage.setItem('users', JSON.stringify([...users, newUser]));
-        navigate('/');
-        // alert('Register Successful');
+
+        console.log(newUser);
+
+        // if (newUser.error.status !== 400) {
+        //   navigate('/');
+        //   alert('Register Successful');
+        // }
       })
-      .catch(() => {
-        setErrorMessage('Email already exists');
+      .catch((error) => {
+        console.log(error);
+
+        setErrorMessage('Failed to register');
         dispatch(registerFail(setErrorMessage));
+        setEmailError(error);
       });
-    // } else {
-    //   alert('Please fix the errors in the form');
-    // }
   };
 
   return (
     <div className="register-container">
-      <div className="register-container__header">
+      <section className="register-container__section">
+        <div className="register-container__header"></div>
         <h1>Movie OTT</h1>
-      </div>
+      </section>
       <div className="register-container__register">
         <div className="register-container__register__header">Register</div>
 
@@ -113,11 +113,12 @@ const Register = () => {
           label="Full Name"
           placeholder="Full Name"
           value={username}
-          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setUsername(e.target.value)
-          }
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setUsername(e.target.value);
+            validateUsername();
+          }}
           className="register-container__register__input"
-          onBlur={validateUsername}
+          onBlur={() => validateUsername()}
           error={usernameError}
         />
 
@@ -126,11 +127,12 @@ const Register = () => {
           placeholder="Email"
           type="email"
           value={email}
-          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setEmail(e.target.value)
-          }
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setEmail(e.target.value);
+            validateEmail();
+          }}
           className="register-container__register__input"
-          onBlur={validateEmail}
+          // onBlur={validateEmail}
           error={emailError}
         />
 
@@ -139,9 +141,10 @@ const Register = () => {
           placeholder="Password"
           type="password"
           value={password}
-          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setPassword(e.target.value)
-          }
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setPassword(e.target.value);
+            validatePassword();
+          }}
           className="register-container__register__input"
           onBlur={validatePassword}
           error={passwordError}
@@ -152,9 +155,9 @@ const Register = () => {
           placeholder="Confirm Password"
           type="password"
           value={confirmPassword}
-          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setConfirmPassword(e.target.value)
-          }
+          onChangeValue={(e: React.ChangeEvent<HTMLInputElement>) => {
+            setConfirmPassword(e.target.value);
+          }}
           className="register-container__register__input"
           onBlur={validateConfirmPassword}
           error={confirmPasswordError}
@@ -163,6 +166,13 @@ const Register = () => {
         <Button
           label="Register"
           className="register-container__register__button"
+          // disabled={email ==='' && username==='' && password==='' && confirmPassword === ''}
+          disabled={
+            email === '' ||
+            username === '' ||
+            password === '' ||
+            confirmPassword === ''
+          }
           onClickButton={handleRegister}
         />
       </div>

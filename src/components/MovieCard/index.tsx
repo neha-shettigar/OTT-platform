@@ -11,8 +11,10 @@ interface MovieCardInterface {
   poster_path?: string;
   media_type?: string;
   title?: string;
+  name?: string;
   className: string;
   release_date: string;
+  first_air_date?: string;
   isBookmarked: boolean;
   isInCarousel?: boolean;
   onBookmark: () => void;
@@ -27,10 +29,12 @@ const MovieCard = ({
   poster_path,
   media_type,
   title,
+  name,
   className,
   isBookmarked,
   isInCarousel,
   release_date,
+  first_air_date,
   onBookmark,
 }: MovieCardInterface) => {
   const [activeButton, setActiveButton] = useState<string>(''); // state variable to keep track of the active button
@@ -64,7 +68,7 @@ const MovieCard = ({
         <p>
           {release_date} {media_type}
         </p>
-        <h3>{title}</h3>
+        {title != null ? <h3>{title}</h3> : <h3>{name}</h3>}
       </section>
     </main>
   );

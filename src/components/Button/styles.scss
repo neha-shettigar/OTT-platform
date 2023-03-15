@@ -28,9 +28,10 @@ code {
     border: none;
     align-items: center;
   }
+ 
 }
 
-@media (max-width: 420px) {
+@media (max-width: 41.25rem) {
   .button-container {
     display: flex;
     height: 30%;
@@ -40,7 +41,7 @@ code {
       display: flex;
       height: 50%;
       padding: 0;
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 }

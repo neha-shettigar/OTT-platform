@@ -37,9 +37,12 @@ const SearchResult = ({ results }: SearchResultProps) => {
             <MovieCard
               key={result.id}
               {...result}
+              release_date={result.release_date}
+              first_air_date={result.first_air_date}
               className="movieResult-container"
               poster_path={result.poster_path}
               title={result.title}
+              name={result.name}
               isBookmarked={result.isBookmarked}
               onBookmarkClick={() => handleBookmark(result.id)}
             />

@@ -26,6 +26,7 @@ const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
         onSearch?.(result.data.results);
         // navigate(`/searchResult?q=${query}`);
         console.log(result.data.results);
+        console.log(result.data.results.release_date);
       })
       .catch((error) => {
         console.log(error);

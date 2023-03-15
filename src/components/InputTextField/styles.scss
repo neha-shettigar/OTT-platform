@@ -12,18 +12,18 @@
     align-items: center;
     justify-content: space-between;
 
-    p{
-    font-size: 10px;
+    p {
+      font-size: 0.625rem;
     }
   }
   // padding-top: 40px;
   &__label {
     font-style: normal;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 1rem;
+    line-height: 1.5rem;
     color: white;
-    padding-bottom: 10px;
+    padding-bottom: 0.625rem;
     margin: 0;
     text-align: left;
   }
@@ -44,15 +44,15 @@
 
     font-style: normal;
     font-weight: 400;
-    font-size: 14px;
+    font-size: 0.875rem;
     line-height: 21px;
     color: rgba(255, 255, 255, 0.4);
-    padding: 10px 16px;
+    padding: 0.625rem 1rem;
     border: none;
   }
 }
 
-@media (max-width: 420px) {
+@media (max-width: 41.25rem) {
   .input-container {
     display: flex;
     height: 50%;
@@ -62,7 +62,7 @@
 
     &__label {
       padding: 0;
-      font-size: 12px;
+      font-size: 0.75rem;
     }
     &__form {
       display: flex;
@@ -74,7 +74,7 @@
     }
 
     &__button {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 }

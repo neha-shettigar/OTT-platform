@@ -26,11 +26,31 @@ body {
     url('../assets/Netflix-Background.jpg');
 
   // component header
-  h1 {
-    line-height: 54px;
+   // h1 that displays 'OTT Platform'
+  &__section {
+    width: 30%;
     height: 10%;
-    color: red;
     margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__header {
+    position: relative;
+    background-color: #000000;
+    filter: blur(25px);
+    width: 100%;
+    height: 100%;
+    margin: 0;
+
+    z-index: 1;
+  }
+  h1 {
+    color: #bb261a;
+    margin: 0;
+    z-index: 2;
+    font-size: 2em;
+    position: absolute;
   }
 
   // signIn and signUp container
@@ -44,7 +64,7 @@ body {
   &__signIn {
     display: flex;
     background: #000000;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     padding: 6% 5% 7%;
     margin: 0;
     align-items: center;
@@ -57,12 +77,13 @@ body {
     &__error {
       margin: 0;
       color: red;
-      font-size: 16px;
+      font-size: 0.75rem;
+      font-weight: 200;
     }
 
     &__header {
-      font-size: 24px;
-      line-height: 36px;
+      font-size: 1.5rem;
+      line-height: 2.25rem;
       color: #ffffff;
       text-align: center;
       height: 10%;
@@ -79,7 +100,7 @@ body {
 
       font-style: normal;
       font-weight: 400;
-      font-size: 14px;
+      font-size: 0.875rem;
       line-height: 21px;
       color: rgba(255, 255, 255, 0.4);
       background: #333333;
@@ -95,13 +116,18 @@ body {
       font-family: 'Poppins';
       font-style: normal;
       font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 1rem;
+      line-height: 1.5rem;
       text-align: center;
       color: #ffffff;
       padding: 3% 18%;
       border: none;
       margin-top: 16%;
+    }
+
+    &__button:disabled{
+      background-color: #AFB2B9;
+      color:black;
     }
   }
 
@@ -109,7 +135,7 @@ body {
   &__signUp {
     display: flex;
     background: #1d253a;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     // padding: 9% 9% 9% 9%;
     padding: 4% 5% 7%;
     align-items: center;
@@ -121,7 +147,7 @@ body {
     background-position: 50% 40%;
     justify-content: space-between;
     margin: 0;
-    background-size: 40%;
+    background-size: 30%;
 
     &__text {
       margin: 0;
@@ -137,6 +163,7 @@ body {
       color: #ffffff;
       padding-bottom: 10%;
       text-align: center;
+      font-weight: 200;
     }
 
     span {
@@ -156,8 +183,8 @@ body {
 
       font-style: normal;
       font-weight: 500;
-      font-size: 16px;
-      line-height: 24px;
+      font-size: 1rem;
+      line-height: 1.5rem;
       text-align: center;
       color: #1d253a;
       padding: 3% 18%;
@@ -167,7 +194,7 @@ body {
 }
 
 // media query for mobile view
-@media (max-width: 420px) {
+@media (max-width: 41.25rem) {
   // wrapper
   .login-container {
     display: flex;
@@ -203,25 +230,24 @@ body {
       padding-bottom: 15%;
 
       &__input {
-        font-size: 12px;
+        font-size: 0.75rem;
       }
 
       &__button {
-        font-size: 12px;
+        font-size: 0.75rem;
         margin: 0;
       }
 
       &__header {
-        font-size: 16px;
+        font-size: 1rem;
         height: 20%;
         padding-bottom: 5%;
-         font-weight:200;
+        font-weight: 200;
       }
-      &__error{
-        font-size: 12px;
+      &__error {
+        font-size: 0.75rem;
         color: red;
         font-weight: 200;
-        
       }
     }
 
@@ -233,32 +259,32 @@ body {
       // height: 80%;
 
       h2 {
-        font-size: 16px;
+        font-size: 1rem;
         height: 80%;
-         font-weight:200;
+        font-weight: 200;
       }
 
       p {
-        font-weight:200;
-        font-size: 12px;
+        font-weight: 200;
+        font-size: 0.75rem;
         padding-top: 45%;
       }
-    &__button{
-      font-size: 12px;
-    }
+      &__button {
+        font-size: 0.75rem;
+      }
     }
   }
 }
 
-@media (min-width: 420px) and (max-width: 768px) {
+@media (min-width: 41.25rem) and (max-width: 768px) {
   // wrapper
   .login-container {
     display: flex;
     padding: 5% 15%;
     justify-content: space-evenly;
-    height: 100%;
+    min-height: 1000px;
     h1 {
-      height: 5%;
+      height: 1.5rem;
     }
     // signIn signUp container
     &__main {
@@ -273,7 +299,7 @@ body {
     &__signIn {
       display: flex;
       padding: 10% 8%;
-      height: 500px;
+      height: 400px;
       width: 90%;
       margin: auto;
     }
@@ -283,18 +309,18 @@ body {
       display: flex;
       background-size: 25%;
       padding: 6%;
-      height: 500px;
+      height: 400px;
       width: 90%;
       margin: auto;
 
       h2 {
-        font-size: 20px;
+        font-size: 1.25rem;
         height: 85%;
         margin: 0;
       }
 
       p {
-        font-size: 16px;
+        font-size: 1rem;
         padding-top: 60%;
       }
     }
