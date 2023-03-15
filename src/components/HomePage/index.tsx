@@ -31,6 +31,7 @@ const HomePage = () => {
       .then((result) => {
         setMovies(result.data.results);
         setTotalPages(result.data.total_pages);
+        console.log(result.data.results);
       })
       .catch((error) => {
         console.error('Error fetching movie data:', error);

@@ -43,21 +43,12 @@ const Login = () => {
     })
       .then(async (response) => {
         if (response.ok) {
-          // const user = await response.json();
-          // const storedPassword = user.password;
-          // const validPassword = await bcrypt.compare(
-          //   data.password,
-          //   storedPassword,
-          // );
-
-          // if (validPassword) {
           dispatch(signInSuccess(data));
           localStorage.setItem('userdata', JSON.stringify(data));
           localStorage.setItem('currentUser', JSON.stringify(data));
           navigate('home');
-          alert('User signed in successfully');
+          // alert('User signed in successfully');
           console.log('User signed in successfully');
-          // }
         } else {
           dispatch(signInFail('Invalid email or password'));
           setError('Invalid credentials');
@@ -87,7 +78,7 @@ const Login = () => {
             value={email}
             className="login-container__signIn__input"
             onChangeValue={onChangeEmail}
-            placeholder="Username"
+            placeholder="Email"
           />
           <InputTextField
             label="Password"
@@ -100,7 +91,6 @@ const Login = () => {
           <Button
             label="Sign In"
             className="login-container__signIn__button"
-            disabled={email === '' || password === ''}
             // eslint-disable-next-line @typescript-eslint/no-misused-promises
             onClickButton={onClickSignIn}
           />

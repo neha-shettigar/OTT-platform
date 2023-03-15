@@ -88,6 +88,7 @@ body {
       text-align: center;
       height: 10%;
       margin: 0;
+      font-weight: 200;
     }
 
     span {
@@ -96,7 +97,7 @@ body {
 
     // signIn input field
     &__input {
-      padding: 2% 10%;
+  padding: 3% 4%;
 
       font-style: normal;
       font-weight: 400;
@@ -174,6 +175,7 @@ body {
       color: red;
       height: 85%;
       text-align: center;
+       font-weight: 200;
     }
 
     // signUp button

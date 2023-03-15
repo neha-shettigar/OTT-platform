@@ -69,6 +69,7 @@ const MoviesByGenre = () => {
                   key={movie.id}
                   {...movie}
                   id={movie.id}
+                  genre="movies"
                   poster_path={movie.poster_path}
                   media_type="movie"
                   title={movie.title}

@@ -30,6 +30,7 @@ const CarouselComponent = () => {
         console.log(error);
       });
   }, []);
+  console.log(movies);
 
   const handleBookmark = (id: number) => {
     setMovies((prevMovies: any) => {

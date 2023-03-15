@@ -10,9 +10,9 @@ import axios from 'axios';
 import searchIcon from '../assets/search-normal.svg';
 import './styles.scss';
 
-const MovieDetails = () => {
-  const { movieId } = useParams<{ movieId: string }>();
-  const [movieDetails, setMovieDetails]: any = useState([]);
+const SeriesDetails = () => {
+  const { seriesId } = useParams<{ seriesId: string }>();
+  const [seriesDetails, setSeriesDetails]: any = useState([]);
   const [searchResults, setSearchResults] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
 
@@ -21,17 +21,18 @@ const MovieDetails = () => {
     async function fetchData() {
       try {
         const response = await axios.get(
-          `https://api.themoviedb.org/3/movie/${movieId}?api_key=13622fc50c5257d370284ea008163f90&language=en-US`,
+          `https://api.themoviedb.org/3/tv/${seriesId}?api_key=13622fc50c5257d370284ea008163f90&language=en-US`,
         );
         // Process the response from the first API call
-        setMovieDetails(response.data);
+        setSeriesDetails(response.data);
       } catch (error: any) {
         console.error(error);
       }
     }
+
     void fetchData();
-  }, [movieId]);
-  console.log(movieDetails);
+  }, [seriesId]);
+  console.log(seriesDetails);
 
   const handleSearch = (results: any) => {
     setSearchResults(results);
@@ -48,19 +49,20 @@ const MovieDetails = () => {
         ) : (
           <section className="movieDetails-container">
             <img
-              src={`https://image.tmdb.org/t/p/original/${movieDetails.poster_path}`}
-              alt={movieDetails.title}
+              src={`https://image.tmdb.org/t/p/original/${seriesDetails.poster_path}`}
+              alt={seriesDetails.title}
               className="movieDetails-container__poster"
             />
             <article className="movieDetails-container__details">
-              <h2>{movieDetails.title}</h2>
-              <h2>{movieDetails.name}</h2>
-              {movieDetails.tagline ? <p>{movieDetails.tagline}</p> : null}
+              <h2>{seriesDetails.title}</h2>
+              <h2>{seriesDetails.name}</h2>
+              {seriesDetails.tagline ? <p>{seriesDetails.tagline}</p> : null}
 
-              <h4>{movieDetails.vote_average}</h4>
+              <h4>{seriesDetails.vote_average}</h4>
               <section className="movieDetails-container__details__para">
                 <p>
-                  Length<span className="span1">{movieDetails.runtime}min</span>
+                  Length
+                  <span className="span1">{seriesDetails.runtime}min</span>
                 </p>
                 <p>
                   Language
@@ -69,10 +71,10 @@ const MovieDetails = () => {
                 </p>
                 <p>
                   Release Date
-                  <span className="span1">{movieDetails.release_date}</span>
+                  <span className="span1">{seriesDetails.release_date}</span>
                 </p>
                 <p>
-                  Status<span className="span1">{movieDetails.status}</span>
+                  Status<span className="span1">{seriesDetails.status}</span>
                 </p>
               </section>
               {/* <p>
@@ -82,15 +84,15 @@ const MovieDetails = () => {
                 <p>
                   Genre
                   <section className="movieDetails-container__details__genre__section">
-                    {Boolean(movieDetails.genres) &&
-                      movieDetails.genres.map((genre: any) => (
+                    {Boolean(seriesDetails.genres) &&
+                      seriesDetails.genres.map((genre: any) => (
                         <span key={genre.id}>{genre.name}</span>
                       ))}
                   </section>
                 </p>
               </article>
               <h6>Synopsis</h6>
-              <p>{movieDetails.overview}</p>
+              <p>{seriesDetails.overview}</p>
             </article>
           </section>
         )}
@@ -99,4 +101,4 @@ const MovieDetails = () => {
   );
 };
 
-export default MovieDetails;
+export default SeriesDetails;

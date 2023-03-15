@@ -46,7 +46,7 @@ const MoviesGenre = () => {
                 className={`moviesGenre-container__link${
                   index % 2 === 0 ? 1 : 2
                 }`}
-                to={`/genre/${genre.id}`}
+                to={`/movies-genre/${genre.id}`}
               >
                 {genre.name}
               </Link>

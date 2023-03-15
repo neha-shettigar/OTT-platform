@@ -13,6 +13,7 @@ interface MovieCardInterface {
   title?: string;
   name?: string;
   className: string;
+  genre?: string;
   release_date: string;
   first_air_date?: string;
   isBookmarked: boolean;
@@ -31,6 +32,7 @@ const MovieCard = ({
   title,
   name,
   className,
+  genre,
   isBookmarked,
   isInCarousel,
   release_date,
@@ -47,7 +49,7 @@ const MovieCard = ({
   return (
     <main className={className}>
       <section className={`${className}__section`}>
-        <Link to={`/movieDetails/${id}`} className={`${className}__link`}>
+        <Link to={`/${genre}details/${id}`} className={`${className}__link`}>
           <img
             src={getPosterURL(poster_path)}
             className={`${className}__poster`}

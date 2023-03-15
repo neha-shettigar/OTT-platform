@@ -7,14 +7,8 @@ import BookMarks from './components/BookMarks';
 import ErrorPage from './components/ErrorPage';
 import MovieDetails from './components/MovieDetails';
 import MoviesByGenre from './components/MoviesByGenre';
-
-// import Login from './components/Login';
-
-// import SearchResult from './components/SearchResult';
-
-// import MovieDetails from './components/MovieDetails';
-// import ErrorPage from './components/ErrorPage';
-// import MoviesGenre from "./components/MoviesGenre";
+import SeriesByGenre from './components/SeriesByGenre';
+import SeriesDetails from './components/SeriesDetails';
 
 function App() {
   const MoviesGenre = React.lazy(
@@ -90,9 +84,14 @@ function App() {
               element={<SearchResult results={[]} />}
             />
 
-            <Route path="/movieDetails/:movieId" element={<MovieDetails />} />
+            <Route path="/moviesdetails/:movieId" element={<MovieDetails />} />
+            <Route
+              path="/seriesdetails/:seriesId"
+              element={<SeriesDetails />}
+            />
             <Route path="/bookmarks" element={<BookMarks />} />
-            <Route path="/genre/:genreId" element={<MoviesByGenre />} />
+            <Route path="/movies-genre/:genreId" element={<MoviesByGenre />} />
+            <Route path="/series-genre/:genreId" element={<SeriesByGenre />} />
             <Route path="error" element={<ErrorPage />} />
           </Routes>
         </Router>

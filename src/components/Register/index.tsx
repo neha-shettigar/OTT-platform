@@ -74,7 +74,6 @@ const Register = () => {
         console.log(response);
         if (response.status === 200) {
           navigate('/');
-          alert('Register Successful');
           localStorage.setItem('users', JSON.stringify([...users, response]));
         } else {
           setEmailError('Email is invalid or already exists');
@@ -83,13 +82,6 @@ const Register = () => {
 
       .then((newUser) => {
         dispatch(registerSuccess(newUser));
-
-        console.log(newUser);
-
-        // if (newUser.error.status !== 400) {
-        //   navigate('/');
-        //   alert('Register Successful');
-        // }
       })
       .catch((error) => {
         console.log(error);

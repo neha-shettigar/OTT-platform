@@ -48,18 +48,19 @@ const SeriesByGenre = () => {
         ) : (
           <section className="moviesByGenre-container">
             <section className="moviesByGenre-container__section">
-              {series.map((movie: any) => (
+              {series.map((serie: any) => (
                 <MovieCard
-                  key={movie.id}
-                  {...movie}
-                  id={movie.id}
-                  poster_path={movie.poster_path}
-                  media_type="movie"
-                  title={movie.title}
+                  key={serie.id}
+                  {...serie}
+                  id={serie.id}
+                  genre="series"
+                  poster_path={serie.poster_path}
+                  media_type="tv-series"
+                  title={serie.title}
                   className="moviesByGenre-container__card"
-                  release_date={movie.release_date}
-                  isBookmarked={movie.isBookmarked}
-                  onBookmark={() => handleBookmark(movie.id)}
+                  release_date={serie.release_date}
+                  isBookmarked={serie.isBookmarked}
+                  onBookmark={() => handleBookmark(serie.id)}
                 />
               ))}
             </section>
