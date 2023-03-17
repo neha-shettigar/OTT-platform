@@ -34,7 +34,7 @@ code {
 @media (max-width: 41.25rem) {
   .button-container {
     display: flex;
-    height: 30%;
+    height: 24%;
     padding: 0;
 
     &__button {
@@ -43,5 +43,15 @@ code {
       padding: 0;
       font-size: 0.875rem;
     }
+  }
+}
+
+
+@media (min-width: 41.25rem) and (max-width: 768px) {
+  .button-container{
+    display: flex;
+    height: 12%;
+
+
   }
 }

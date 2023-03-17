@@ -1,9 +1,11 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/naming-convention */
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import bookmarkedIcon from '../assets/bookmarkedIcon.svg';
 import unbookmarkedIcon from '../assets/unbookmarkedIcon.svg';
+import dotIcon from '../assets/home-dot.svg';
+import movieIcon from '../assets/home-movie.svg';
 import './styles.scss';
 
 interface MovieCardInterface {
@@ -13,11 +15,12 @@ interface MovieCardInterface {
   title?: string;
   name?: string;
   className: string;
-  genre?: string;
   release_date: string;
+  genre?: string;
+  isBookmarked?: boolean;
+  isActive?: boolean;
+  onActiveStateChange?: (isActive: boolean) => void;
   first_air_date?: string;
-  isBookmarked: boolean;
-  isInCarousel?: boolean;
   onBookmark: () => void;
 }
 
@@ -31,25 +34,32 @@ const MovieCard = ({
   media_type,
   title,
   name,
-  className,
   genre,
-  isBookmarked,
-  isInCarousel,
+  className,
   release_date,
   first_air_date,
   onBookmark,
 }: MovieCardInterface) => {
-  const [activeButton, setActiveButton] = useState<string>(''); // state variable to keep track of the active button
+  const [isBookmarked, setIsBookmarked] = useState<boolean>(() => {
+    // Get the bookmarked state from local storage
+    const storedBookmark = localStorage.getItem(`bookmark_${id}`);
+    return storedBookmark === 'true';
+  });
 
-  const onClickButton = () => {
+  useEffect(() => {
+    // Save the bookmarked state to local storage
+    localStorage.setItem(`bookmark_${id}`, String(isBookmarked));
+  }, [id, isBookmarked]);
+
+  const onClickBookmark = () => {
+    setIsBookmarked(!isBookmarked);
     onBookmark();
-    setActiveButton('bookmarks'); // update the active button state when the "bookmarks" button is clicked
   };
 
   return (
     <main className={className}>
       <section className={`${className}__section`}>
-        <Link to={`/${genre}details/${id}`} className={`${className}__link`}>
+        <Link to={`/${genre}Details/${id}`} className={`${className}__link`}>
           <img
             src={getPosterURL(poster_path)}
             className={`${className}__poster`}
@@ -57,19 +67,21 @@ const MovieCard = ({
           />
         </Link>
         <button
-          className={`${className}__button ${
-            activeButton === 'bookmarks' ? 'active' : ''
-          }`} // add "active" class to the "bookmarks" button when it is active
-          onClick={onClickButton}
+          className={`${className}__button ${isBookmarked ? 'active' : ''}`}
+          onClick={onClickBookmark}
         >
           <img
             className={`${className}__icon`}
             src={isBookmarked ? bookmarkedIcon : unbookmarkedIcon}
+            alt={isBookmarked ? 'Bookmarked' : 'Not bookmarked'}
           />
         </button>
-        <p>
-          {release_date} {media_type}
-        </p>
+        <section className={`${className}__details`}>
+          <p>{release_date}</p>
+          <object data={dotIcon} type="" className="dot-icon"></object>
+          <object data={movieIcon} type="" className="movie-card-icon"></object>
+          <p>{media_type}</p>
+        </section>
         {title != null ? <h3>{title}</h3> : <h3>{name}</h3>}
       </section>
     </main>

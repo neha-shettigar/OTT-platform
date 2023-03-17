@@ -19,7 +19,7 @@
   &__section {
     display: flex;
     margin: 0;
-    height: 65%;
+    height: 71%;
     flex-direction: column;
     text-align: left;
   }
@@ -38,6 +38,7 @@
     margin: 0;
     position: relative;
     border-radius: 5%;
+    margin-bottom: 3%;
   }
 
   // bookmark button
@@ -53,8 +54,13 @@
   }
 
   // movie details
-  &__details{
+ &__details{
     display: flex;
+    height: 10%;
+    gap:3%;
+    .dot-icon,.movie-card-icon{
+     opacity: 0.8;
+    }
   }
   p,
   h3 {
@@ -65,14 +71,15 @@
   }
   p {
     font-weight: 400;
-    font-size: 1rem;
+    font-size: 0.825rem;
     line-height: 1.5rem;
     letter-spacing: 0.06em;
     word-spacing: 0.625rem;
+    opacity: 0.8;
   }
   h3 {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 2.25rem;
   }
 }

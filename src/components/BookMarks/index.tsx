@@ -1,42 +1,36 @@
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import React, { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard';
 import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
 import SearchResult from '../SearchResult';
 import searchIcon from '../assets/search-normal.svg';
 
-import './styles.scss';
-
-interface BookmarkInterface {
-  id: number;
-  poster_path?: string;
-  media_type?: string;
-  title?: string;
-  className: string;
-  release_date: string;
-}
-
 const BookMarks = () => {
+  const [bookmarkedMovies, setBookmarkedMovies]: any = useState([]);
   const [searchResults, setSearchResults] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
-  // const [isInCarousel] = React.useState(true);
-  const [bookmarks, setBookmarks] = useState<BookmarkInterface[]>(() => {
-    // Retrieve bookmarks from localStorage
-    const savedBookmarks = localStorage.getItem('bookmarks');
-    return savedBookmarks != null ? JSON.parse(savedBookmarks) : [];
-  });
 
-  const toggleBookmark = (movie: BookmarkInterface) => {
-    const index = bookmarks.findIndex((b) => b.id === movie.id);
-    if (index >= 0) {
-      setBookmarks((bookmarks) => bookmarks.filter((b) => b.id !== movie.id));
-    } else {
-      setBookmarks((bookmarks) => [...bookmarks, movie]);
-    }
+  useEffect(() => {
+    const bookmarkKeys = Object.keys(localStorage).filter((key: string) =>
+      key.startsWith('bookmark_'),
+    );
+    const movies = bookmarkKeys
+      .map((key: string) => {
+        const movie = localStorage.getItem(key);
+        return movie != null ? JSON.parse(movie) : null;
+      })
+      .filter((movie: any) => movie !== null);
+    setBookmarkedMovies(movies);
+  }, []);
 
-    // Save bookmarks to localStorage
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+  const handleDeleteBookmark = (id: any) => {
+    localStorage.removeItem(`bookmark_${id}`);
+    setBookmarkedMovies((prevState: any[]) =>
+      prevState.filter((movie: { id: any }) => movie.id !== id),
+    );
   };
+
   const handleSearch = (results: any) => {
     setSearchResults(results);
     setFlag(!flag);
@@ -51,23 +45,24 @@ const BookMarks = () => {
           <SearchResult results={searchResults} />
         ) : (
           <section className="bookmarks-container">
-            {bookmarks.map((movie) => (
-              <MovieCard
-                key={movie.id}
-                {...movie}
-                // release_date={movie.release_date.substring(0, 4)}
-                isInCarousel={false} // or true, depending on where it's being rendered
-                // className={
-                //   isInCarousel ? 'carousel-movieCard' : 'movieCard-container'
-                // }
-                className="movieCard-container"
-                poster_path={movie.poster_path}
-                media_type={movie.media_type}
-                title={movie.title}
-                onBookmark={() => toggleBookmark(movie)}
-                isBookmarked={true}
-              />
-            ))}
+            {bookmarkedMovies.map((movie: any) => {
+              const isBookmarked =
+                localStorage.getItem(`bookmark_${movie.id}`) === 'true';
+              return isBookmarked ? (
+                <MovieCard
+                  key={movie.id}
+                  id={movie.id}
+                  className="movieCard-container"
+                  poster_path={movie.poster_path}
+                  media_type={movie.media_type}
+                  title={movie.title}
+                  name={movie.name}
+                  release_date={movie.release_date}
+                  onBookmark={() => handleDeleteBookmark(movie.id)}
+                  isBookmarked={isBookmarked}
+                />
+              ) : null;
+            })}
           </section>
         )}
       </section>

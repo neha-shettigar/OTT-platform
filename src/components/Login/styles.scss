@@ -26,9 +26,9 @@ body {
     url('../assets/Netflix-Background.jpg');
 
   // component header
-   // h1 that displays 'OTT Platform'
+  // h1 that displays 'OTT Platform'
   &__section {
-    width: 30%;
+    width: 40%;
     height: 10%;
     margin: 0;
     display: flex;
@@ -97,7 +97,7 @@ body {
 
     // signIn input field
     &__input {
-  padding: 3% 4%;
+      padding: 3% 4%;
 
       font-style: normal;
       font-weight: 400;
@@ -121,14 +121,14 @@ body {
       line-height: 1.5rem;
       text-align: center;
       color: #ffffff;
-      padding: 3% 18%;
+      padding: 3% 22%;
       border: none;
-      margin-top: 16%;
+      margin-top: 22%;
     }
 
-    &__button:disabled{
-      background-color: #AFB2B9;
-      color:black;
+    &__button:disabled {
+      background-color: #afb2b9;
+      color: black;
     }
   }
 
@@ -138,7 +138,7 @@ body {
     background: #1d253a;
     border-radius: 0.75rem;
     // padding: 9% 9% 9% 9%;
-    padding: 4% 5% 7%;
+    padding: 5% 5% 7%;
     align-items: center;
     flex-direction: column;
     width: 100%;
@@ -148,7 +148,8 @@ body {
     background-position: 50% 40%;
     justify-content: space-between;
     margin: 0;
-    background-size: 30%;
+    background-size: 35%;
+    height: 31.25rem;
 
     &__text {
       margin: 0;
@@ -164,6 +165,7 @@ body {
       color: #ffffff;
       padding-bottom: 10%;
       text-align: center;
+      font-size: 0.825rem;
       font-weight: 200;
     }
 
@@ -175,7 +177,7 @@ body {
       color: red;
       height: 85%;
       text-align: center;
-       font-weight: 200;
+      font-weight: 200;
     }
 
     // signUp button
@@ -189,7 +191,7 @@ body {
       line-height: 1.5rem;
       text-align: center;
       color: #1d253a;
-      padding: 3% 18%;
+      padding: 3% 22%;
       border: none;
     }
   }
@@ -227,23 +229,27 @@ body {
     // signIn container
     &__signIn {
       display: flex;
-      // height: 100%;
       height: 350px;
       padding-bottom: 15%;
+      padding: 9% 2% 5%;
 
       &__input {
         font-size: 0.75rem;
+        padding: 2% 5%;
+        border-radius: 6px;
       }
 
       &__button {
         font-size: 0.75rem;
         margin: 0;
+        padding: 0px 15%;
+        border-radius: 6px;
       }
 
       &__header {
         font-size: 1rem;
         height: 20%;
-        padding-bottom: 5%;
+        // padding-bottom: 5%;
         font-weight: 200;
       }
       &__error {
@@ -258,7 +264,7 @@ body {
       display: flex;
       background-size: 25%;
       padding: 10%;
-      // height: 80%;
+      height: 300px;
 
       h2 {
         font-size: 1rem;
@@ -268,11 +274,15 @@ body {
 
       p {
         font-weight: 200;
-        font-size: 0.75rem;
+        font-size: 0.7rem;
         padding-top: 45%;
       }
       &__button {
         font-size: 0.75rem;
+        padding: 0px 15%;
+        border-radius: 6px;
+        margin-top: 0.35rem;
+        margin-bottom: 0.35rem;
       }
     }
   }
@@ -294,16 +304,21 @@ body {
       width: 100%;
       flex-direction: column;
 
-      gap: 7%;
+      gap: 4%;
     }
 
     // signIn container
     &__signIn {
       display: flex;
-      padding: 10% 8%;
-      height: 400px;
+      padding: 8% 8%;
+      padding-bottom: 0;
+      height: 450px;
       width: 90%;
       margin: auto;
+
+      &__button{
+        margin:0;
+      }
     }
 
     // signUp container
@@ -314,6 +329,7 @@ body {
       height: 400px;
       width: 90%;
       margin: auto;
+      background-size: 30%;
 
       h2 {
         font-size: 1.25rem;
@@ -322,7 +338,7 @@ body {
       }
 
       p {
-        font-size: 1rem;
+        font-size: 0.825rem;
         padding-top: 60%;
       }
     }

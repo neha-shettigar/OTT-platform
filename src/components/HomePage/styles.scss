@@ -17,11 +17,11 @@
   &__main {
     display: flex;
     margin: 0;
-    width: 93%;
+    width: 88%;
     min-height: 100vh;
     flex-direction: column;
     /* padding: 2%; */
-    margin-left: 8%;
+    margin-left: 11%;
 
     h4 {
       font-style: normal;
@@ -30,14 +30,43 @@
       line-height: 60px;
     }
     span {
-      margin-left: 2%;
-      font-size: 0.875rem;
-      padding: 5px 0.625rem;
-      border: 2px solid #F0E6E6;
-      border-radius: 8px;
+      margin-left: 2%; 
+    font-size: 0.875rem;
+    /* padding: 5px 0.625rem; */
+    border: 2px solid #f0e6e6;
+    border-radius: 8px;
+    /* display: flex; */
+    align-items: center;
+    height: 30px;
+    width: 5rem;
+    display: flex;
+    /* padding-left: 12px; */
+    line-height: 26px;
+    justify-content: center;
     }
-    &__header {
-      padding-top: 8%;
+    // &__header {
+    //   padding-top: 8%;
+    // }
+    &__section {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      // span {
+      //   margin-left: 2%;
+      //   font-size: 0.875rem;
+      //   /* padding: 5px 0.625rem; */
+      //   border: 2px solid #f0e6e6;
+      //   border-radius: 8px;
+      //   /* display: flex; */
+      //   /* align-items: flex-start; */
+      //   height: 30px;
+      //   width: 5%;
+      //   padding-left: 12px;
+      //   line-height: 26px;
+      // }
+
+      &__header {
+      }
     }
 
     &__pagination {
@@ -69,7 +98,8 @@
     // movie tray container
     &__popular {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
+
       flex-direction: row;
       flex-wrap: wrap;
     }
@@ -89,6 +119,7 @@
       margin: 0;
       width: 100%;
       flex-direction: column;
+     
 
       h4 {
         font-size: 1.5rem;
@@ -120,6 +151,9 @@
           justify-content: center;
           align-items: center;
         }
+      }
+      &__popular{
+         justify-content: space-between;
       }
     }
   }

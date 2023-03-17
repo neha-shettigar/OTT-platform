@@ -1,7 +1,7 @@
 // main container
 .register-container {
   display: flex;
-  padding: 4% 32% 3%;
+  padding: 4% 30% 3%;
   width: 100%;
   background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(127, 0, 0, 0.45)),
     url('../assets/Netflix-Background.jpg');
@@ -10,11 +10,12 @@
   align-items: center;
   height: 100vh;
   align-items: center;
+  gap: 5%;
 
   // h1 that displays 'OTT Platform'
-  // h1 that displays 'OTT Platform'
+
   &__section {
-    width: 30%;
+    width: 60%;
     height: 10%;
     margin: 0;
     display: flex;
@@ -45,7 +46,7 @@
     width: 100%;
     background: #1d253a;
     border-radius: 0.75rem;
-    padding: 5% 10% 7%;
+    padding: 5% 10% 12%;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -64,6 +65,7 @@
       color: #ffffff;
       text-align: center;
       height: 10%;
+      margin-bottom: 5%;
     }
     // input field component
     &__input {
@@ -81,7 +83,7 @@
 
     // button component
     &__button {
-      padding: 2% 13%;
+      padding: 2% 12%;
       margin-top: 5%;
       background: #bb261a;
       border-radius: 8px;
@@ -104,18 +106,24 @@
 @media (max-width: 420px) {
   .register-container {
     display: flex;
-    padding: 25% 5% 10%;
+    padding: 25% 7% 10%;
     height: 1000px;
+    gap: 4%;
 
+    &__section{
+      height: 6%;
+      width: 70%;
+    }
     &__header {
       margin: 0;
       font-size: 1rem;
+    }
       h1 {
         font-size: 1.5rem;
       }
-    }
+    
     &__register {
-      padding: 5% 0% 7%;
+      padding: 10% 0%;
       // height: 70%;
       height: 500px;
       margin: 0;
@@ -127,12 +135,16 @@
         font-size: 1rem;
       }
       &__input {
-        margin-top: 5%;
+        margin-top: 2%;
         margin-bottom: 5%;
+        padding: 2% 4%;
+        font-size: 0.75rem;
       }
 
       &__button {
-        font-size: 1rem;
+        font-size: 0.8rem;
+        padding: 3% 15%;
+        border-radius: 6px;
       }
     }
   }
@@ -150,7 +162,7 @@
       width: 100%;
       background: #1d253a;
       border-radius: 0.75rem;
-      padding: 5% 10% 7%;
+      padding: 10%;
       min-height: 500px;
       align-items: center;
       display: flex;
@@ -158,10 +170,16 @@
 
       &__input{
         height: 50px;
+       
       }
 
-      &__header {
-        height: 100px;
+      &__header {    
+        margin: 0;
+      }
+
+      &__button{
+        padding: 4% 15%;
+        margin-top: 3%;
       }
     }
   }

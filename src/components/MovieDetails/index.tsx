@@ -53,44 +53,56 @@ const MovieDetails = () => {
               className="movieDetails-container__poster"
             />
             <article className="movieDetails-container__details">
-              <h2>{movieDetails.title}</h2>
-              <h2>{movieDetails.name}</h2>
-              {movieDetails.tagline ? <p>{movieDetails.tagline}</p> : null}
+              {movieDetails.title ? (
+                <h2>{movieDetails.title}</h2>
+              ) : (
+                <h2>{movieDetails.name}</h2>
+              )}
+
+              {movieDetails.tagline ? (
+                <p className="less-opaque">{movieDetails.tagline}</p>
+              ) : null}
 
               <h4>{movieDetails.vote_average}</h4>
               <section className="movieDetails-container__details__para">
-                <p>
+                <p className="less-opaque">
                   Length<span className="span1">{movieDetails.runtime}min</span>
                 </p>
-                <p>
+                <p className="less-opaque">
                   Language
                   {/* <span>{movieDetails.spokenLanguages}</span> */}
                   <span className="span1">English</span>
                 </p>
-                <p>
-                  Release Date
-                  <span className="span1">{movieDetails.release_date}</span>
+                <p className="less-opaque">
+                  Year
+                  <span className="span1">
+                    {typeof movieDetails.release_date === 'string'
+                      ? movieDetails.release_date.substring(0, 4)
+                      : 'N/A'}
+                  </span>
                 </p>
-                <p>
+                <p className="less-opaque">
                   Status<span className="span1">{movieDetails.status}</span>
                 </p>
               </section>
-              {/* <p>
-              Genre<>{movieDetails.genres[0].name}</>
-            </p> */}
+
               <article className="movieDetails-container__details__genre">
                 <p>
                   Genre
                   <section className="movieDetails-container__details__genre__section">
                     {Boolean(movieDetails.genres) &&
                       movieDetails.genres.map((genre: any) => (
-                        <span key={genre.id}>{genre.name}</span>
+                        <span className="span2" key={genre.id}>
+                          {genre.name}
+                        </span>
                       ))}
                   </section>
                 </p>
               </article>
-              <h6>Synopsis</h6>
-              <p>{movieDetails.overview}</p>
+              <article className="movieDetails-container__details__synopsis">
+                <h6>Synopsis</h6>
+                <p className="less-opaque">{movieDetails.overview}</p>
+              </article>
             </article>
           </section>
         )}

@@ -19,7 +19,7 @@ const Navbar = () => {
 
       <div className="navbar-container__section">
         <Link to="/home" className="navbar-container__link">
-          <button className="navbar-container__link__button">
+          <button className="navbar-container__link__button active">
             <img className="navbar-container__img__section" src={dashboard} />
           </button>
         </Link>

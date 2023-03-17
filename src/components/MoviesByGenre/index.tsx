@@ -74,7 +74,7 @@ const MoviesByGenre = () => {
                   media_type="movie"
                   title={movie.title}
                   className="moviesByGenre-container__card"
-                  release_date={movie.release_date}
+                  release_date={movie.release_date.substring(0, 4)}
                   isBookmarked={movie.isBookmarked}
                   onBookmark={() => handleBookmark(movie.id)}
                 />

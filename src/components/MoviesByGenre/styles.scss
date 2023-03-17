@@ -1,19 +1,19 @@
-.moviesByGenre-container {
+.moviesByGenre-container, .seriesByGenre-container{
   display: flex;
   // margin-left: 10%;
 
   &__section {
     display: flex;
     flex-wrap: wrap;
-    margin-top: 8%;
+  
   }
 }
 
 @media (max-width: 41.25rem) {
-  .moviesByGenre-container {
+  .moviesByGenre-container, .seriesByGenre-container {
     margin: 0;
     &__section {
-      margin-top: 20%;
+      // margin-top: 20%;
     }
 
     &__card {

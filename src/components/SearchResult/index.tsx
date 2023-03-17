@@ -28,25 +28,43 @@ const SearchResult = ({ results }: SearchResultProps) => {
       return newMovies;
     });
   };
+  console.log(results);
 
   return (
     <section className="searchResult-container">
       {searchResults.length > 0 ? (
         <section className="searchResult-container__section">
-          {searchResults.map((result: any, index: number) => (
-            <MovieCard
-              key={result.id}
-              {...result}
-              release_date={result.release_date}
-              first_air_date={result.first_air_date}
-              className="movieResult-container"
-              poster_path={result.poster_path}
-              title={result.title}
-              name={result.name}
-              isBookmarked={result.isBookmarked}
-              onBookmarkClick={() => handleBookmark(result.id)}
-            />
-          ))}
+          {searchResults.map((result: any, index: number) =>
+            result.media_type === 'movie' ? (
+              <MovieCard
+                key={result.id}
+                {...result}
+                genre="movies"
+                release_date={result.release_date.substring(0, 4)}
+                className="movieResult-container"
+                poster_path={result.poster_path}
+                title={result.title}
+                name={result.name}
+                media_type="Movie"
+                isBookmarked={result.isBookmarked}
+                onBookmark={() => handleBookmark(result.id)}
+              />
+            ) : (
+              <MovieCard
+                key={result.id}
+                {...result}
+                genre="series"
+                release_date={result.first_air_date.substring(0, 4)}
+                className="movieResult-container"
+                poster_path={result.poster_path}
+                title={result.title}
+                name={result.name}
+                media_type="TV Series"
+                isBookmarked={result.isBookmarked}
+                onBookmark={() => handleBookmark(result.id)}
+              />
+            ),
+          )}
         </section>
       ) : (
         <div className="searchResult-container__section__no-results">

@@ -62,6 +62,8 @@ const CarouselComponent = () => {
             key={movie.id}
             // release_date={movie.first_air_date.substring(0, 4)}
             {...movie}
+            genre="movies"
+            media_type="Movie"
             release_date={movie.release_date.substring(0, 4)}
             className="carousel-movieCard"
             poster_path={movie.poster_path}

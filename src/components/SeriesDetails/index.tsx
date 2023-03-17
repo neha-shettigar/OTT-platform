@@ -60,39 +60,43 @@ const SeriesDetails = () => {
 
               <h4>{seriesDetails.vote_average}</h4>
               <section className="movieDetails-container__details__para">
-                <p>
+                <p className="less-opaque">
                   Length
                   <span className="span1">{seriesDetails.runtime}min</span>
                 </p>
-                <p>
+                <p className="less-opaque">
                   Language
                   {/* <span>{movieDetails.spokenLanguages}</span> */}
                   <span className="span1">English</span>
                 </p>
-                <p>
-                  Release Date
-                  <span className="span1">{seriesDetails.release_date}</span>
+                <p className="less-opaque">
+                  Year
+                  <span className="span1">
+                    {typeof seriesDetails.first_air_date === 'string'
+                      ? seriesDetails.first_air_date.substring(0, 4)
+                      : 'N/A'}
+                  </span>
                 </p>
-                <p>
+                <p className="less-opaque">
                   Status<span className="span1">{seriesDetails.status}</span>
                 </p>
               </section>
-              {/* <p>
-              Genre<>{movieDetails.genres[0].name}</>
-            </p> */}
+
               <article className="movieDetails-container__details__genre">
                 <p>
                   Genre
                   <section className="movieDetails-container__details__genre__section">
                     {Boolean(seriesDetails.genres) &&
                       seriesDetails.genres.map((genre: any) => (
-                        <span key={genre.id}>{genre.name}</span>
+                        <span className="span2" key={genre.id}>
+                          {genre.name}
+                        </span>
                       ))}
                   </section>
                 </p>
               </article>
               <h6>Synopsis</h6>
-              <p>{seriesDetails.overview}</p>
+              <p className="less-opaque">{seriesDetails.overview}</p>
             </article>
           </section>
         )}

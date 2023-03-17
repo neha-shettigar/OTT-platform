@@ -22,6 +22,7 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(1);
   const [selectedButton, setSelectedButton] = React.useState('');
+  const [isBookmark, setIsBookmark] = React.useState(false);
 
   const loadMovies = (page: number) => {
     axios
@@ -51,7 +52,7 @@ const HomePage = () => {
         }
         return movie;
       });
-
+      setIsBookmark(!isBookmark);
       // Save bookmarks to localStorage
       const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
       localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
@@ -88,27 +89,32 @@ const HomePage = () => {
           <SearchResult results={searchResults} />
         ) : (
           <div>
-            <h4 className="homePage-container__main__header">
-              Trending<span>MOVIE</span>
-            </h4>
+            <section className="homePage-container__main__section">
+              <h4 className="homePage-container__main__section__header">
+                Trending
+              </h4>
+              <span>MOVIE</span>
+            </section>
             {/* Carousel for trending items */}
             <CarouselComponent />
             {/* movie tray */}
-            <h4>
-              Popular <span>MOVIE</span>
-            </h4>
+            <section className="homePage-container__main__section">
+              <h4>Popular</h4>
+              <span>MOVIE</span>
+            </section>
             <section className="homePage-container__main__popular">
               {/* each movie is displayed using movie card */}
               {movies.map((movie: any, index) => (
                 <MovieCard
                   key={movie.id}
                   {...movie}
+                  genre="movies"
                   className="movieCard-container"
                   poster_path={movie.poster_path}
-                  media_type={movie.media_type}
+                  media_type="Movie"
                   title={movie.title}
                   release_date={movie.release_date.substring(0, 4)}
-                  isBookmarked={movie.isBookmarked}
+                  // isBookmarked={false}
                   onBookmark={() => handleBookmark(movie.id)}
                 />
               ))}
