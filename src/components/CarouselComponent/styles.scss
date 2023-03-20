@@ -54,12 +54,13 @@
   }
 
   // movie details
- &__details{
+  &__details {
     display: flex;
     height: 10%;
-    gap:3%;
-    .dot-icon,.movie-card-icon{
-     opacity: 0.8;
+    gap: 3%;
+    .dot-icon,
+    .movie-card-icon {
+      opacity: 0.8;
     }
   }
   p,
@@ -87,8 +88,13 @@
 @media (min-width: 41.25rem) and (max-width: 768px) {
   .carousel-movieCard {
     width: 100%;
-    height: 80%;
-
+    height: 90%;
+    &__section {
+      height: 90%;
+    }
+    &__link {
+      height: 88%;
+    }
     p {
       font-size: 0.75rem;
     }
@@ -97,6 +103,8 @@
     }
     &__button {
       margin: 0;
+      margin-top: 5%;
+      margin-left: 78%;
     }
   }
 }

@@ -1,6 +1,6 @@
 .moviesByGenre-container, .seriesByGenre-container{
   display: flex;
-  // margin-left: 10%;
+  margin-left: 5%;
 
   &__section {
     display: flex;
@@ -13,7 +13,7 @@
   .moviesByGenre-container, .seriesByGenre-container {
     margin: 0;
     &__section {
-      // margin-top: 20%;
+      margin-top: 5%;
     }
 
     &__card {

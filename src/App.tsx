@@ -94,7 +94,10 @@ function App() {
           />
 
           {/* ... */}
-          <Route path="/searchResult" element={<SearchResult results={[]} />} />
+          <Route
+            path="/searchResult"
+            element={<SearchResult results={[]} query="" />}
+          />
 
           <Route path="/moviesDetails/:movieId" element={<MovieDetails />} />
           <Route path="/seriesDetails/:seriesId" element={<SeriesDetails />} />

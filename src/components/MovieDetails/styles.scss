@@ -86,7 +86,7 @@
   .movieDetails-container {
     display: flex;
     gap: 5%;
-    // margin-top: 30%;
+    margin-top: 5%;
     padding: 2%;
     flex-direction: column;
 
@@ -100,14 +100,30 @@
       width: 100%;
       h2 {
         font-size: 30px;
+        line-height: 50px;
       }
       p,
       span {
         font-size: 0.75rem;
         line-height: 30px;
       }
-      span {
+      span,
+      .span1 {
         padding: 2% 4%;
+        font-size: 0.75rem;
+        width: 100%;
+      }
+      .less-opaque {
+        display: flex;
+        flex-direction: column;
+      }
+      &__genre__section {
+        justify-content: space-between;
+        gap: 4%;
+      }
+      .span2 {
+        width: 40%;
+        font-size: 0.75rem;
       }
     }
   }

@@ -61,7 +61,7 @@
 @media (min-width: 41.25rem) and (max-width: 768px) {
   .moviesGenre-container {
     display: flex;
-    // margin-top: 5%;
+  align-content: flex-start;
     /* links for each genre */
 
     &__link1,
@@ -71,6 +71,7 @@
       justify-content: center;
       padding: 12% 8%;
       font-size: 22px;
+      height: 5%;
     }
   }
 }

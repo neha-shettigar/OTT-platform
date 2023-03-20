@@ -35,7 +35,7 @@
   }
 
   // bookmark button
-  
+
   &__button {
     margin: 0;
     position: absolute;
@@ -46,12 +46,6 @@
     margin-left: 16%;
     margin-top: 1%;
   }
-  // &__button:focus {
-  //   filter: brightness(0) invert(1);
-  // }
-  // &__button .active{
-  //   filter: brightness(0) invert(1);
-  // }
 
   &__details {
     display: flex;
@@ -83,6 +77,11 @@
     font-weight: 500;
     font-size: 1.25rem;
     line-height: 2.25rem;
+  }
+}
+.movieResult-container {
+  &__button {
+    margin-left: 15%;
   }
 }
 
@@ -126,18 +125,19 @@
   .seriesByGenre-container__card,
   .movieResult-container {
     display: flex;
-    width: 50%;
+    width: 48.1%;
 
     &__poster {
       height: 100%;
       width: 100%;
     }
     &__link {
-      width: 92%;
+      width: 100%;
     }
-
     &__button {
       margin: 0;
+      margin-top: 2%;
+      margin-left: 37%;
     }
     h3 {
       font-size: 1rem;

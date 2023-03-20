@@ -64,16 +64,19 @@
 @media (min-width: 41.25rem) and (max-width: 768px) {
   .seriesGenre-container {
     display: flex;
+    align-content: flex-start;
     // margin-top: 5%;
     /* links for each genre */
 
     &__link1,
     &__link2 {
-      width: 50%;
+      width: 48%;
       border-radius: 1rem;
       justify-content: center;
       padding: 12% 8%;
       font-size: 22px;
+      height: 5%;
+      margin-right: 2%;
     }
   }
 }

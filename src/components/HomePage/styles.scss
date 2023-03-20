@@ -30,43 +30,26 @@
       line-height: 60px;
     }
     span {
-      margin-left: 2%; 
-    font-size: 0.875rem;
-    /* padding: 5px 0.625rem; */
-    border: 2px solid #f0e6e6;
-    border-radius: 8px;
-    /* display: flex; */
-    align-items: center;
-    height: 30px;
-    width: 5rem;
-    display: flex;
-    /* padding-left: 12px; */
-    line-height: 26px;
-    justify-content: center;
+      margin-left: 2%;
+      font-size: 0.875rem;
+      /* padding: 5px 0.625rem; */
+      border: 2px solid #f0e6e6;
+      border-radius: 8px;
+      /* display: flex; */
+      align-items: center;
+      height: 30px;
+      width: 5rem;
+      display: flex;
+      /* padding-left: 12px; */
+      line-height: 26px;
+      justify-content: center;
+      opacity: 0.8;
     }
-    // &__header {
-    //   padding-top: 8%;
-    // }
+
     &__section {
       display: flex;
       width: 100%;
       align-items: center;
-      // span {
-      //   margin-left: 2%;
-      //   font-size: 0.875rem;
-      //   /* padding: 5px 0.625rem; */
-      //   border: 2px solid #f0e6e6;
-      //   border-radius: 8px;
-      //   /* display: flex; */
-      //   /* align-items: flex-start; */
-      //   height: 30px;
-      //   width: 5%;
-      //   padding-left: 12px;
-      //   line-height: 26px;
-      // }
-
-      &__header {
-      }
     }
 
     &__pagination {
@@ -110,19 +93,19 @@
   .homePage-container {
     display: flex;
     flex-direction: column-reverse;
-    width: 90%;
+    width: 100%;
     margin: auto;
 
     // content wrapper
     &__main {
       display: flex;
-      margin: 0;
-      width: 100%;
+      margin: 0 auto;
+      width: 90%;
       flex-direction: column;
-     
 
       h4 {
         font-size: 1.5rem;
+        
       }
       p,
       span {
@@ -130,6 +113,7 @@
       }
       span {
         padding: 2% 4%;
+        width: 15%;
       }
       h3 {
         font-size: 0.75rem;
@@ -145,15 +129,15 @@
         &__button {
           display: flex;
           padding: 0;
-          width: 10%;
+          width: 15%;
           height: 40px;
           /* height: 1%; */
           justify-content: center;
           align-items: center;
         }
       }
-      &__popular{
-         justify-content: space-between;
+      &__popular {
+        justify-content: space-between;
       }
     }
   }
@@ -170,6 +154,7 @@
       margin: 0;
       width: 100%;
       flex-direction: column;
+      min-height: 420vh;
 
       p {
         font-size: 0.875rem;
@@ -179,6 +164,15 @@
       }
       span {
         font-size: 0.875rem;
+      }
+      &__popular {
+        display: flex;
+        justify-content: space-between;
+      }
+      &__pagination {
+        &__button {
+          width: 10%;
+        }
       }
     }
   }

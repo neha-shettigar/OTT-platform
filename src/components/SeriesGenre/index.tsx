@@ -12,6 +12,7 @@ const SeriesGenre = () => {
   const [searchResults, setSearchResults] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
   const [genres, setGenres] = React.useState([]);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   React.useEffect(() => {
     axios
@@ -24,9 +25,10 @@ const SeriesGenre = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const handleSearch = (results: any) => {
+  const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
     setFlag(!flag);
+    setSearchQuery(query);
   };
 
   return (
@@ -35,7 +37,7 @@ const SeriesGenre = () => {
       <section className="homePage-container__main">
         <SearchBar value="" icon={searchIcon} onSearch={handleSearch} />
         {flag ? (
-          <SearchResult results={searchResults} />
+          <SearchResult results={searchResults} query={searchQuery} />
         ) : (
           <nav className="seriesGenre-container">
             {genres.map((genre: any, index) => (

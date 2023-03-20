@@ -23,6 +23,7 @@ const HomePage = () => {
   const [totalPages, setTotalPages] = React.useState(1);
   const [selectedButton, setSelectedButton] = React.useState('');
   const [isBookmark, setIsBookmark] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   const loadMovies = (page: number) => {
     axios
@@ -61,9 +62,10 @@ const HomePage = () => {
     });
   };
   // when click on search button
-  const handleSearch = (results: any) => {
+  const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
     setFlag(!flag);
+    setSearchQuery(query);
   };
 
   const handlePageChange = (page: number, button: any) => {
@@ -86,7 +88,7 @@ const HomePage = () => {
           onSearch={handleSearch}
         />
         {flag ? (
-          <SearchResult results={searchResults} />
+          <SearchResult results={searchResults} query={searchQuery} />
         ) : (
           <div>
             <section className="homePage-container__main__section">
@@ -130,7 +132,7 @@ const HomePage = () => {
                       aria-selected={selectedButton === 'page'}
                       key={pageNumber}
                       className={`homePage-container__main__pagination__button ${
-                        isCurrentPage ? 'active' : ''
+                        isCurrentPage ? 'active' : 'inactive'
                       }`}
                       onClick={() => handlePageChange(pageNumber, 'page')}
                     >

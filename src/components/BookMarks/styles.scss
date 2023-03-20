@@ -2,7 +2,19 @@
 .bookmarks-container {
   display: flex;
   justify-content: flex-start;
+  flex-direction: column;
   margin-top: 2%;
+
+  // bookmark header
+  h5 {
+    font-weight: 200;
+  }
+
+  // movie cards container
+  &__section {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 @media (max-width: 41.25rem) {
@@ -12,6 +24,13 @@
     flex-wrap: wrap;
     flex-direction: row;
     gap: 3%;
+    &__section {
+      justify-content: space-between;
+    }
+
+    h5 {
+      font-size: 1rem;
+    }
   }
 }
 
@@ -21,5 +40,11 @@
     // margin-top: 15%;
     flex-wrap: wrap;
     flex-direction: row;
+
+    &__section {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
   }
 }

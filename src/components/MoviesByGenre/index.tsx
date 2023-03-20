@@ -17,6 +17,7 @@ const MoviesByGenre = () => {
   const [movies, setMovies] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
   const [searchResults, setSearchResults] = React.useState([]);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   React.useEffect(() => {
     axios
@@ -49,9 +50,10 @@ const MoviesByGenre = () => {
       return newMovies;
     });
   };
-  const handleSearch = (results: any) => {
+  const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
     setFlag(!flag);
+    setSearchQuery(query);
   };
 
   return (
@@ -60,7 +62,7 @@ const MoviesByGenre = () => {
       <section className="homePage-container__main">
         <SearchBar value="" icon={searchIcon} onSearch={handleSearch} />
         {flag ? (
-          <SearchResult results={searchResults} />
+          <SearchResult results={searchResults} query={searchQuery} />
         ) : (
           <section className="moviesByGenre-container">
             <section className="moviesByGenre-container__section">

@@ -15,6 +15,7 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails]: any = useState([]);
   const [searchResults, setSearchResults] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
+  const [searchQuery, setSearchQuery] = React.useState('');
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -33,9 +34,10 @@ const MovieDetails = () => {
   }, [movieId]);
   console.log(movieDetails);
 
-  const handleSearch = (results: any) => {
+  const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
     setFlag(!flag);
+    setSearchQuery(query);
   };
 
   return (
@@ -44,7 +46,7 @@ const MovieDetails = () => {
       <section className="homePage-container__main">
         <SearchBar value="" icon={searchIcon} onSearch={handleSearch} />
         {flag ? (
-          <SearchResult results={searchResults} />
+          <SearchResult results={searchResults} query={searchQuery} />
         ) : (
           <section className="movieDetails-container">
             <img

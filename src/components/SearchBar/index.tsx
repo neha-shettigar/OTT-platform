@@ -7,7 +7,7 @@ import './styles.scss';
 interface SearchBarInterface {
   value?: string;
   icon: string;
-  onSearch?: (results: any) => void;
+  onSearch?: (results: any, query: string) => void;
 }
 
 const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
@@ -23,7 +23,8 @@ const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
       )
       .then((result) => {
         setResults(result.data.results);
-        onSearch?.(result.data.results);
+        onSearch?.(result.data.results, query);
+
         // navigate(`/searchResult?q=${query}`);
         console.log(result.data.results);
         console.log(result.data.results.release_date);
@@ -57,12 +58,6 @@ const SearchBar = ({ icon, onSearch }: SearchBarInterface) => {
           Search
         </button>
       </section>
-      {/* </form> */}
-      {/* {results.length > 0 && (
-        <section className="searchbar-container__searchResult-container">
-          <SearchResult results={results} />
-        </section>
-      )} */}
     </main>
   );
 };
