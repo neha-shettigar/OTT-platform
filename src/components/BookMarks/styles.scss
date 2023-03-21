@@ -21,11 +21,12 @@
   .bookmarks-container {
     display: flex;
     // margin-top: 30%;
-    flex-wrap: wrap;
-    flex-direction: row;
+
     gap: 3%;
     &__section {
       justify-content: space-between;
+      flex-wrap: wrap;
+      flex-direction: row;
     }
 
     h5 {
@@ -38,13 +39,13 @@
   .bookmarks-container {
     display: flex;
     // margin-top: 15%;
-    flex-wrap: wrap;
-    flex-direction: row;
 
     &__section {
       display: flex;
       justify-content: space-between;
       width: 100%;
+      flex-wrap: wrap;
+      flex-direction: row;
     }
   }
 }

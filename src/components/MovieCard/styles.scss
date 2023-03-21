@@ -15,6 +15,12 @@
     height: 71%;
     flex-direction: column;
     text-align: left;
+
+    h3 {
+      font-weight: 500;
+      font-size: 1.25rem;
+      line-height: 2.25rem;
+    }
   }
 
   // movie links
@@ -50,7 +56,9 @@
   &__details {
     display: flex;
     height: 10%;
+    align-items: center;
     gap: 3%;
+    margin-top: 2%;
     .dot-icon,
     .movie-card-icon {
       opacity: 0.8;
@@ -67,16 +75,11 @@
   }
   p {
     font-weight: 400;
-    font-size: 0.825rem;
+    font-size: 0.725rem;
     line-height: 1.5rem;
     letter-spacing: 0.06em;
     word-spacing: 1.25rem;
     opacity: 0.8;
-  }
-  h3 {
-    font-weight: 500;
-    font-size: 1.25rem;
-    line-height: 2.25rem;
   }
 }
 .movieResult-container {
@@ -115,6 +118,10 @@
     }
     p {
       font-size: 0.5rem;
+    }
+
+    .dot-icon {
+      width: 2%;
     }
   }
 }

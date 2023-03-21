@@ -72,20 +72,39 @@ const BookMarks = () => {
                 const isBookmarked =
                   localStorage.getItem(`bookmark_${movie.id}`) === 'true';
                 return isBookmarked ? (
-                  <MovieCard
-                    key={movie.id}
-                    id={movie.id}
-                    className="movieCard-container"
-                    poster_path={movie.poster_path}
-                    media_type={movie.media_type}
-                    title={movie.title}
-                    name={movie.name}
-                    release_date={movie.release_date}
-                    onBookmark={() =>
-                      handleBookmark(movie.id, movie.isBookmarked)
-                    }
-                    isBookmarked={isBookmarked}
-                  />
+                  movie.media_type === 'movie' ? (
+                    <MovieCard
+                      key={movie.id}
+                      id={movie.id}
+                      className="movieCard-container"
+                      poster_path={movie.poster_path}
+                      media_type={movie.media_type}
+                      title={movie.title}
+                      genre="movies"
+                      name={movie.name}
+                      release_date={movie.release_date}
+                      onBookmark={() =>
+                        handleBookmark(movie.id, movie.isBookmarked)
+                      }
+                      isBookmarked={isBookmarked}
+                    />
+                  ) : (
+                    <MovieCard
+                      key={movie.id}
+                      id={movie.id}
+                      className="movieCard-container"
+                      poster_path={movie.poster_path}
+                      media_type={movie.media_type}
+                      title={movie.title}
+                      genre="series"
+                      name={movie.name}
+                      release_date={movie.release_date}
+                      onBookmark={() =>
+                        handleBookmark(movie.id, movie.isBookmarked)
+                      }
+                      isBookmarked={isBookmarked}
+                    />
+                  )
                 ) : null;
               })}
             </section>
