@@ -31,23 +31,6 @@ const SeriesByGenre = () => {
       .catch((error) => console.error(error));
   }, [genreId]);
 
-  const handleBookmark = (id: number) => {
-    setSeries((prevSeries: any) => {
-      const newSeries = prevSeries.map((movie: any) => {
-        if (movie.id === id) {
-          // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-          movie.isBookmarked = !movie.isBookmarked;
-        }
-        return movie;
-      });
-
-      // Save bookmarks to localStorage
-      const bookmarks = newSeries.filter((movie: any) => movie.isBookmarked);
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-      return newSeries;
-    });
-  };
   const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
     setFlag(!flag);
@@ -75,8 +58,6 @@ const SeriesByGenre = () => {
                   title={serie.title}
                   className="seriesByGenre-container__card"
                   release_date={serie.first_air_date.substring(0, 4)}
-                  // isBookmarked={serie.isBookmarked}
-                  onBookmark={() => handleBookmark(serie.id)}
                 />
               ))}
             </section>

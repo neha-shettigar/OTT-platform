@@ -33,23 +33,6 @@ const MoviesByGenre = () => {
 
   console.log('movies');
 
-  const handleBookmark = (id: number) => {
-    setMovies((prevMovies: any) => {
-      const newMovies = prevMovies.map((movie: any) => {
-        if (movie.id === id) {
-          // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-          movie.isBookmarked = !movie.isBookmarked;
-        }
-        return movie;
-      });
-
-      // Save bookmarks to localStorage
-      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-      return newMovies;
-    });
-  };
   const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
     setFlag(!flag);
@@ -78,7 +61,6 @@ const MoviesByGenre = () => {
                   className="moviesByGenre-container__card"
                   release_date={movie.release_date.substring(0, 4)}
                   isBookmarked={movie.isBookmarked}
-                  onBookmark={() => handleBookmark(movie.id)}
                 />
               ))}
             </section>

@@ -14,14 +14,14 @@ interface Movie {
   title?: string;
   name?: string;
   release_date?: string | null;
-  isBookmarked?: boolean; // Add isBookmarked to the Movie type
+  isBookmarked?: boolean;
 }
 
 const BookMarks = () => {
   const [bookmarkedMovies, setBookmarkedMovies] = useState<Movie[]>([]);
   const [searchResults, setSearchResults] = useState<Movie[]>([]);
   const [flag, setFlag] = useState(false);
-  const [searchQuery, setSearchQuery] = React.useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
     const storedBookmarks = localStorage.getItem('bookmarks');
@@ -29,27 +29,15 @@ const BookMarks = () => {
       setBookmarkedMovies(JSON.parse(storedBookmarks));
     }
   }, []);
-  useEffect(() => {
-    localStorage.setItem('bookmarks', JSON.stringify(bookmarkedMovies));
-  }, [bookmarkedMovies]);
-
-  const handleBookmark = (id: number, isBookmarked: boolean) => {
-    setBookmarkedMovies((prevBookmarkedMovies) => {
-      const bookmarkedMovieIndex = prevBookmarkedMovies.findIndex(
-        (movie) => movie.id === id,
-      );
-      if (isBookmarked && bookmarkedMovieIndex === -1) {
-        const newBookmarkedMovie = { id, isBookmarked };
-        return [...prevBookmarkedMovies, newBookmarkedMovie];
-      } else if (!isBookmarked && bookmarkedMovieIndex !== -1) {
-        return prevBookmarkedMovies.filter((movie) => movie.id !== id);
-      } else {
-        return prevBookmarkedMovies;
-      }
-    });
-  };
 
   console.log(bookmarkedMovies);
+  const handleUnbookmark = (movieId: number) => {
+    const updatedBookmarks = bookmarkedMovies.filter(
+      (movie) => movie.id !== movieId,
+    );
+    setBookmarkedMovies(updatedBookmarks);
+    localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
+  };
 
   const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
@@ -69,43 +57,35 @@ const BookMarks = () => {
             <h5>Bookmarked Movies</h5>
             <section className="bookmarks-container__section">
               {bookmarkedMovies.map((movie: any) => {
-                const isBookmarked =
-                  localStorage.getItem(`bookmark_${movie.id}`) === 'true';
-                return isBookmarked ? (
-                  movie.media_type === 'movie' ? (
-                    <MovieCard
-                      key={movie.id}
-                      id={movie.id}
-                      className="movieCard-container"
-                      poster_path={movie.poster_path}
-                      media_type={movie.media_type}
-                      title={movie.title}
-                      genre="movies"
-                      name={movie.name}
-                      release_date={movie.release_date}
-                      onBookmark={() =>
-                        handleBookmark(movie.id, movie.isBookmarked)
-                      }
-                      isBookmarked={isBookmarked}
-                    />
-                  ) : (
-                    <MovieCard
-                      key={movie.id}
-                      id={movie.id}
-                      className="movieCard-container"
-                      poster_path={movie.poster_path}
-                      media_type={movie.media_type}
-                      title={movie.title}
-                      genre="series"
-                      name={movie.name}
-                      release_date={movie.release_date}
-                      onBookmark={() =>
-                        handleBookmark(movie.id, movie.isBookmarked)
-                      }
-                      isBookmarked={isBookmarked}
-                    />
-                  )
-                ) : null;
+                return movie.media_type === 'movie' ? (
+                  <MovieCard
+                    key={movie.id}
+                    {...movie}
+                    className="movieCard-container"
+                    poster_path={movie.poster_path}
+                    media_type={movie.media_type}
+                    title={movie.title}
+                    genre="movies"
+                    name={movie.name}
+                    release_date={movie.release_date}
+                    isBookmarked={movie.isBookmarked}
+                    onUnbookmark={handleUnbookmark}
+                  />
+                ) : (
+                  <MovieCard
+                    key={movie.id}
+                    {...movie}
+                    className="movieCard-container"
+                    poster_path={movie.poster_path}
+                    media_type={movie.media_type}
+                    title={movie.title}
+                    genre="series"
+                    name={movie.name}
+                    release_date={movie.release_date}
+                    isBookmarked={movie.isBookmarked}
+                    onUnbookmark={handleUnbookmark}
+                  />
+                );
               })}
             </section>
           </section>

@@ -22,7 +22,7 @@ const HomePage = () => {
   const [currentPage, setCurrentPage] = React.useState(1);
   const [totalPages, setTotalPages] = React.useState(1);
   const [selectedButton, setSelectedButton] = React.useState('');
-  const [isBookmark, setIsBookmark] = React.useState(false);
+  // const [isBookmark, setIsBookmark] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
 
   const loadMovies = (page: number) => {
@@ -45,22 +45,6 @@ const HomePage = () => {
     loadMovies(currentPage);
   }, [currentPage]);
 
-  const handleBookmark = (id: number) => {
-    setMovies((prevMovies: any) => {
-      const newMovies = prevMovies.map((movie: any) => {
-        if (movie.id === id) {
-          movie.isBookmarked = !movie.isBookmarked;
-        }
-        return movie;
-      });
-      setIsBookmark(!isBookmark);
-      // Save bookmarks to localStorage
-      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-      return newMovies;
-    });
-  };
   // when click on search button
   const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
@@ -116,8 +100,6 @@ const HomePage = () => {
                   media_type="Movie"
                   title={movie.title}
                   release_date={movie.release_date.substring(0, 4)}
-                  // isBookmarked={false}
-                  onBookmark={() => handleBookmark(movie.id)}
                 />
               ))}
             </section>

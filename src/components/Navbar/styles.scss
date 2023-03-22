@@ -41,10 +41,11 @@
     height: 50%;
     /* margin-bottom: 15%; */
     width: 100%;
-    gap: 15%;
+    gap: 10%;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin-bottom: 80%;
 
     &__section {
       width: 50%;
@@ -85,6 +86,7 @@
       width: 100%;
       display: flex;
       height: 100%;
+      margin: 0;
       justify-content: space-evenly;
 
       a{
@@ -103,12 +105,12 @@
 
 @media (min-width: 41.25rem) and (max-width: 768px) {
   .navbar-container {
-    position: absolute;
+    position: relative;
     z-index: 1;
     display: flex;
     width: 95%;
     flex-direction: row;
-    height: 10%;
+     height: 10vh;
     padding: 2% 4%;
     &__link1 {
       display: none;
@@ -123,6 +125,7 @@
     &__section {
       flex-direction: row;
       height: 100%;
+      margin: 0;
       justify-content: space-evenly;
     }
   }

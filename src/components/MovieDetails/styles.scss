@@ -3,12 +3,14 @@
   display: flex;
   gap: 5%;
   padding: 2%;
+  margin: 0;
 
   // movie poster
   &__poster {
     width: 35%;
-    height: 95%;
+    height: 35rem;
     border-radius: 10px;
+    margin: 0;
   }
 
   // movie details
@@ -19,7 +21,7 @@
     flex-direction: column;
     justify-content: flex-start;
     text-align: left;
-    gap: 3%;
+    gap: 1rem;
     // height: 80%;
     .less-opaque {
       opacity: 0.8;
@@ -71,13 +73,32 @@
       margin: 0;
       font-weight: 200;
     }
-    h6 {
-      font-family: 200;
-      margin: 0;
-    }
+
     &__synopsis {
       display: flex;
       flex-direction: column;
+      h6 {
+        font-family: 200;
+        margin: 0;
+      }
+    }
+
+    &__cast {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &__section {
+        display: flex;
+        width: 100%;
+        flex-wrap: wrap;
+      }
+    }
+    .castSpan {
+      width: 20%;
+      padding: 3% 1%;
+      text-align: center;
+      margin-bottom: 2%;
     }
   }
 }
@@ -85,22 +106,27 @@
 @media (max-width: 41.25rem) {
   .movieDetails-container {
     display: flex;
-    gap: 5%;
+
     margin-top: 5%;
     padding: 2%;
     flex-direction: column;
 
     &__poster {
       width: 300px;
-      // height: 80%;
+      height: 40%;
       margin: auto;
     }
 
     &__details {
       width: 100%;
+      gap: 0;
       h2 {
         font-size: 30px;
         line-height: 50px;
+      }
+      h6 {
+        font-weight: 100;
+        font-size: 1.25rem;
       }
       p,
       span {
@@ -125,6 +151,18 @@
         width: 4rem;
         font-size: 0.75rem;
       }
+      &__cast {
+        display: flex;
+
+        &__section {
+          display: flex;
+        }
+      }
+      .castSpan {
+        width: 30%;
+        height: 3rem;
+        line-height: 20px;
+      }
     }
   }
 }
@@ -132,6 +170,13 @@
 @media (min-width: 41.25rem) and (max-width: 768px) {
   .movieDetails-container {
     // margin-top: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__poster {
+      width: 55%;
+    }
 
     &__details {
       width: 100%;

@@ -18,10 +18,7 @@ interface MovieCardInterface {
   release_date: string;
   genre?: string;
   isBookmarked?: boolean;
-  isActive?: boolean;
-  onActiveStateChange?: (isActive: boolean) => void;
-  first_air_date?: string;
-  onBookmark: () => void;
+  unBookmark: (() => void) | null;
 }
 
 const getPosterURL = (posterPath?: string) => {
@@ -37,8 +34,6 @@ const MovieCard = ({
   genre,
   className,
   release_date,
-  first_air_date,
-  onBookmark,
 }: MovieCardInterface) => {
   const [isBookmarked, setIsBookmarked] = useState<boolean>(() => {
     // Get the bookmarked state from local storage
@@ -51,9 +46,44 @@ const MovieCard = ({
     localStorage.setItem(`bookmark_${id}`, String(isBookmarked));
   }, [id, isBookmarked]);
 
-  const onClickBookmark = () => {
-    setIsBookmarked(!isBookmarked);
-    onBookmark();
+  const handleBookmarkIconClick = () => {
+    const newBookmarkState = !isBookmarked;
+
+    // Store the updated bookmark status in localStorage
+    localStorage.setItem(`bookmark_${id}`, String(newBookmarkState));
+
+    // Create a new movie card data object with the updated bookmark status
+    const movieCardData = {
+      poster_path,
+      release_date,
+      media_type,
+      title,
+      name,
+      id,
+      genre,
+      isBookmarked: newBookmarkState,
+    };
+
+    // Retrieve the current list of bookmarks from localStorage
+    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks') ?? '[]');
+    const existingBookmarkIndex = bookmarks.findIndex(
+      (bookmark: MovieCardInterface) => bookmark.id === id,
+    );
+
+    if (newBookmarkState && existingBookmarkIndex === -1) {
+      // Add the newly bookmarked item to the bookmarks list if it does not already exist
+      bookmarks.push(movieCardData);
+    } else if (!newBookmarkState && existingBookmarkIndex !== -1) {
+      // Remove the un-bookmarked item from the bookmarks list if it exists
+      bookmarks.splice(existingBookmarkIndex, 1);
+    }
+
+    // Store the updated bookmarks list in localStorage
+    localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
+
+    // Update the bookmark state in the component's state
+    setIsBookmarked(newBookmarkState);
   };
 
   return (
@@ -68,7 +98,7 @@ const MovieCard = ({
         </Link>
         <button
           className={`${className}__button ${isBookmarked ? 'active' : ''}`}
-          onClick={onClickBookmark}
+          onClick={handleBookmarkIconClick}
         >
           <img
             className={`${className}__icon`}

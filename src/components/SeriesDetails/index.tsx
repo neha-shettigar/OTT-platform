@@ -16,7 +16,7 @@ const SeriesDetails = () => {
   const [searchResults, setSearchResults] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
-
+  const [seriesCast, setSeriesCast]: any = useState([]);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     async function fetchData() {
@@ -34,6 +34,23 @@ const SeriesDetails = () => {
     void fetchData();
   }, [seriesId]);
   console.log(seriesDetails);
+
+  // fetch cast data
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/tv/${seriesId}/credits?api_key=13622fc50c5257d370284ea008163f90&language=en-US`,
+        );
+        // Process the response from the first API call
+        setSeriesCast(response.data);
+      } catch (error: any) {
+        console.error(error);
+      }
+    }
+    void fetchData();
+  }, [seriesId]);
+  console.log(seriesCast.cast);
 
   const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
@@ -84,7 +101,7 @@ const SeriesDetails = () => {
               </section>
 
               <article className="movieDetails-container__details__genre">
-                <p>
+                <h6>
                   Genre
                   <section className="movieDetails-container__details__genre__section">
                     {Boolean(seriesDetails.genres) &&
@@ -94,10 +111,21 @@ const SeriesDetails = () => {
                         </span>
                       ))}
                   </section>
-                </p>
+                </h6>
               </article>
               <h6>Synopsis</h6>
               <p className="less-opaque">{seriesDetails.overview}</p>
+              <article className="movieDetails-container__details__cast">
+                <h6>Cast</h6>
+                <section className="movieDetails-container__details__cast__section">
+                  {Boolean(seriesCast.cast) &&
+                    seriesCast.cast.map((crew: any) => (
+                      <span className="castSpan" key={crew.id}>
+                        {crew.name}
+                      </span>
+                    ))}
+                </section>
+              </article>
             </article>
           </section>
         )}

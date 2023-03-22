@@ -13,6 +13,7 @@ import './styles.scss';
 const MovieDetails = () => {
   const { movieId } = useParams<{ movieId: string }>();
   const [movieDetails, setMovieDetails]: any = useState([]);
+  const [movieCast, setMovieCast]: any = useState([]);
   const [searchResults, setSearchResults] = React.useState([]);
   const [flag, setFlag] = React.useState(false);
   const [searchQuery, setSearchQuery] = React.useState('');
@@ -33,6 +34,23 @@ const MovieDetails = () => {
     void fetchData();
   }, [movieId]);
   console.log(movieDetails);
+
+  // fetch cast data
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=13622fc50c5257d370284ea008163f90&language=en-US`,
+        );
+        // Process the response from the first API call
+        setMovieCast(response.data);
+      } catch (error: any) {
+        console.error(error);
+      }
+    }
+    void fetchData();
+  }, [movieId]);
+  console.log(movieCast.cast);
 
   const handleSearch = (results: any, query: string) => {
     setSearchResults(results);
@@ -89,7 +107,7 @@ const MovieDetails = () => {
               </section>
 
               <article className="movieDetails-container__details__genre">
-                <p>
+                <h6>
                   Genre
                   <section className="movieDetails-container__details__genre__section">
                     {Boolean(movieDetails.genres) &&
@@ -99,11 +117,22 @@ const MovieDetails = () => {
                         </span>
                       ))}
                   </section>
-                </p>
+                </h6>
               </article>
               <article className="movieDetails-container__details__synopsis">
                 <h6>Synopsis</h6>
                 <p className="less-opaque">{movieDetails.overview}</p>
+              </article>
+              <article className="movieDetails-container__details__cast">
+                <h6>Cast</h6>
+                <section className="movieDetails-container__details__cast__section">
+                  {Boolean(movieCast.cast) &&
+                    movieCast.cast.map((crew: any) => (
+                      <span className="castSpan" key={crew.id}>
+                        {crew.name}
+                      </span>
+                    ))}
+                </section>
               </article>
             </article>
           </section>

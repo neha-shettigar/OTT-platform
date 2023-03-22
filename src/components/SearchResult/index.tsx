@@ -12,25 +12,7 @@ interface SearchResultProps {
 }
 
 const SearchResult = ({ results, query }: SearchResultProps) => {
-  const [searchResults, setSearchResults] = useState(results);
-
-  const handleBookmark = (id: number) => {
-    setSearchResults((prevMovies: any) => {
-      const newMovies = prevMovies.map((results: any) => {
-        if (results.id === id) {
-          results.isBookmarked = !results.isBookmarked;
-        }
-        return results;
-      });
-
-      // Save bookmarks to localStorage
-      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-      return newMovies;
-    });
-  };
-  console.log(results);
+  const [searchResults] = useState(results);
 
   return (
     <section className="searchResult-container">
@@ -53,7 +35,6 @@ const SearchResult = ({ results, query }: SearchResultProps) => {
                   name={result.name}
                   media_type="Movie"
                   isBookmarked={result.isBookmarked}
-                  onBookmark={() => handleBookmark(result.id)}
                 />
               ) : result.media_type === 'tv' ? (
                 <MovieCard
@@ -67,7 +48,6 @@ const SearchResult = ({ results, query }: SearchResultProps) => {
                   name={result.name}
                   media_type="TV Series"
                   isBookmarked={result.isBookmarked}
-                  onBookmark={() => handleBookmark(result.id)}
                 />
               ) : (
                 <></>

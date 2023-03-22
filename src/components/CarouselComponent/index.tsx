@@ -32,23 +32,6 @@ const CarouselComponent = () => {
   }, []);
   console.log(movies);
 
-  const handleBookmark = (id: number) => {
-    setMovies((prevMovies: any) => {
-      const newMovies = prevMovies.map((movie: any) => {
-        if (movie.id === id) {
-          // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
-          movie.isBookmarked = !movie.isBookmarked;
-        }
-        return movie;
-      });
-
-      // Save bookmarks to localStorage
-      const bookmarks = newMovies.filter((movie: any) => movie.isBookmarked);
-      localStorage.setItem('bookmarks', JSON.stringify(bookmarks));
-
-      return newMovies;
-    });
-  };
   useEffect(() => {
     localStorage.setItem(BOOKMARKS_KEY, JSON.stringify(bookmarks));
   }, [bookmarks]);
@@ -69,7 +52,6 @@ const CarouselComponent = () => {
             poster_path={movie.poster_path}
             alt={`${movie.title} poster`}
             isBookmarked={movie.isBookmarked}
-            onBookmark={() => handleBookmark(movie.id)}
           />
         );
       })}
