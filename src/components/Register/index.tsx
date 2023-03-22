@@ -30,9 +30,10 @@ const Register = ({
 }: RegisterInterface) => {
   return (
     <div className="register-container">
-      <div className="register-container__header">
+      <section className="register-container__section">
+        <div className="register-container__header"></div>
         <h1>Movie OTT</h1>
-      </div>
+      </section>
       <div className="register-container__register">
         <h2 className="register-container__register__header">{label}</h2>
         <InputTextField

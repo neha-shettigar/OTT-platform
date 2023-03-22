@@ -16,7 +16,7 @@ const meta = {
 } as ComponentMeta<typeof MovieCard>;
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
-const Template: ComponentStory<typeof MovieCard> = (args) => {
+const Template: ComponentStory<typeof MovieCard> = (args: any) => {
   return <MovieCard {...args} />;
 };
 
@@ -28,4 +28,5 @@ Default.args = {
   link: data[0].link,
   title: data[0].title,
   rating: data[0].rating,
+  className: 'movieCard-container',
 };

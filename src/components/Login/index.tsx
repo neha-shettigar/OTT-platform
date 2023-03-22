@@ -24,7 +24,10 @@ const Login = ({
   return (
     <div className="login-container">
       {/* component header */}
-      <h1>Movie OTT </h1>
+      <section className="login-container__section">
+        <div className="login-container__header"></div>
+        <h1>Movie OTT</h1>
+      </section>
       <main className="login-container__main">
         {/* signIn container */}
         <aside className="login-container__signIn">

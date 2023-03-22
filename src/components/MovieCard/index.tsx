@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React from 'react';
 import './styles.scss';
 
@@ -7,6 +8,7 @@ interface MovieCardInterface {
   title?: string;
   icon?: string;
   link?: string;
+  className?: string;
 }
 
 const MovieCard = ({
@@ -15,15 +17,16 @@ const MovieCard = ({
   title,
   icon,
   link,
+  className,
 }: MovieCardInterface) => {
   return (
-    <main className="movieCard-container">
-      <section className="movieCard-container__section">
-        <a className="movieCard-container__link" href={link}>
-          <img src={poster} className="movieCard-container__poster" />
+    <main className={className}>
+      <section className={`${className}__section`}>
+        <a className={`${className}__link`} href={link}>
+          <img src={poster} className={`${className}__poster`} />
         </a>
-        <button className="movieCard-container__button">
-          <object className="movieCard-container__icon" data={icon} />
+        <button className={`${className}__button`}>
+          <object className={`${className}__icon`} data={icon} />
         </button>
 
         <p>{rating}</p>

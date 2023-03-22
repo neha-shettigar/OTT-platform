@@ -2,12 +2,12 @@ import React from 'react';
 import './styles.scss';
 
 interface NavbarInterface {
-  icon1: string;
-  icon2: string;
-  icon3: string;
-  icon4: string;
-  icon5: string;
-  icon6: string;
+  icon1?: string;
+  icon2?: string;
+  icon3?: string;
+  icon4?: string;
+  icon5?: string;
+  icon6?: string;
 }
 
 const Navbar = ({
@@ -20,7 +20,7 @@ const Navbar = ({
 }: NavbarInterface) => {
   return (
     <main className="navbar-container">
-      <a className="navbar-container__link" href="">
+      <a className="navbar-container__link1" href="">
         <object className="navbar-container__object" data={icon1} />
       </a>
       <section className="navbar-container__section">
@@ -37,7 +37,7 @@ const Navbar = ({
           <object className="navbar-container__object" data={icon5} />
         </a>
       </section>
-      <a className="navbar-container__link" href="">
+      <a className="navbar-container__link1" href="">
         <object className="navbar-container__object" data={icon6} />
       </a>
     </main>

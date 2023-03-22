@@ -59,31 +59,17 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
           placeholder="Search for movies or TV series"
         />
 
-        <h4>Trending</h4>
+        <section className="homePage-container__main__section">
+          <h4 className="homePage-container__main__section__header">
+            Trending
+          </h4>
+          <span>MOVIE</span>
+        </section>
         <CarouselComponent />
-
-        {/* <MoviesGenre
-          label1="Action"
-          label2="Adventure"
-          label3="Anime"
-          label4="Comedy"
-          label5="Crime"
-          label6="Drama"
-          label7="Family"
-          label8="Fantasy"
-          label9="History"
-          label10="Horror"
-          label11="Kids"
-          label12="Music"
-        /> */}
-
-        {/* <MovieDetails poster={data[1].poster}
-          title={data[1].title}
-          rating={data[1].rating}
-          category={data[1].category}
-          description={data[1].description}/>
-      </section> */}
-        <h4>Popular</h4>
+        <section className="homePage-container__main__section">
+          <h4>Popular</h4>
+          <span>MOVIE</span>
+        </section>
         <section className="homePage-container__main__popular">
           {/* <article className="homePage-container__main__popular__row"> */}
           <MovieCard
@@ -92,6 +78,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             title={data[8].title}
             icon={bookmark}
             link={data[8].link}
+            className="movieCard-container"
           />
           <MovieCard
             poster={data[9].poster}
@@ -99,6 +86,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             title={data[9].title}
             icon={bookmark}
             link={data[9].link}
+            className="movieCard-container"
           />
           <MovieCard
             poster={data[2].poster}
@@ -106,6 +94,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             title={data[2].title}
             icon={bookmark}
             link={data[2].link}
+            className="movieCard-container"
           />
           {/* </article>
           <article className="homePage-container__main__popular__row"> */}
@@ -115,6 +104,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             title={data[1].title}
             icon={bookmark}
             link={data[1].link}
+            className="movieCard-container"
           />
           <MovieCard
             poster={data[3].poster}
@@ -122,6 +112,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             title={data[3].title}
             icon={bookmark}
             link={data[3].link}
+            className="movieCard-container"
           />
           <MovieCard
             poster={data[13].poster}
@@ -129,6 +120,7 @@ const HomePage = ({ show, value, onChange }: HomePageInterface) => {
             title={data[13].title}
             icon={bookmark}
             link={data[13].link}
+            className="movieCard-container"
           />
           {/* </article> */}
         </section>

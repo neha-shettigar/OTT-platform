@@ -16,6 +16,7 @@ const CarouselComponent = () => {
         link={data[0].link}
         title={data[0].title}
         rating={data[0].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -23,6 +24,7 @@ const CarouselComponent = () => {
         link={data[1].link}
         title={data[1].title}
         rating={data[1].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -30,6 +32,7 @@ const CarouselComponent = () => {
         link={data[2].link}
         title={data[2].title}
         rating={data[2].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -37,6 +40,7 @@ const CarouselComponent = () => {
         link={data[3].link}
         title={data[3].title}
         rating={data[3].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -44,6 +48,7 @@ const CarouselComponent = () => {
         link={data[4].link}
         title={data[4].title}
         rating={data[4].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -51,6 +56,7 @@ const CarouselComponent = () => {
         link={data[5].link}
         title={data[5].title}
         rating={data[5].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -58,6 +64,7 @@ const CarouselComponent = () => {
         link={data[6].link}
         title={data[6].title}
         rating={data[6].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -65,6 +72,7 @@ const CarouselComponent = () => {
         link={data[7].link}
         title={data[7].title}
         rating={data[7].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -72,6 +80,7 @@ const CarouselComponent = () => {
         link={data[8].link}
         title={data[8].title}
         rating={data[8].rating}
+        className="carousel-movieCard"
       />
       <MovieCard
         icon={bookMark}
@@ -79,6 +88,7 @@ const CarouselComponent = () => {
         link={data[9].link}
         title={data[9].title}
         rating={data[9].rating}
+        className="carousel-movieCard"
       />
     </Carousel>
   );
