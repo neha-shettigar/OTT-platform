@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import './styles.scss';
 
 import MovieCard from '../MovieCard';
+import PersonCard from '../PersonCard';
 
 interface SearchResultProps {
   results: any[];
@@ -50,7 +51,15 @@ const SearchResult = ({ results, query }: SearchResultProps) => {
                   isBookmarked={result.isBookmarked}
                 />
               ) : (
-                <></>
+                <PersonCard
+                  key={result.id}
+                  {...result}
+                  name={result.name}
+                  profile_path={result.profile_path}
+                  media_type={result.media_type}
+                  known_for_department={result.known_for_department}
+                  className="personCard-container"
+                />
               ),
             )}
           </section>

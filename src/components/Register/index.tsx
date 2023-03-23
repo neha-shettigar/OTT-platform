@@ -49,6 +49,8 @@ const Register = () => {
   const validateConfirmPassword = () => {
     if (confirmPassword !== password) {
       setConfirmPasswordError('Passwords do not match');
+    } else if (confirmPassword === '') {
+      setConfirmPasswordError('');
     } else {
       setConfirmPasswordError('');
     }
@@ -58,38 +60,41 @@ const Register = () => {
     validateUsername();
     validatePassword();
     validateConfirmPassword();
-
-    fetch(
-      'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+    if (password === confirmPassword) {
+      fetch(
+        'https://sea-turtle-app-ccc3d.ondigitalocean.app/api/auth/local/register',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ username, email, password }),
         },
-        body: JSON.stringify({ username, email, password }),
-      },
-    )
-      .then(async (response) => {
-        await response.json();
-        console.log(response);
-        if (response.status === 200) {
-          navigate('/');
-          localStorage.setItem('users', JSON.stringify([...users, response]));
-        } else {
-          setEmailError('Email is invalid or already exists');
-        }
-      })
+      )
+        .then(async (response) => {
+          await response.json();
+          console.log(response);
+          if (response.status === 200) {
+            navigate('/');
+            localStorage.setItem('users', JSON.stringify([...users, response]));
+          } else {
+            setEmailError('Email is invalid or already exists');
+          }
+        })
 
-      .then((newUser) => {
-        dispatch(registerSuccess(newUser));
-      })
-      .catch((error) => {
-        console.log(error);
+        .then((newUser) => {
+          dispatch(registerSuccess(newUser));
+        })
+        .catch((error) => {
+          console.log(error);
 
-        setErrorMessage('Failed to register');
-        dispatch(registerFail(setErrorMessage));
-        setEmailError(error);
-      });
+          setErrorMessage('Failed to register');
+          dispatch(registerFail(setErrorMessage));
+          setEmailError(error);
+        });
+    } else {
+      validateConfirmPassword();
+    }
   };
 
   return (
@@ -138,7 +143,7 @@ const Register = () => {
             validatePassword();
           }}
           className="register-container__register__input"
-          onBlur={validatePassword}
+          onBlur={() => validatePassword()}
           error={passwordError}
         />
 
@@ -151,14 +156,13 @@ const Register = () => {
             setConfirmPassword(e.target.value);
           }}
           className="register-container__register__input"
-          onBlur={validateConfirmPassword}
+          onBlur={() => validateConfirmPassword()}
           error={confirmPasswordError}
         />
 
         <Button
           label="Register"
           className="register-container__register__button"
-          // disabled={email ==='' && username==='' && password==='' && confirmPassword === ''}
           disabled={
             email === '' ||
             username === '' ||

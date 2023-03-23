@@ -1,5 +1,5 @@
 // contaier for movie details
-.movieDetails-container {
+.personDetails-container {
   display: flex;
   gap: 5%;
   padding: 2%;
@@ -25,9 +25,24 @@
     // height: 80%;
     .less-opaque {
       opacity: 0.8;
+   
+    }
+    .less-opaque-1 {
+      opacity: 0.8;
+      width: 40%;
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+      font-size: 1.25rem;
+    }
+    .less-opaque-2 {
+      opacity: 0.8;
+      width: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      font-size: 1.25rem;
     }
 
     &__para {
@@ -35,45 +50,16 @@
       justify-content: space-between;
       text-align: center;
     }
-    &__genre {
-      display: flex;
-      width: 100%;
-
-      &__header {
-        width: 100%;
-      }
-
-      &__section {
-        display: flex;
-      }
-    }
-    .span2 {
-      display: flex;
-      background-color: white;
-      color: #10141e;
-      justify-content: center;
-      text-align: center;
-      font-size: 1rem;
-      line-height: 40px;
-      padding: 0 1%;
-
-      text-decoration: none;
-      margin-right: 2%;
-      border-radius: 6px;
-      align-items: center;
-    }
     .span1 {
       border: none;
       background-color: transparent;
       color: white;
       opacity: 1;
-      font-size: 1.25rem;
-      display: flex;
-      margin: 0;
-      justify-content: flex-start;
-    }
-    h6 {
+      font-size: 1rem;
       width: 100%;
+      margin: 0;
+      display: flex;
+      justify-content: flex-start;
     }
     h2 {
       font-weight: 500;
@@ -93,17 +79,15 @@
       font-weight: 200;
     }
 
-    &__synopsis {
+    &__biography {
       display: flex;
       flex-direction: column;
       h6 {
-        font-family: 200;
+        font-family: 100;
         margin: 0;
-        width: 100%;
       }
     }
-
-    &__cast {
+    &__knownFor {
       display: flex;
       flex-direction: column;
       width: 100%;
@@ -114,7 +98,7 @@
         flex-wrap: wrap;
       }
     }
-    .castSpan {
+    .movieSpan {
       padding: 1% 1%;
       text-align: center;
       margin-bottom: 2%;
@@ -131,7 +115,7 @@
 }
 
 @media (max-width: 41.25rem) {
-  .movieDetails-container {
+  .personDetails-container {
     display: flex;
 
     margin-top: 5%;
@@ -165,36 +149,16 @@
         padding: 2% 4%;
         font-size: 0.75rem;
         width: 100%;
+        line-height: 20px;
+        display: flex;
+        height: 80%;
+        align-items: flex-start;
       }
       .less-opaque {
         display: flex;
         flex-direction: column;
       }
-      &__genre__section {
-        justify-content: flex-start;
-      }
-      .span2 {
-        font-size: 0.75rem;
-        margin: 0;
-        padding: 0 2%;
-        line-height: 35px;
-
-        margin-right: 2%;
-      }
-      &__cast {
-        display: flex;
-
-        &__section {
-          display: flex;
-        }
-      }
-
-      h6 {
-        font-family: 200;
-        margin: 0;
-        width: 100%;
-      }
-      .castSpan {
+      .movieSpan {
         font-size: 0.7rem;
         line-height: 1rem;
         padding: 2%;
@@ -204,7 +168,7 @@
 }
 
 @media (min-width: 41.25rem) and (max-width: 768px) {
-  .movieDetails-container {
+  .personDetails-container {
     // margin-top: 15%;
     display: flex;
     flex-direction: column;

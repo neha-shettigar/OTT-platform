@@ -26,6 +26,25 @@ body {
   pointer-events: none;
 }
 
+.App-container .carousel .slide {
+  min-width: 25.1%;
+  padding-right: 2%;
+}
+.App-container .carousel .control-dots {
+  display: none;
+}
+.App-container .carousel.carousel-slider .control-arrow {
+  height: 10%;
+  margin-top: 8%;
+  margin-right: 1%;
+   margin-left: 2%;
+  padding: 5px 7px;
+  border-radius: 20px;
+  top: 0;
+  color: #fff;
+  font-size: 26px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -58,4 +77,46 @@ body {
 
 a {
   font-size: 1.5rem;
+}
+
+@media (max-width: 420px) {
+  .App-container .carousel-root {
+    height: 30vh;
+  }
+  .App-container .carousel .slide {
+    min-width: 50.1%;
+    margin: 0;
+    position: relative;
+    text-align: center;
+  }
+
+  .App-container .carousel.carousel-slider .control-arrow {
+    margin-top: 16%;
+    margin-right: 1%;
+  }
+}
+
+@media (min-width: 420px) and (max-width: 768px) {
+  .App-container .carousel-root {
+    height: 350px;
+  }
+  .App-container .carousel.carousel-slider {
+    height: 100%;
+  }
+  .App-container .carousel .slider-wrapper {
+    height: 100%;
+  }
+  .App-container .carousel .slider {
+    height: 100%;
+  }
+  .App-container .carousel .slide {
+    min-width: 48.1%;
+    margin-left: 2%;
+  }
+
+  .App-container .carousel.carousel-slider .control-arrow {
+    margin-top: 14%;
+    margin-right: 2%;
+    margin-left: 3%;
+  }
 }

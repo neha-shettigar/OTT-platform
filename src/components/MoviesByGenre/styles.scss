@@ -41,11 +41,11 @@
     margin: 0;
     &__section {
       margin-top: 5%;
+      display: flex;
+      justify-content: space-between;
     }
 
-    &__card {
-      margin-left: 2%;
-    }
+    
   }
 }
 

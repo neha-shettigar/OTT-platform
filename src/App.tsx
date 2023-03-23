@@ -11,29 +11,37 @@ import {
 import './App.css';
 import BookMarks from './components/BookMarks';
 import ErrorPage from './components/ErrorPage';
+import HomePage from './components/HomePage';
+import Login from './components/Login';
 import MovieDetails from './components/MovieDetails';
 import MoviesByGenre from './components/MoviesByGenre';
+import MoviesGenre from './components/MoviesGenre';
+import PersonDetails from './components/PersonDetails';
+import Register from './components/Register';
+import SearchResult from './components/SearchResult';
 import SeriesByGenre from './components/SeriesByGenre';
 import SeriesDetails from './components/SeriesDetails';
+import SeriesGenre from './components/SeriesGenre';
 
 function App() {
-  const MoviesGenre = React.lazy(
-    async () => await import('./components/MoviesGenre'),
-  );
+  const userData = localStorage.getItem('userdata');
+  // const MoviesGenre = React.lazy(
+  //   async () => await import('./components/MoviesGenre'),
+  // );
 
-  const HomePage = React.lazy(
-    async () => await import('./components/HomePage'),
-  );
-  const Register = React.lazy(
-    async () => await import('./components/Register'),
-  );
-  const Login = React.lazy(async () => await import('./components/Login'));
-  const SeriesGenre = React.lazy(
-    async () => await import('./components/SeriesGenre'),
-  );
-  const SearchResult = React.lazy(
-    async () => await import('./components/SearchResult'),
-  );
+  // const HomePage = React.lazy(
+  //   async () => await import('./components/HomePage'),
+  // );
+  // const Register = React.lazy(
+  //   async () => await import('./components/Register'),
+  // );
+  // const Login = React.lazy(async () => await import('./components/Login'));
+  // const SeriesGenre = React.lazy(
+  //   async () => await import('./components/SeriesGenre'),
+  // );
+  // const SearchResult = React.lazy(
+  //   async () => await import('./components/SearchResult'),
+  // );
 
   // useLocation hook to prevent page refresh on navigation
   const location = useLocation() || {
@@ -49,24 +57,6 @@ function App() {
     <div className="App-container">
       <div className="App-container__body">
         <Routes location={shouldReload ? undefined : location}>
-          {/* <Route path="/" element={<MoviesGenre />} /> */}
-          {/* <Route path='searchResult' element={<SearchResult/>}/> */}
-          <Route
-            path="home"
-            element={
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <HomePage />
-              </React.Suspense>
-            }
-          />
-          <Route
-            path="register"
-            element={
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <Register />
-              </React.Suspense>
-            }
-          />
           <Route
             path="/"
             element={
@@ -76,21 +66,22 @@ function App() {
             }
           />
           <Route
+            path="home"
+            element={userData !== null ? <HomePage /> : <Login />}
+          />
+          <Route
+            path="register"
+            element={userData !== null ? <Register /> : <Login />}
+          />
+
+          <Route
             path="moviegenre"
-            element={
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <MoviesGenre />
-              </React.Suspense>
-            }
+            element={userData !== null ? <MoviesGenre /> : <Login />}
           />
 
           <Route
             path="seriesgenre"
-            element={
-              <React.Suspense fallback={<div>Loading...</div>}>
-                <SeriesGenre />
-              </React.Suspense>
-            }
+            element={userData !== null ? <SeriesGenre /> : <Login />}
           />
 
           {/* ... */}
@@ -99,12 +90,31 @@ function App() {
             element={<SearchResult results={[]} query="" />}
           />
 
-          <Route path="/moviesDetails/:movieId" element={<MovieDetails />} />
-          <Route path="/seriesDetails/:seriesId" element={<SeriesDetails />} />
-          <Route path="/bookmarks" element={<BookMarks />} />
+          <Route
+            path="/moviesDetails/:movieId"
+            element={userData !== null ? <MovieDetails /> : <Login />}
+          />
+          <Route
+            path="/seriesDetails/:seriesId"
+            element={userData !== null ? <SeriesDetails /> : <Login />}
+          />
+          <Route
+            path="/bookmarks"
+            element={userData !== null ? <BookMarks /> : <Login />}
+          />
 
-          <Route path="/movies-genre/:genreId" element={<MoviesByGenre />} />
-          <Route path="/series-genre/:genreId" element={<SeriesByGenre />} />
+          <Route
+            path="/movies-genre/:genreId"
+            element={userData !== null ? <MoviesByGenre /> : <Login />}
+          />
+          <Route
+            path="/series-genre/:genreId"
+            element={userData !== null ? <SeriesByGenre /> : <Login />}
+          />
+          <Route
+            path="/person/:personId"
+            element={userData !== null ? <PersonDetails /> : <Login />}
+          />
           <Route path="error" element={<ErrorPage />} />
         </Routes>
       </div>

@@ -2,7 +2,8 @@
 .movieCard-container,
 .movieResult-container,
 .moviesByGenre-container__card,
-.seriesByGenre-container__card {
+.seriesByGenre-container__card,
+.personCard-container {
   display: flex;
   width: 25%;
   height: 350px;
@@ -20,7 +21,7 @@
       font-weight: 500;
       font-size: 1.25rem;
       line-height: 2.25rem;
-      padding: 0 2%;
+      padding-right: 2%;
     }
   }
 
@@ -64,23 +65,34 @@
     .movie-card-icon {
       opacity: 0.8;
     }
+    &__para {
+      font-size: 1rem;
+      line-height: 10px;
+      margin-bottom: 2%;
+    }
+    &__para1,
+    &__para2 {
+      font-weight: 400;
+      font-size: 0.725rem;
+      line-height: 1.5rem;
+      letter-spacing: 0.06em;
+      word-spacing: 1.25rem;
+      opacity: 0.8;
+      margin: 0;
+      font-family: 'Poppins';
+      font-style: normal;
+      color: #ffffff;
+      font-weight: 200;
+    }
   }
   // movie details
-  p,
+
   h3 {
     margin: 0;
     font-family: 'Poppins';
     font-style: normal;
     color: #ffffff;
     font-weight: 200;
-  }
-  p {
-    font-weight: 400;
-    font-size: 0.725rem;
-    line-height: 1.5rem;
-    letter-spacing: 0.06em;
-    word-spacing: 1.25rem;
-    opacity: 0.8;
   }
 }
 .movieResult-container {
@@ -93,9 +105,10 @@
   .movieCard-container,
   .moviesByGenre-container__card,
   .seriesByGenre-container__card,
-  .movieResult-container {
+  .movieResult-container,
+  .personCard-container {
     display: flex;
-    width: 48%;
+    width: 49%;
     height: 250px;
 
     &__poster {
@@ -110,6 +123,7 @@
       margin: 0;
       padding-left: 34%;
       padding-top: 2%;
+      width: 48%;
     }
     &__icon {
       width: 60%;
@@ -131,7 +145,8 @@
   .movieCard-container,
   .moviesByGenre-container__card,
   .seriesByGenre-container__card,
-  .movieResult-container {
+  .movieResult-container,
+  .personCard-container {
     display: flex;
     width: 48.1%;
 

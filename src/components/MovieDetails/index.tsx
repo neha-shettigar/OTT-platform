@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import SearchBar from '../SearchBar';
 import SearchResult from '../SearchResult';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 // searchIcon for searchbar
 import searchIcon from '../assets/search-normal.svg';
@@ -79,8 +79,10 @@ const MovieDetails = () => {
                 <h2>{movieDetails.name}</h2>
               )}
 
-              {movieDetails.tagline ? (
-                <p className="less-opaque">{movieDetails.tagline}</p>
+              {movieDetails.known_for_department ? (
+                <p className="less-opaque">
+                  {movieDetails.known_for_department}
+                </p>
               ) : null}
 
               <h4>{movieDetails.vote_average}</h4>
@@ -112,9 +114,13 @@ const MovieDetails = () => {
                   <section className="movieDetails-container__details__genre__section">
                     {Boolean(movieDetails.genres) &&
                       movieDetails.genres.map((genre: any) => (
-                        <span className="span2" key={genre.id}>
+                        <Link
+                          to={`/movies-genre/${genre.id}`}
+                          className="span2"
+                          key={genre.id}
+                        >
                           {genre.name}
-                        </span>
+                        </Link>
                       ))}
                   </section>
                 </h6>
@@ -128,9 +134,13 @@ const MovieDetails = () => {
                 <section className="movieDetails-container__details__cast__section">
                   {Boolean(movieCast.cast) &&
                     movieCast.cast.map((crew: any) => (
-                      <span className="castSpan" key={crew.id}>
+                      <Link
+                        to={`/person/${crew.id}`}
+                        className="castSpan"
+                        key={crew.id}
+                      >
                         {crew.name}
-                      </span>
+                      </Link>
                     ))}
                 </section>
               </article>

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Navbar from '../Navbar';
 import SearchBar from '../SearchBar';
 import SearchResult from '../SearchResult';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 // searchIcon for searchbar
 import searchIcon from '../assets/search-normal.svg';
@@ -101,14 +101,18 @@ const SeriesDetails = () => {
               </section>
 
               <article className="movieDetails-container__details__genre">
-                <h6>
+                <h6 className="movieDetails-container__details__genre__header">
                   Genre
                   <section className="movieDetails-container__details__genre__section">
                     {Boolean(seriesDetails.genres) &&
                       seriesDetails.genres.map((genre: any) => (
-                        <span className="span2" key={genre.id}>
+                        <Link
+                          to={`/series-genre/${genre.id}`}
+                          className="span2"
+                          key={genre.id}
+                        >
                           {genre.name}
-                        </span>
+                        </Link>
                       ))}
                   </section>
                 </h6>
@@ -120,9 +124,13 @@ const SeriesDetails = () => {
                 <section className="movieDetails-container__details__cast__section">
                   {Boolean(seriesCast.cast) &&
                     seriesCast.cast.map((crew: any) => (
-                      <span className="castSpan" key={crew.id}>
+                      <Link
+                        to={`/person/${crew.id}`}
+                        className="castSpan"
+                        key={crew.id}
+                      >
                         {crew.name}
-                      </span>
+                      </Link>
                     ))}
                 </section>
               </article>

@@ -107,10 +107,10 @@ const MovieCard = ({
           />
         </button>
         <section className={`${className}__details`}>
-          <p>{release_date}</p>
+          <p className={`${className}__details__para1`}>{release_date}</p>
           <object data={dotIcon} type="" className="dot-icon"></object>
           <object data={movieIcon} type="" className="movie-card-icon"></object>
-          <p>{media_type}</p>
+          <p className={`${className}__details__para2`}>{media_type}</p>
         </section>
         {title != null ? <h3>{title}</h3> : <h3>{name}</h3>}
       </section>

@@ -11,6 +11,17 @@ import user from '../assets/account.svg';
 import './styles.scss';
 
 const Navbar = () => {
+  const [isLoggingOut, setIsLoggingOut] = React.useState(false);
+
+  const handleProfileClick = () => {
+    setIsLoggingOut(!isLoggingOut);
+
+    localStorage.removeItem('userdata');
+    localStorage.removeItem('token');
+    // navigate('/');
+    window.history.replaceState(null, '', '/');
+    window.location.reload();
+  };
   const location = useLocation();
 
   return (
@@ -82,7 +93,12 @@ const Navbar = () => {
       </div>
 
       <Link to="/" className="navbar-container__link1">
-        <img className="navbar-container__img1" src={user} alt="user icon" />
+        <button
+          onClick={handleProfileClick}
+          className="navbar-container__link__button"
+        >
+          <img className="navbar-container__img1" src={user} alt="user icon" />
+        </button>
       </Link>
     </nav>
   );

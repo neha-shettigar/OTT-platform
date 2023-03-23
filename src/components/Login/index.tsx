@@ -48,6 +48,7 @@ const Login = () => {
           localStorage.setItem('currentUser', JSON.stringify(data));
           navigate('home');
           // alert('User signed in successfully');
+          console.log();
           console.log('User signed in successfully');
         } else {
           dispatch(signInFail('Invalid email or password'));

@@ -57,10 +57,11 @@ const BookMarks = () => {
             <h5>Bookmarked Movies</h5>
             <section className="bookmarks-container__section">
               {bookmarkedMovies.map((movie: any) => {
-                return movie.media_type === 'movie' ? (
+                return movie.media_type === 'Movie' ? (
                   <MovieCard
                     key={movie.id}
                     {...movie}
+                    id={movie.id}
                     className="movieCard-container"
                     poster_path={movie.poster_path}
                     media_type={movie.media_type}
@@ -75,6 +76,7 @@ const BookMarks = () => {
                   <MovieCard
                     key={movie.id}
                     {...movie}
+                    id={movie.id}
                     className="movieCard-container"
                     poster_path={movie.poster_path}
                     media_type={movie.media_type}

@@ -56,7 +56,7 @@ const MoviesByGenre = () => {
                   id={movie.id}
                   genre="movies"
                   poster_path={movie.poster_path}
-                  media_type="movie"
+                  media_type="Movie"
                   title={movie.title}
                   className="moviesByGenre-container__card"
                   release_date={movie.release_date.substring(0, 4)}
