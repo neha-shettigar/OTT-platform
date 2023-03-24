@@ -80,7 +80,9 @@ const SeriesDetails = () => {
               <section className="movieDetails-container__details__para">
                 <p className="less-opaque">
                   Length
-                  <span className="span1">{seriesDetails.runtime}min</span>
+                  <span className="span1">
+                    {seriesDetails.episode_run_time}min
+                  </span>
                 </p>
                 <p className="less-opaque">
                   Language

@@ -69,10 +69,7 @@ function App() {
             path="home"
             element={userData !== null ? <HomePage /> : <Login />}
           />
-          <Route
-            path="register"
-            element={userData !== null ? <Register /> : <Login />}
-          />
+          <Route path="register" element={<Register />} />
 
           <Route
             path="moviegenre"

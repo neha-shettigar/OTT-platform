@@ -146,7 +146,8 @@
       }
       span,
       .span1 {
-        padding: 2% 4%;
+        // padding: 2% 4%;
+        padding: 0;
         font-size: 0.75rem;
         width: 100%;
         line-height: 20px;
@@ -157,6 +158,9 @@
       .less-opaque {
         display: flex;
         flex-direction: column;
+      }
+      .less-opaque-1,.less-opaque-2{
+        font-size: 1rem;
       }
       .movieSpan {
         font-size: 0.7rem;

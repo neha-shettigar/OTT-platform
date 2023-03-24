@@ -59,7 +59,12 @@ const MoviesByGenre = () => {
                   media_type="Movie"
                   title={movie.title}
                   className="moviesByGenre-container__card"
-                  release_date={movie.release_date.substring(0, 4)}
+                  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+                  release_date={
+                    movie.release_date
+                      ? movie.release_date.substring(0, 4)
+                      : null
+                  }
                   isBookmarked={movie.isBookmarked}
                 />
               ))}

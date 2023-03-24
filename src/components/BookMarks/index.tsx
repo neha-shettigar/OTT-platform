@@ -64,7 +64,7 @@ const BookMarks = () => {
                     id={movie.id}
                     className="movieCard-container"
                     poster_path={movie.poster_path}
-                    media_type={movie.media_type}
+                    media_type="Movie"
                     title={movie.title}
                     genre="movies"
                     name={movie.name}

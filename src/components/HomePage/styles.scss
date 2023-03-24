@@ -105,9 +105,14 @@
       width: 90%;
       flex-direction: column;
 
+      &__section{
+        margin-top: 5%;
+      }
+
       h4 {
         font-size: 1.5rem;
         line-height: 40px;
+        margin-top: 2%;
       }
       p,
       span {

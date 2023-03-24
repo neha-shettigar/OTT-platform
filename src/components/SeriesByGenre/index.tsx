@@ -57,7 +57,12 @@ const SeriesByGenre = () => {
                   media_type="TV Series"
                   title={serie.title}
                   className="seriesByGenre-container__card"
-                  release_date={serie.first_air_date.substring(0, 4)}
+                  // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+                  release_date={
+                    serie.first_air_date
+                      ? serie.first_air_date.substring(0, 4)
+                      : null
+                  }
                 />
               ))}
             </section>

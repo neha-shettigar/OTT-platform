@@ -19,7 +19,7 @@ const SearchResult = ({ results, query }: SearchResultProps) => {
     <section className="searchResult-container">
       {searchResults.length > 0 ? (
         <section className="searchResult-container__section">
-          <h4>
+          <h4 className="searchResult-container__section__header">
             Found {searchResults.length} results for '{query}'
           </h4>
           <section className="searchResult-container__section__results">
