@@ -6,6 +6,7 @@ import bookmarkedIcon from '../assets/bookmarkedIcon.svg';
 import unbookmarkedIcon from '../assets/unbookmarkedIcon.svg';
 import dotIcon from '../assets/home-dot.svg';
 import movieIcon from '../assets/home-movie.svg';
+import seriesIcon from '../assets/tv-series-icon.svg';
 import './styles.scss';
 
 interface MovieCardInterface {
@@ -109,7 +110,20 @@ const MovieCard = ({
         <section className={`${className}__details`}>
           <p className={`${className}__details__para1`}>{release_date}</p>
           <object data={dotIcon} type="" className="dot-icon"></object>
-          <object data={movieIcon} type="" className="movie-card-icon"></object>
+          {media_type === 'Movie' ? (
+            <object
+              data={movieIcon}
+              type=""
+              className="movie-card-icon"
+            ></object>
+          ) : (
+            <object
+              data={seriesIcon}
+              type=""
+              className="movie-card-icon"
+            ></object>
+          )}
+
           <p className={`${className}__details__para2`}>{media_type}</p>
         </section>
         {title != null ? <h3>{title}</h3> : <h3>{name}</h3>}
