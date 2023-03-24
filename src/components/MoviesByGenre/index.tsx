@@ -61,6 +61,7 @@ const MoviesByGenre = () => {
                   className="moviesByGenre-container__card"
                   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
                   release_date={
+                    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
                     movie.release_date
                       ? movie.release_date.substring(0, 4)
                       : null

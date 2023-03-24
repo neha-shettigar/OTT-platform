@@ -25,23 +25,6 @@ import SeriesGenre from './components/SeriesGenre';
 
 function App() {
   const userData = localStorage.getItem('userdata');
-  // const MoviesGenre = React.lazy(
-  //   async () => await import('./components/MoviesGenre'),
-  // );
-
-  // const HomePage = React.lazy(
-  //   async () => await import('./components/HomePage'),
-  // );
-  // const Register = React.lazy(
-  //   async () => await import('./components/Register'),
-  // );
-  // const Login = React.lazy(async () => await import('./components/Login'));
-  // const SeriesGenre = React.lazy(
-  //   async () => await import('./components/SeriesGenre'),
-  // );
-  // const SearchResult = React.lazy(
-  //   async () => await import('./components/SearchResult'),
-  // );
 
   // useLocation hook to prevent page refresh on navigation
   const location = useLocation() || {

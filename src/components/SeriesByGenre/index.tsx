@@ -59,6 +59,7 @@ const SeriesByGenre = () => {
                   className="seriesByGenre-container__card"
                   // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
                   release_date={
+                    // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
                     serie.first_air_date
                       ? serie.first_air_date.substring(0, 4)
                       : null
