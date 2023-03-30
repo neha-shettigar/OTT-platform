@@ -99,7 +99,11 @@ const HomePage = () => {
                   poster_path={movie.poster_path}
                   media_type="Movie"
                   title={movie.title}
-                  release_date={movie.release_date.substring(0, 4)}
+                  release_date={
+                    movie.release_date
+                      ? movie.release_date.substring(0, 4)
+                      : null
+                  }
                 />
               ))}
             </section>

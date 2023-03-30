@@ -84,17 +84,25 @@ const PersonDetails = () => {
               <section className="personDetails-container__details__para">
                 <p className="less-opaque-1">
                   Date of birth
-                  <span className="span1">{personDetails.birthday}</span>
+                  <span className="span1">
+                    {personDetails.birthday ? personDetails.birthday : 'N/A'}
+                  </span>
                 </p>
                 <p className="less-opaque-2">
                   Place of birth
-                  <span className="span1">{personDetails.place_of_birth}</span>
+                  <span className="span1">
+                    {personDetails.place_of_birth
+                      ? personDetails.place_of_birth
+                      : 'N/A'}
+                  </span>
                 </p>
               </section>
 
               <article className="personDetails-container__details__biography">
                 <h6>Biography</h6>
-                <p className="less-opaque">{personDetails.biography}</p>
+                <p className="less-opaque">
+                  {personDetails.biography ? personDetails.biography : 'N/A'}
+                </p>
               </article>
               <article className="personDetails-container__details__knownFor">
                 <h6>Known For</h6>

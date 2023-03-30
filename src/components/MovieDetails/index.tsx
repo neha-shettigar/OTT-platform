@@ -6,6 +6,7 @@ import SearchBar from '../SearchBar';
 import SearchResult from '../SearchResult';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
+import { getLanguageName } from '../../language';
 // searchIcon for searchbar
 import searchIcon from '../assets/search-normal.svg';
 import './styles.scss';
@@ -93,7 +94,9 @@ const MovieDetails = () => {
                 <p className="less-opaque">
                   Language
                   {/* <span>{movieDetails.spokenLanguages}</span> */}
-                  <span className="span1">English</span>
+                  <span className="span1">
+                    {getLanguageName(movieDetails.original_language)}
+                  </span>
                 </p>
                 <p className="less-opaque">
                   Year

@@ -29,7 +29,11 @@ const SearchResult = ({ results, query }: SearchResultProps) => {
                   key={result.id}
                   {...result}
                   genre="movies"
-                  release_date={result.release_date.substring(0, 4)}
+                  release_date={
+                    result.release_date
+                      ? result.release_date.substring(0, 4)
+                      : null
+                  }
                   className="movieResult-container"
                   poster_path={result.poster_path}
                   title={result.title}
@@ -42,7 +46,11 @@ const SearchResult = ({ results, query }: SearchResultProps) => {
                   key={result.id}
                   {...result}
                   genre="series"
-                  release_date={result.first_air_date.substring(0, 4)}
+                  release_date={
+                    result.first_air_date
+                      ? result.first_air_date.substring(0, 4)
+                      : null
+                  }
                   className="movieResult-container"
                   poster_path={result.poster_path}
                   title={result.title}

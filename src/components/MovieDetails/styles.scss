@@ -177,13 +177,14 @@
       }
       &__genre__section {
         justify-content: flex-start;
+        flex-wrap: wrap;
       }
       .span2 {
         font-size: 0.75rem;
         margin: 0;
         padding: 0 2%;
         line-height: 35px;
-
+        margin-top: 2%;
         margin-right: 2%;
       }
       &__cast {
@@ -198,6 +199,7 @@
         font-family: 200;
         margin: 0;
         width: 100%;
+        flex-direction: column;
       }
       .castSpan {
         font-size: 0.7rem;

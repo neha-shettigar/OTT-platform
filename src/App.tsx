@@ -22,6 +22,7 @@ import SearchResult from './components/SearchResult';
 import SeriesByGenre from './components/SeriesByGenre';
 import SeriesDetails from './components/SeriesDetails';
 import SeriesGenre from './components/SeriesGenre';
+import ScrollToTop from './components/ScrollToTop';
 
 function App() {
   const userData = localStorage.getItem('userdata');
@@ -39,6 +40,7 @@ function App() {
   return (
     <div className="App-container">
       <div className="App-container__body">
+        <ScrollToTop />
         <Routes location={shouldReload ? undefined : location}>
           <Route
             path="/"

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/strict-boolean-expressions */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 import React, { useState, useEffect } from 'react';
 import MovieCard from '../MovieCard';
@@ -68,7 +69,11 @@ const BookMarks = () => {
                     title={movie.title}
                     genre="movies"
                     name={movie.name}
-                    release_date={movie.release_date}
+                    release_date={
+                      movie.release_date
+                        ? movie.release_date.substring(0, 4)
+                        : null
+                    }
                     isBookmarked={movie.isBookmarked}
                     onUnbookmark={handleUnbookmark}
                   />
@@ -83,7 +88,11 @@ const BookMarks = () => {
                     title={movie.title}
                     genre="series"
                     name={movie.name}
-                    release_date={movie.release_date}
+                    release_date={
+                      movie.first_air_date
+                        ? movie.first_air_date.substring(0, 4)
+                        : movie.release_date.substring(0, 4)
+                    }
                     isBookmarked={movie.isBookmarked}
                     onUnbookmark={handleUnbookmark}
                   />

@@ -47,7 +47,11 @@ const CarouselComponent = () => {
             {...movie}
             genre="movies"
             media_type="Movie"
-            release_date={movie.release_date.substring(0, 4)}
+            release_date={
+              movie.release_date !== ''
+                ? movie.release_date.substring(0, 4)
+                : null
+            }
             className="carousel-movieCard"
             poster_path={movie.poster_path}
             alt={`${movie.title} poster`}
