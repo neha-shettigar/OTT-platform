@@ -47,7 +47,7 @@ const SeriesGenre = () => {
                   index % 2 === 0 ? 1 : 2
                 }`}
                 // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-                to={`/series-genre/${genre.id}`}
+                to={`/seriesgenre/${genre.id}`}
               >
                 {genre.name}
               </Link>

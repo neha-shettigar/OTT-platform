@@ -112,7 +112,7 @@ const SeriesDetails = () => {
                     {Boolean(seriesDetails.genres) &&
                       seriesDetails.genres.map((genre: any) => (
                         <Link
-                          to={`/series-genre/${genre.id}`}
+                          to={`/seriesgenre/${genre.id}`}
                           className="span2"
                           key={genre.id}
                         >

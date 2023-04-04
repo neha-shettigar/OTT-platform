@@ -1,9 +1,13 @@
+
+
 // contains bookmarked items
 .bookmarks-container {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   margin-top: 2%;
+    background: #10141e;
+
 
   // bookmark header
   h5 {

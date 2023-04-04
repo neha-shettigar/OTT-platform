@@ -6,6 +6,7 @@ import SearchBar from '../SearchBar';
 import Navbar from '../Navbar';
 import SearchResult from '../SearchResult';
 import searchIcon from '../assets/search-normal.svg';
+import '../../App.css';
 import './styles.scss';
 
 interface Movie {

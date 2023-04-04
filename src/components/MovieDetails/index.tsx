@@ -118,7 +118,7 @@ const MovieDetails = () => {
                     {Boolean(movieDetails.genres) &&
                       movieDetails.genres.map((genre: any) => (
                         <Link
-                          to={`/movies-genre/${genre.id}`}
+                          to={`/moviesgenre/${genre.id}`}
                           className="span2"
                           key={genre.id}
                         >

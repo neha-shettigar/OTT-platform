@@ -2,6 +2,7 @@ import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
 import MovieDetails from './index';
+import { BrowserRouter } from 'react-router-dom';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 const meta = {
@@ -15,7 +16,10 @@ const meta = {
 export default meta;
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof MovieDetails> = (args) => (
-  <MovieDetails />
+  <BrowserRouter>
+    {' '}
+    <MovieDetails />
+  </BrowserRouter>
 );
 
 export const Default = Template.bind({});

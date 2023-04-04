@@ -86,11 +86,11 @@ function App() {
           />
 
           <Route
-            path="/movies-genre/:genreId"
+            path="/moviesgenre/:genreId"
             element={userData !== null ? <MoviesByGenre /> : <Login />}
           />
           <Route
-            path="/series-genre/:genreId"
+            path="/seriesgenre/:genreId"
             element={userData !== null ? <SeriesByGenre /> : <Login />}
           />
           <Route

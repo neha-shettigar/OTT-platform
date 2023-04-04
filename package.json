@@ -33,6 +33,7 @@
     "redux": "^4.2.1",
     "redux-thunk": "^2.4.2",
     "sass": "^1.58.3",
+    "styled-components": "^5.3.9",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -87,6 +88,7 @@
     "@storybook/react": "^6.5.15",
     "@storybook/testing-library": "^0.0.13",
     "@types/bcryptjs": "^2.4.2",
+    "@types/styled-components": "^5.1.26",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "babel-plugin-named-exports-order": "^0.0.2",
     "eslint": "^8.30.0",
